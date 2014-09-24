@@ -1,3 +1,23 @@
 <% provide(:title, 'Rejestracja') %>
-<h1>Zarejestruj się</h1>
-<p>do zrobienia</p>
+<h1>Rejestracja Użytkownika</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+
+      <%= f.label "imię i nazwisko" %>
+      <%= f.text_field :name %>
+
+      <%= f.label "adres e-mial" %>
+      <%= f.text_field :email %>
+
+      <%= f.label "hasło" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Potwierdzenie hasła" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Utwórz konto", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

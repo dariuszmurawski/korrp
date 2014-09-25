@@ -28,7 +28,7 @@ describe "User pages" do
 
     before { visit signup_path }
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "Utwórz konto" }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -38,10 +38,10 @@ describe "User pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Name",         with: "Example User"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "imię i nazwisko",         with: "Example User"
+        fill_in "adres e-mial",        with: "user@example.com"
+        fill_in "hasło" ,     with: "foobar"
+        fill_in "Potwierdzenie hasła", with: "foobar"
       end
 
       it "should create a user" do

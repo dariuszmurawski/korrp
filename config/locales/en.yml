@@ -21,3 +21,16 @@
 
 en:
   hello: "Hello world"
+  "Name can't be blank": "Imię i nazwisko nie może być puste"
+  "Email can't be blank": "Adres e-mail nie może być pusty"  
+  "Email is invalid": "Format adresu e-mail jest niepoprawny"
+  "Password can't be blank": "Hasło nie może być puste"
+  "Password is too short (minimum is 6 characters)": "Hasło jest za krótkie (minimum 6 znaków)"
+  
+
+ 
+ 
+
+ 
+ 
+ 

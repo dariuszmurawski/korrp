@@ -10,7 +10,8 @@ class UsersController < ApplicationController
    def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Użytkownik został dodany do KORRP!"
+      sign_in @user
+      flash[:success] = "Witamy w Karcie Oceny Ryzyka Rejestracji Podmiotów"
       redirect_to @user
     else
       render 'new'

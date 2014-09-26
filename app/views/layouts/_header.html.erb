@@ -10,12 +10,12 @@
               
 
                <% if signed_in? %>
-					<li><%= link_to "Użytkownicy", '#' %></li>
+					<li><%= link_to "Użytkownicy", users_path %></li>
 					<li id="fat-menu" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Konto Użytkownika <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><%= link_to "Profil Użytkownika", current_user %></li>
-							<li><%= link_to "Ustawienia", '#' %></li>
+							<li><%= link_to "Ustawienia", edit_user_path(current_user) %></li>
 							<li class="divider"></li>
 							<li>
               				    <%= link_to "Wyloguj", signout_path, method: "delete" %>

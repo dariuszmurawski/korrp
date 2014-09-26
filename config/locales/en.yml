@@ -26,7 +26,7 @@ en:
   "Email is invalid": "Format adresu e-mail jest niepoprawny"
   "Password can't be blank": "Hasło nie może być puste"
   "Password is too short (minimum is 6 characters)": "Hasło jest za krótkie (minimum 6 znaków)"
-  
+  "Password confirmation doesn't match Password": "Hasło oraz potwierdzenie hasła są różne"
 
  
  

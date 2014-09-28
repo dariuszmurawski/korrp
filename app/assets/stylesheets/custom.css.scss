@@ -18,7 +18,9 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  /*padding-top: 60px;*/
+  padding-top: 120px;
+  
 }
 
 section {
@@ -67,9 +69,10 @@ p {
 /* header */
 
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.2em;
+/*  float: left;*/
+  float: block;
+/*  margin-right: 10px;*/
+  font-size: 1.8em;
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -85,6 +88,12 @@ p {
 /* footer */
 
 footer {
+ /* position: fixed;
+  bottom: 0;
+  height:100px;
+  width:940px;*/
+  
+    
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;

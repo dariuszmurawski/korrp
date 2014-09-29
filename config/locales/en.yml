@@ -27,9 +27,9 @@ en:
   "Password can't be blank": "Hasło nie może być puste"
   "Password is too short (minimum is 6 characters)": "Hasło jest za krótkie (minimum 6 znaków)"
   "Password confirmation doesn't match Password": "Hasło oraz potwierdzenie hasła są różne"
-
- 
- 
+  "Login can't be blank": "Login nie może być pusty"
+  "Forename can't be blank": "Imię nie może być puste"
+  "Login is too long (maximum is 6 characters)": "Login jest za długi (maksimum 6 znaków)"
 
  
  

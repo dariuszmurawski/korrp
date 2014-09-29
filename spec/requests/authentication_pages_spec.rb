@@ -41,9 +41,10 @@ describe "Authentication" do
 
       it { should have_title(user.name) }
       it { should have_link('Profil',     href: user_path(user)) }
-      it { should have_link('Użytkownicy',       href: users_path) }
       it { should have_link('Ustawienia',    href: edit_user_path(user)) }
       it { should have_link('Wyloguj',    href: signout_path) }
+      it { should_not have_link('Użytkownicy',       href: users_path) }
+      it { should_not have_link('Dodaj użytkownika',       href: users_path) }
       it { should_not have_link('Zaloguj', href: signin_path) }
       
       
@@ -121,6 +122,11 @@ describe "Authentication" do
         end
       end
     end
+    
+    
+    
+    
+ 
     
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }

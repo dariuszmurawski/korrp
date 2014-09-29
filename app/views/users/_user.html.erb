@@ -1,8 +1,23 @@
-<li>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "kasuj", user, method: :delete,
+<tr>
+	
+  <td>
+  	<%= link_to user.login, user %>
+  
+  <td>
+  	<%= user.forename%>
+  </td>
+  <td>
+  	<%= user.name%>
+  </td>
+  <td>
+  	<%= user.email%>
+  </td>
+  <td>
+  	<% if current_user.admin? && !current_user?(user) %>
+    <%= link_to "kasuj", user, method: :delete,
                                   data: { confirm: "Na pewno chcesz skasować?" } %>
-  <% end %>
+ 	 <% end %>
+  </td>	
+  
 
-</li>
+</tr>

@@ -3,7 +3,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-
+$blueMediumLight: #6699FF;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -85,6 +85,10 @@ p {
   }
 }
 
+.user-color {
+  color: $blueMediumLight;
+  
+}
 /* footer */
 
 footer {

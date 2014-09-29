@@ -35,14 +35,32 @@ describe "User pages" do
     end
     
 
-    it { should have_title('Zarejestrowani użytkownicy') }
-    it { should have_content('Zarejestrowani użytkownicy') }
-
-    it "should list each user" do
-      User.all.each do |user|
-        expect(page).to have_selector('li', text: user.name)
-      end
+    it { should_not have_title('Zarejestrowani użytkownicy') }
+    it { should_not have_content('Zarejestrowani użytkownicy') }
+    
+    describe "index admin" do
+        let(:admin) { FactoryGirl.create(:admin) }
+        before do
+          sign_in admin
+          visit users_path
+        end
+        
+        it { should have_title('Zarejestrowani użytkownicy') }
+        it { should have_content('Zarejestrowani użytkownicy') }
+        
+        
+        it "should list each user" do
+           User.all.each do |user|
+             expect(page).to have_selector('li', text: user.name)
+           end
+        end
+        
     end
+  
+
+    
+    
+
     
     describe "delete links" do
 
@@ -103,6 +121,7 @@ describe "User pages" do
       let(:user) { User.find_by(email: 'user@example.com') }
 
       it { should have_link('Wyloguj') }
+      it { should have_link('Konto Użytkownika '||user.login) }
       it { should have_title(user.name) }
       it { should have_selector('div.alert.alert-success', text: 'Witamy') }
 

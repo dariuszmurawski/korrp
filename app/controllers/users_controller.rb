@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :index]
+  before_action :signed_in_user, only: [:edit, :update, :index, :destroy]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
   
   
   def new
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
   
   def create
@@ -26,6 +27,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "Użytkownik skasowany."
+    redirect_to users_url
+  end
   
   def edit
  #   @user = User.find(params[:id])
@@ -43,11 +49,20 @@ class UsersController < ApplicationController
   end
   
   
+  
+  
+  
   private
+
+
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
+    end
+    
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 
     def signed_in_user

@@ -6,7 +6,13 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :name,"imię i nazwisko" %>
+	  <%= f.label :login,"login" %>
+      <%= f.text_field :login %>
+
+	  <%= f.label :forename,"imię" %>
+      <%= f.text_field :forename %>
+
+      <%= f.label :name,"nazwisko" %>
       <%= f.text_field :name %>
 
       <%= f.label :email,"adres e-mial" %>

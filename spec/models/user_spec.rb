@@ -3,13 +3,15 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+    @user = User.new(login: "dmu", forename: "Dariusz", name: "Murawski", email: "dariusz.murawski@pd.mofnet.gov.pl",
+                     password: "test1234", password_confirmation: "test1234")
   end
 
   subject { @user }
 
+  it { should respond_to(:login) }
   it { should respond_to(:name) }
+  it { should respond_to(:forename) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
@@ -42,6 +44,16 @@ describe User do
     its(:remember_token) { should_not be_blank }
   end
 
+
+  describe "when login is not present" do
+    before { @user.login = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when forename is not present" do
+    before { @user.forename = " " }
+    it { should_not be_valid }
+  end
 
   describe "when name is not present" do
     before { @user.name = " " }
@@ -82,18 +94,19 @@ describe User do
 
   describe "when email address is already taken" do
     before do
-      user_with_same_email = @user.dup
+      user_with_same_email = User.new(login: "dmu1", forename: "Dariusz", name: "Murawski", email: "Dariusz.Murawski@pd.mofnet.gov.pl",
+                     password: "test1234", password_confirmation: "test1234")
       user_with_same_email.save
     end
 
     it { should_not be_valid }
   end
   
-   describe "when email address is already taken" do
+  describe "when login is already taken" do
     before do
-      user_with_same_email = @user.dup
-      user_with_same_email.email = @user.email.upcase
-      user_with_same_email.save
+      user_with_same_login = User.new(login: "dmu", forename: "Dariusz", name: "Murawski", email: "Dariusz.Murawski1@pd.mofnet.gov.pl",
+                     password: "test1234", password_confirmation: "test1234")
+      user_with_same_login.save
     end
 
     it { should_not be_valid }
@@ -102,8 +115,8 @@ describe User do
   
   describe "when password is not present" do
     before do
-      @user = User.new(name: "Example User", email: "user@example.com",
-                       password: " ", password_confirmation: " ")
+      @user = User.new(login: "dmu", forename: "Dariusz", name: "Murawski", email: "Dariusz.Murawski1@pd.mofnet.gov.pl",
+                     password: " ", password_confirmation: " ")
     end
     it { should_not be_valid }
   end

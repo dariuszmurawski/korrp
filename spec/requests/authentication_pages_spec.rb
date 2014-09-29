@@ -34,7 +34,7 @@ describe "Authentication" do
      describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        fill_in "adres e-mail",    with: user.email.upcase
+        fill_in "login",    with: user.login.downcase
         fill_in "hasło", with: user.password
         click_button "Zaloguj"
       end
@@ -83,7 +83,7 @@ describe "Authentication" do
      describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
-          fill_in "adres e-mail",    with: user.email
+          fill_in "login",    with: user.login
           fill_in "hasło", with: user.password
           click_button "Zaloguj"
         end

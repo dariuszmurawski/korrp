@@ -7,10 +7,6 @@ describe "User pages" do
 
 
 
-
-
-
-
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit user_path(user) }
@@ -94,7 +90,9 @@ describe "User pages" do
 
     describe "with valid information" do
       before do
-        fill_in "imię i nazwisko",         with: "Example User"
+        fill_in "login",         with: "log"
+        fill_in "imię",         with: "Example forename"
+        fill_in "nazwisko",         with: "Example name"
         fill_in "adres e-mial",        with: "user@example.com"
         fill_in "hasło" ,     with: "foobar"
         fill_in "Potwierdzenie hasła", with: "foobar"
@@ -148,10 +146,12 @@ describe "User pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-        fill_in "imię i nazwisko",             with: new_name
-        fill_in "adres e-mial",            with: new_email
-        fill_in "hasło",         with: user.password
-        fill_in "Potwierdzenie hasła", with: user.password
+        fill_in "login",                with: user.login
+        fill_in "imię",                 with: user.forename
+        fill_in "nazwisko",             with: new_name
+        fill_in "adres e-mial",         with: new_email
+        fill_in "hasło",                with: user.password
+        fill_in "Potwierdzenie hasła",  with: user.password
         click_button "Zapisz zmiany"
       end
 

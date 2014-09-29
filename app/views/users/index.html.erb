@@ -3,13 +3,15 @@
 
 <%= will_paginate %>
 <ul class="users">
-	<table>
+	<table class="table table-striped">
 		<tr>
-			<td>Login</td>
-			<td>Imię</td>
-			<td>Nazwisko</td>
-			<td>E-mail</td>
-			<td>Kasuj?</td>
+			<th style="width: 5%">Login</th>
+			<th>Imię</th>
+			<th>Nazwisko</th>
+			<th>E-mail</th>
+			<th style="width: 5%">Administrator</th>
+			<th style="width: 5%">Edycja</th>	
+			<th style="width: 5%">Kasuj?</th>			
 		</tr>
   		<% @users.each do |user| %>
     		<%= render user %>

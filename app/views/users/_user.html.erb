@@ -1,7 +1,7 @@
 <tr>
 	
   <td>
-  	<%= link_to user.login, user %>
+  	<%= user.login %>
   
   <td>
   	<%= user.forename%>
@@ -13,11 +13,23 @@
   	<%= user.email%>
   </td>
   <td>
+  	<%if user.admin%>
+  		TAK
+  	<%else%>
+  		NIE
+  	<%end%>
+  </td>	
+  <td>
+	<%= link_to "edytuj", edit_user_path(user) %>
+ <!-- 	<%= link_to user.login, user %> -->
+  </td>
+  <td>
   	<% if current_user.admin? && !current_user?(user) %>
     <%= link_to "kasuj", user, method: :delete,
                                   data: { confirm: "Na pewno chcesz skasować?" } %>
  	 <% end %>
   </td>	
+  
   
 
 </tr>

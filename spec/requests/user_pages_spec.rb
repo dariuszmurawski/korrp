@@ -20,8 +20,8 @@ describe "User pages" do
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_content('Rejestracja') }
-    it { should have_title(full_title('Rejestracja')) }
+    it { should_not have_content('Rejestracja') }
+    it { should_not have_title(full_title('Rejestracja')) }
   end
   
   
@@ -51,7 +51,7 @@ describe "User pages" do
         
         it "should list each user" do
            User.all.each do |user|
-             expect(page).to have_selector('li', text: user.name)
+             expect(page).to have_selector('td', text: user.name)
            end
         end
         
@@ -95,8 +95,11 @@ describe "User pages" do
   
   
    describe "signup" do
-
-    before { visit signup_path }
+    let(:admin) { FactoryGirl.create(:admin) }
+        before do
+          sign_in admin
+          visit signup_path
+        end
 
     let(:submit) { "Utwórz konto" }
 
@@ -122,8 +125,8 @@ describe "User pages" do
 
       it { should have_link('Wyloguj') }
       it { should have_link('Konto Użytkownika '||user.login) }
-      it { should have_title(user.name) }
-      it { should have_selector('div.alert.alert-success', text: 'Witamy') }
+      it { should have_title('Zarejestrowani użytkownicy') }
+      it { should have_selector('div.alert.alert-success', text: 'Dodano') }
 
 
     end
@@ -143,12 +146,35 @@ describe "User pages" do
   
    describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
+    let(:otheruser) { FactoryGirl.create(:user) }
     before do
       sign_in user
       visit edit_user_path(user)
     end
 
+
+
     describe "page" do
+      it { should have_content("Modyfikacja danych użytkownika") }
+      it { should have_title("Edycja użytkownika") }    
+    end
+
+    describe "no admin edit other user" do
+      before do
+         visit edit_user_path(otheruser)
+      end
+      it { should_not have_content("Modyfikacja danych użytkownika") }
+      it { should_not have_title("Edycja użytkownika") }
+
+    end
+
+    describe "admin edit other user" do
+      let(:admin) { FactoryGirl.create(:admin) }
+      let(:otheruser) { FactoryGirl.create(:user) }
+      before do
+         sign_in admin
+         visit edit_user_path(otheruser)
+      end
       it { should have_content("Modyfikacja danych użytkownika") }
       it { should have_title("Edycja użytkownika") }
 
@@ -161,7 +187,7 @@ describe "User pages" do
     end
     
     
-      describe "with valid information" do
+    describe "with valid information" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do

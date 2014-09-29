@@ -90,7 +90,12 @@ class UsersController < ApplicationController
   
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      if (!current_user.admin)
+        unless current_user?(@user)
+          flash.now[:notice] = "Brak uprawnień"
+          redirect_to(root_url) 
+        end
+      end
     end
 
   

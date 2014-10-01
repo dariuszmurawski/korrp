@@ -51,8 +51,13 @@ class UsersController < ApplicationController
   
   
    def update
- #   @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+    
+    if @user.update_attributes(user_params_no_login)
       flash[:success] = "Zmiany zapisane"
       redirect_to @user
     else
@@ -72,6 +77,12 @@ class UsersController < ApplicationController
       params.require(:user).permit(:login, :forename, :name, :email, :password,
                                    :password_confirmation)
     end
+    
+    def user_params_no_login
+      params.require(:user).permit(:forename, :name, :email, :password,
+                                   :password_confirmation)
+    end
+    
     
     def admin_user 
       unless current_user.admin?

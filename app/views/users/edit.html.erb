@@ -3,11 +3,13 @@
 
 <div class="row">
   <div class="span6 offset3">
+  	<p>Modyfikacja użytkownika o loginie: <i> <b class="user-color"><%=@user.login%></b></p></i> 
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
 	  <%= f.label :login,"login" %>
-      <%= f.text_field :login %>
+  <!--    <%= f.text_field :login  %>  -->
+      <%= f.text_field :login,  disabled: 'disabled' %>
 
 	  <%= f.label :forename,"imię" %>
       <%= f.text_field :forename %>
@@ -17,12 +19,20 @@
 
       <%= f.label :email ,"adres e-mial"%>
       <%= f.text_field :email %>
+      
+      
+      
+      <% if current_user.admin? %>
+      		<%= f.label :admin ,"uprawnienia kierownika"%>
+      		<%= f.select :admin, [['TAK', true], ['NIE', false]] %>
+      <%end%>
+      
 
-      <%= f.label :password,"hasło"  %>
+    <!--  <%= f.label :password,"hasło"  %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Potwierdzenie hasła" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation %> -->
 
       <%= f.submit "Zapisz zmiany", class: "btn btn-large btn-primary" %>
     <% end %>

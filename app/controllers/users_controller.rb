@@ -57,11 +57,20 @@ class UsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
     
-    if @user.update_attributes(user_params_no_login)
-      flash[:success] = "Zmiany zapisane"
-      redirect_to @user
+    if current_user.admin?
+        if @user.update_attributes(user_params_no_login_with_admin)
+          flash[:success] = "Zmiany zapisane"
+          redirect_to users_path
+        else
+          render 'edit'
+        end
     else
-      render 'edit'
+        if @user.update_attributes(user_params_no_login)
+          flash[:success] = "Zmiany zapisane"
+          redirect_to @user
+        else
+          render 'edit'
+        end
     end
   end
   
@@ -83,6 +92,10 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
     
+    def user_params_no_login_with_admin
+      params.require(:user).permit(:admin,:forename, :name, :email, :password,
+                                   :password_confirmation)
+    end
     
     def admin_user 
       unless current_user.admin?

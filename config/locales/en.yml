@@ -30,7 +30,7 @@ en:
   "Login can't be blank": "Login nie może być pusty"
   "Forename can't be blank": "Imię nie może być puste"
   "Login is too long (maximum is 6 characters)": "Login jest za długi (maksimum 6 znaków)"
-
- 
+  "Login has already been taken": "Login jest już używany przez innego użytkownika"
+  "Email has already been taken": "Adres e-mail jest już używany przez innego użytkownika"
  
  

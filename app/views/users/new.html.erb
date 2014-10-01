@@ -17,6 +17,11 @@
 
       <%= f.label :email,"adres e-mial" %>
       <%= f.text_field :email %>
+      
+      <% if current_user.admin? %>
+      		<%= f.label :admin ,"uprawnienia kierownika"%>
+      		<%= f.select :admin, [['TAK', true], ['NIE', false]] %>
+      <%end%>
 
       <%= f.label :password,"hasło" %>
       <%= f.password_field :password %>

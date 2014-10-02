@@ -11,4 +11,17 @@ FactoryGirl.define do
       admin true
     end
   end
+  
+  
+  factory :question do
+    description "pytanie 1"
+    strength 5
+  end
+
+  
+  
+  
+  
+  
+  
 end

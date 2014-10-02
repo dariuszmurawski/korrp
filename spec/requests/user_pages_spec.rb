@@ -180,10 +180,10 @@ describe "User pages" do
 
     end
 
-    describe "with invalid information" do
+    describe "with no changes" do
       before { click_button "Zapisz zmiany" }
 
-      it { should have_content('błędów') }
+      it { should_not have_content('błędów') }
     end
     
     
@@ -191,7 +191,6 @@ describe "User pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-        fill_in "login",                with: user.login
         fill_in "imię",                 with: user.forename
         fill_in "nazwisko",             with: new_name
         fill_in "adres e-mial",         with: new_email

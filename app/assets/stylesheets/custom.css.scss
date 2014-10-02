@@ -17,6 +17,7 @@ html {
   overflow-y: scroll;
 }
 
+
 body {
   /*padding-top: 60px;*/
   padding-top: 120px;
@@ -69,7 +70,12 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
+p.show_user{
+  width: 40%;
+  float: left;
+  margin: 5px;
+  padding: 5px;
+}
 
 /* header */
 

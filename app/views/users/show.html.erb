@@ -1,10 +1,22 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
+  <aside class="span8">
     <section>
-      <h1>
-        <%= @user.name %>
-      </h1>
+      <div>
+       <p class="show_user"> <b><i>Login:</i></b> </p>
+       <p class="show_user"> <%= @user.login %></p>
+       <p class="show_user"> <b><i>Imię:</i></b> </p>
+       <p class="show_user"> <%= @user.forename %></p>
+       <p class="show_user"> <b><i>Nazwisko:</i></b> </p>
+       <p class="show_user"> <%= @user.name %></p>
+       <p class="show_user"> <b><i>Adres e-mail:</i></b> </p>
+       <p class="show_user"> <%= @user.email %></p>
+       <p class="show_user"> <b><i>Uprawnienia kierownika?</i></b> </p>
+       <p class="show_user"> <% if @user.admin? %> TAK <%else%> NIE <%end%></p>
+       
+       
+      </div>
     </section>
   </aside>
+  
 </div>

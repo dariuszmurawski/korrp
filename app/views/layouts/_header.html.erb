@@ -21,8 +21,8 @@
 							<% if current_user.admin? %>
 								<li><%= link_to "Użytkownicy", users_path %></li>
 								<li><%= link_to "Dodaj użytkownika", signup_path %></li>
-								<li><%= link_to "Lista warunków", "#" %></li>
-								<li><%= link_to "Dodaj warunek", "#" %></li>
+								<li><%= link_to "Lista warunków", questions_path %></li>
+								<li><%= link_to "Dodaj warunek", new_question_path %></li>
 								<li><%= link_to "Określ przedziały", "#" %></li>
 								<li class="divider"></li>
 							<%end%>							

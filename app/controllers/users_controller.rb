@@ -96,21 +96,21 @@ class UsersController < ApplicationController
       params.require(:user).permit(:admin,:forename, :name, :email, :password,
                                    :password_confirmation)
     end
-    
-    def admin_user 
-      unless current_user.admin?
-        flash.now[:notice] = "Brak uprawnień"
-        redirect_to(root_url) 
-      end
-    end
+   
+#    def admin_user 
+#      unless current_user.admin?
+#        flash.now[:notice] = "Brak uprawnień"
+#        redirect_to(root_url) 
+#      end
+#    end
 
-    def signed_in_user
-      unless signed_in?
-        flash[:notice] = "Zaloguj się..."
-        store_location
-        redirect_to signin_url
-      end
-    end
+#    def signed_in_user
+#      unless signed_in?
+#        flash[:notice] = "Zaloguj się..."
+#        store_location
+#        redirect_to signin_url
+#      end
+#    end
   
     def correct_user
       @user = User.find(params[:id])

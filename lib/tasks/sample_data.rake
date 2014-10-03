@@ -27,5 +27,12 @@ namespace :db do
                  email: "nie-admin2@wp.pl",
                  password: "test1234",
                  password_confirmation: "test1234")
+                 
+                 
+    Question.create!(description: "pytanie1",
+                     strength: 1)                                  
+    Question.create!(description: "pytanie2",
+                     strength: 2)            
+                 
   end
 end

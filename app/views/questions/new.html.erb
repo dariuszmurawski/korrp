@@ -1,0 +1,20 @@
+<% provide(:title, 'nowe kryterium - rodzaj analizowanych informacji') %>
+<h1>Nowe kryterium - rodzaj analizowanych informacji</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@question) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>  
+
+	  <%= f.label :description,"opis kryterium" %>
+      <%= f.text_field :description %>
+
+	  <%= f.label :strength,"siła kryterium" %>
+      <%= f.text_field :strength %>
+
+    
+      <%= f.submit "Utwórz kryterium", class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj", questions_path, class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

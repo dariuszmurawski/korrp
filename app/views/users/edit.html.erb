@@ -5,7 +5,7 @@
   <div class="span6 offset3">
   	<p>Modyfikacja użytkownika o loginie: <i> <b class="user-color"><%=@user.login%></b></p></i> 
     <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
 
 	  <%= f.label :login,"login" %>
   <!--    <%= f.text_field :login  %>  -->
@@ -35,6 +35,7 @@
       <%= f.password_field :password_confirmation %> 
 
       <%= f.submit "Zapisz zmiany", class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj zmiany", users_path, class: "btn btn-large btn-primary" %>
     <% end %>
 
 

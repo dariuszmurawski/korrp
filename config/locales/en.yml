@@ -32,5 +32,12 @@ en:
   "Login is too long (maximum is 6 characters)": "Login jest za długi (maksimum 6 znaków)"
   "Login has already been taken": "Login jest już używany przez innego użytkownika"
   "Email has already been taken": "Adres e-mail jest już używany przez innego użytkownika"
+  "Description can't be blank": "Opis kryterium nie może być pusty"
+  "Strength can't be blank": "Siła kryterium nie może być pusta"
+  "Strength is not a number": "Siła kryterium musi być warotścią numeryczną"
+  "Strength must be less than 100": "Siła ktyterium musi mieć watość mniejszą od 100"
+  "Description has already been taken": "Istnieje już taki opis w bazie"
+ 
+ 
  
  

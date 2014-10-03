@@ -1,0 +1,21 @@
+<% provide(:title, 'Kryteria - rodzaje analizowanych informacji') %>
+<h1>Kryteria - rodzaje analizowanych informacji</h1>
+
+<%= will_paginate %>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Opis kryteria</th>
+			<th style="width: 12%">Siła kryterium</th>
+			<th style="width: 5%">Anulowany?</th>
+			<th style="width: 5%">Edytuj</th>
+			<th style="width: 5%">Kasuj</th>
+		</tr>
+  		<% @questions.each do |question| %>
+    		<%= render question %>
+  		<% end %>
+	</table>
+
+<%= will_paginate %>
+
+

@@ -48,5 +48,20 @@ module SessionsHelper
     user == current_user
   end
   
+  private
   
+  def admin_user 
+     unless current_user.admin?
+        flash[:notice] = "Brak uprawnień"
+        redirect_to(root_url) 
+      end
+    end
+
+    def signed_in_user
+      unless signed_in?
+        flash[:notice] = "Zaloguj się..."
+        store_location
+        redirect_to signin_url
+      end
+   end
 end

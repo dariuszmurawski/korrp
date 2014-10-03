@@ -1,0 +1,29 @@
+
+<tr>
+	
+  <td>
+  	<%= question.description %>
+  </td>
+  
+  <td>
+  	<%= question.strength%>
+  </td>
+  
+  <td>
+  	<%if question.cancelled%>
+  		TAK
+  	<%else%>
+  		NIE
+  	<%end%>
+  </td>	
+  
+  <td>
+	<%= link_to "edytuj", edit_question_path(question) %> 
+  </td>
+  
+  <td>
+  	 kasuj
+  </td>
+  
+
+</tr>

@@ -32,7 +32,16 @@ namespace :db do
     Question.create!(description: "pytanie1",
                      strength: 1)                                  
     Question.create!(description: "pytanie2",
-                     strength: 2)            
+                     strength: 2)   
+                     
+                     
+    Level.create!(description: "NISKI",
+                     value: 20)
+    Level.create!(description: "WYSOKI",
+                     value: 50)               
+                     
+                     
+                                                
                  
   end
 end

@@ -19,8 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+en:	
   "Name can't be blank": "Imię i nazwisko nie może być puste"
   "Email can't be blank": "Adres e-mail nie może być pusty"  
   "Email is invalid": "Format adresu e-mail jest niepoprawny"
@@ -37,7 +36,10 @@ en:
   "Strength is not a number": "Siła kryterium musi być warotścią numeryczną"
   "Strength must be less than 100": "Siła ktyterium musi mieć watość mniejszą od 100"
   "Description has already been taken": "Istnieje już taki opis w bazie"
- 
- 
- 
+  "Value is not a number": "Podana wartość przedziału nie jest liczbą"
+  "Value must be less than 100": "Wartość przedziału musi być mniejsza niz 100" 
+  "Value error1": "Wartość przedziału WYSOKI musi być większa niż przedziału NISKI"
+  "Value error2": "Wartość przedziału NISKI musi być mniejsza niż przedziału WYSOKI"
+  "Value has already been taken": "Wprowadzona wartość jest już w użyciu w innym przedziale"
+
  

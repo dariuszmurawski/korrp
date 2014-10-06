@@ -20,8 +20,13 @@ FactoryGirl.define do
 
   
   
+  factory :level do
+    description "NISKI"
+    value 20
+  end
   
-  
+
+
   
   
 end

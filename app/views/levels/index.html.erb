@@ -1,0 +1,15 @@
+<% provide(:title, 'Przedziały punktowe ryzyka') %>
+<h1>Przedziały punktowe ryzyka</h1>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Przediał punktowy ryzyka</th>
+			<th style="width: 20%">Wartość przedziału punktowego</th>
+			<th style="width: 5%">Edytuj</th>
+		</tr>
+  		<% @levels.each do |level| %>
+    		<%= render level %>
+  		<% end %>
+	</table>
+
+

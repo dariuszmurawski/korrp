@@ -1,0 +1,20 @@
+<% provide(:title, 'Edycja przedziału punktowego ryzyka') %>
+<h1>Edycja przedziału punktowego ryzyka</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@level) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>  
+
+	  <%= f.label :description,"opis przediału punktowego ryzyka" %>
+      <%= f.text_field :description,  disabled: 'disabled' %>
+
+	  <%= f.label :value,"wartość przedziału punktowego ryzyka" %>
+      <%= f.text_field :value %>
+
+    
+      <%= f.submit "Akceptuj zmiany", class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj zmiany", levels_path, class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

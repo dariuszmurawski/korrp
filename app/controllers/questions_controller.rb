@@ -15,6 +15,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])  
   end
   
+  def destroy
+    Question.find(params[:id]).destroy
+    flash[:success] = "Kryterium skasowane."
+    redirect_to questions_url
+  end
     
   def update  
     @question = Question.find(params[:id])  

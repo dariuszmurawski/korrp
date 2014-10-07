@@ -8,7 +8,7 @@
   <td>
   	<%= question.strength%>
   </td>
-  
+<!--  
   <td>
   	<%if question.cancelled%>
   		TAK
@@ -16,14 +16,15 @@
   		NIE
   	<%end%>
   </td>	
-  
+-->  
   <td>
 	<%= link_to "edytuj", edit_question_path(question) %> 
   </td>
   
-  <td>
-  	 kasuj
-  </td>
+   <td>
+      <%= link_to "kasuj", question, method: :delete,
+                                  data: { confirm: "Na pewno chcesz skasować?" } %>	
+  </td>	
   
 
 </tr>

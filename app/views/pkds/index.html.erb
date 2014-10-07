@@ -1,0 +1,25 @@
+<% provide(:title, 'Lista kodów PKD') %>
+<h1>Lista kodów PKD</h1>
+
+<%= search_form_for @search do |f| %>
+		<%= f.label :branch %>
+  		<%= f.search_field :branch %>  		  		
+ 		<%= f.submit %>
+<% end %>  
+  
+<%= content_tag :p, display_query_sql(@pkds) %>
+
+<%= will_paginate %>
+
+	<table class="table table-striped pkd">
+		<tr>
+			<th style="width: 7%">Kod PKD</th>
+			<th >Nazwa PKD</th>
+			<th style="width: 35%">Branża</th>
+		</tr>
+  		<% @pkds.each do |pkd| %>
+    		<%= render pkd %>
+  		<% end %>
+	</table>
+
+<%= will_paginate %>

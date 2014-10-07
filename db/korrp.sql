@@ -1,17 +1,17 @@
 
 
 
-CREATE TABLE IF NOT EXISTS `pkd` (
+CREATE TABLE IF NOT EXISTS `pkds` (
   `id` int(3) DEFAULT NULL,
-  `pkd-id` varchar(7) DEFAULT NULL,
-  `pkd-name` varchar(177) DEFAULT NULL,
+  `pkd_id` varchar(7) DEFAULT NULL,
+  `pkd_name` varchar(177) DEFAULT NULL,
   `branch` varchar(127) DEFAULT NULL,
   `description` varchar(182) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
-INSERT INTO `pkd` (`id`, `pkd-id`, `pkd-name`, `branch`, `description`) VALUES
+INSERT INTO `pkds` (`id`, `pkd_id`, `pkd_name`, `branch`, `description`) VALUES
 (1, '01.1', 'Uprawy rolne inne niż wieloletnie', 'Rolnictwo i rybactwo', '01.1 Uprawy rolne inne niż wieloletnie'),
 (2, '01.11.Z', 'Uprawa zbóż, roślin strączkowych i roślin oleistych na nasiona, z wyłączeniem ryżu ', 'Rolnictwo i rybactwo', '01.11.Z Uprawa zbóż, roślin strączkowych i roślin oleistych na nasiona, z wyłączeniem ryżu '),
 (3, '01.12.Z', 'Uprawa ryżu ', 'Rolnictwo i rybactwo', '01.12.Z Uprawa ryżu '),
@@ -318,7 +318,7 @@ INSERT INTO `pkd` (`id`, `pkd-id`, `pkd-name`, `branch`, `description`) VALUES
 (304, '26.30.Z', 'Produkcja sprzętu (tele)komunikacyjnego ', 'Elektronika (produkcja i sprzedaż)', '26.30.Z Produkcja sprzętu (tele)komunikacyjnego '),
 (305, '26.4', 'Produkcja elektronicznego sprzętu powszechnego użytku', 'Elektronika (produkcja i sprzedaż)', '26.4 Produkcja elektronicznego sprzętu powszechnego użytku'),
 (306, '26.40.Z', 'Produkcja elektronicznego sprzętu powszechnego użytku ', 'Elektronika (produkcja i sprzedaż)', '26.40.Z Produkcja elektronicznego sprzętu powszechnego użytku ');
-INSERT INTO `pkd1` (`id`, `COL 2`, `COL 3`, `branza`, `opis`) VALUES
+INSERT INTO `pkds` (`id`, `pkd_id`, `pkd_name`, `branch`, `description`) VALUES
 (307, '26.5', 'Produkcja instrumentów i przyrządów pomiarowych, kontrolnych i nawigacyjnych; produkcja zegarków i zegarów', 'Elektronika (produkcja i sprzedaż)', '26.5 Produkcja instrumentów i przyrządów pomiarowych, kontrolnych i nawigacyjnych; produkcja zegarków i zegarów'),
 (308, '26.51.Z', 'Produkcja instrumentów i przyrządów pomiarowych, kontrolnych i nawigacyjnych ', 'Elektronika (produkcja i sprzedaż)', '26.51.Z Produkcja instrumentów i przyrządów pomiarowych, kontrolnych i nawigacyjnych '),
 (309, '26.52.Z', 'Produkcja zegarków i zegarów ', 'Elektronika (produkcja i sprzedaż)', '26.52.Z Produkcja zegarków i zegarów '),
@@ -568,7 +568,7 @@ INSERT INTO `pkd1` (`id`, `COL 2`, `COL 3`, `branza`, `opis`) VALUES
 (553, '47.11', 'Sprzedaż detaliczna prowadzona w niewyspecjalizowanych sklepach z przewagą żywności, napojów i wyrobów tytoniowych', 'Spożywcza i tytoń', '47.11 Sprzedaż detaliczna prowadzona w niewyspecjalizowanych sklepach z przewagą żywności, napojów i wyrobów tytoniowych'),
 (554, '47.11.Z', 'Sprzedaż detaliczna prowadzona w niewyspecjalizowanych sklepach z przewagą żywności, napojów i wyrobów tytoniowych ', 'Spożywcza i tytoń', '47.11.Z Sprzedaż detaliczna prowadzona w niewyspecjalizowanych sklepach z przewagą żywności, napojów i wyrobów tytoniowych '),
 (555, '47.19', 'Pozostała sprzedaż detaliczna prowadzona w niewyspecjalizowanych sklepach', 'Sprzedaż detaliczna pozostałe', '47.19 Pozostała sprzedaż detaliczna prowadzona w niewyspecjalizowanych sklepach');
-INSERT INTO `pkd1` (`id`, `COL 2`, `COL 3`, `branza`, `opis`) VALUES
+INSERT INTO `pkds` (`id`, `pkd_id`, `pkd_name`, `branch`, `description`) VALUES
 (556, '47.19.Z', 'Pozostała sprzedaż detaliczna prowadzona w niewyspecjalizowanych sklepach ', 'Sprzedaż detaliczna pozostałe', '47.19.Z Pozostała sprzedaż detaliczna prowadzona w niewyspecjalizowanych sklepach '),
 (557, '47.2', 'Sprzedaż detaliczna żywności, napojów i wyrobów tytoniowych prowadzona w wyspecjalizowanych sklepach', 'Spożywcza i tytoń', '47.2 Sprzedaż detaliczna żywności, napojów i wyrobów tytoniowych prowadzona w wyspecjalizowanych sklepach'),
 (558, '47.21.Z', 'Sprzedaż detaliczna owoców i warzyw prowadzona w wyspecjalizowanych sklepach ', 'Spożywcza i tytoń', '47.21.Z Sprzedaż detaliczna owoców i warzyw prowadzona w wyspecjalizowanych sklepach '),
@@ -825,7 +825,7 @@ INSERT INTO `pkd1` (`id`, `COL 2`, `COL 3`, `branza`, `opis`) VALUES
 (809, '80.20.Z', 'Działalność ochroniarska w zakresie obsługi systemów bezpieczeństwa ', 'Usługi inne (ochroniarze, weterynarze itp.)', '80.20.Z Działalność ochroniarska w zakresie obsługi systemów bezpieczeństwa '),
 (810, '80.3', 'Działalność detektywistyczna', 'Usługi inne (ochroniarze, weterynarze itp.)', '80.3 Działalność detektywistyczna'),
 (811, '80.30.Z', 'Działalność detektywistyczna ', 'Usługi inne (ochroniarze, weterynarze itp.)', '80.30.Z Działalność detektywistyczna ');
-INSERT INTO `pkd1` (`id`, `COL 2`, `COL 3`, `branza`, `opis`) VALUES
+INSERT INTO `pkds` (`id`, `pkd_id`, `pkd_name`, `branch`, `description`) VALUES
 (812, '81.1', 'Działalność pomocnicza związana z utrzymaniem porządku w budynkach', 'Wsparcie prowadzenia działalności (sprzątanie, administrowanie biurem itp.)', '81.1 Działalność pomocnicza związana z utrzymaniem porządku w budynkach'),
 (813, '81.10.Z', 'Działalność pomocnicza związana z utrzymaniem porządku w budynkach ', 'Wsparcie prowadzenia działalności (sprzątanie, administrowanie biurem itp.)', '81.10.Z Działalność pomocnicza związana z utrzymaniem porządku w budynkach '),
 (814, '81.2', 'Sprzątanie obiektów', 'Wsparcie prowadzenia działalności (sprzątanie, administrowanie biurem itp.)', '81.2 Sprzątanie obiektów'),

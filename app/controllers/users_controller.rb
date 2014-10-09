@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
   
   
-   def update
+  def update
     
     if params[:user][:password].blank?
       params[:user].delete(:password)

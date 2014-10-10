@@ -16,14 +16,13 @@
 					<li id="fat-menu" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Konto Użytkownika <b class="user-color"><%= current_user.login  %></b>  <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "Profil Użytkownika ", current_user %></li>
+							<li><%= link_to "Profil użytkownika ", current_user %></li>
 							<li><%= link_to "Edycja konta", edit_user_path(current_user) %></li>
+							<li><%= link_to "Nowa analiza", new_check_path %></li>
 							<li class="divider"></li>
 							<% if current_user.admin? %>
 								<li><%= link_to "Użytkownicy", users_path %></li>
-								<li><%= link_to "Dodaj użytkownika", signup_path %></li>
-								<li><%= link_to "Lista warunków", questions_path %></li>
-								<li><%= link_to "Dodaj warunek", new_question_path %></li>
+								<li><%= link_to "Lista kryteriów", questions_path %></li>
 								<li><%= link_to "Określ przedziały", levels_path %></li>
 								<li class="divider"></li>
 							<%end%>							

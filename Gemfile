@@ -14,6 +14,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'seed_dump','3.2.0'
 gem 'ransack', '1.4.1'
 
+
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'

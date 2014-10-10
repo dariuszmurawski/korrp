@@ -1,6 +1,5 @@
 class PkdsController < ApplicationController
  
- 
   def index
     
     @search = Pkd.ransack(params[:q])

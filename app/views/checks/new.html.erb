@@ -69,7 +69,10 @@
 <div class="row">
   <div class="span8">
 	  <%= f.label :pkd_full,"kod oraz opis PKD" %>
-      <%= f.text_field :pkd_full %>
+      <%= f.select :pkd_full,@pkds.all.map {|u| [u.description]}, {:prompt => "wybierz PKD"} %>
+
+
+      
   </div>
   <div class="span4">
 	  <%= f.label :branch,"branża" %>
@@ -81,7 +84,7 @@
 
 <div class="row">
   <div class="span12">
-	<table class="table kryt">
+	<table class="table">
 		<tr style="background: #eaeaea">
 			<th>
 				Opis
@@ -97,23 +100,16 @@
 		<%= f.fields_for :answers do |builder| %>
 		<tr>
 			<td>
-				<%# builder.label :q_description,"Kryterium:" %>
-     		    <%#= builder.text_field :q_description %>
+     		    <%= builder.hidden_field :q_description %>
      		    <%= builder.object.q_description%>
 			</td>
 			<td>
-				<%# builder.label :q_strength,"Siła:" %>
-     		    <%#= builder.text_field :q_strength %>	
-     		    <% if builder.object.q_answer? %>
-     		    	<%= builder.object.q_strength%>
-     		    <%else%>
-     		    	0
-     		    <%end%>
+     		    <%= builder.hidden_field :q_strength %>	
+     		    <%= builder.object.q_strength%>
 			</td>
-			<td>
+			<td>				
 				<% builder.label :q_answer,"Kryterium:" %>
      		    <%= builder.select :q_answer, [['TAK', true], ['NIE', false]] %>
-
 			</td>	
 	 		 	
 		</tr>
@@ -122,6 +118,10 @@
 	</table>
   </div>
 </div>
+
+
+
+
 
 <div class="row">
 	<div class="span8">

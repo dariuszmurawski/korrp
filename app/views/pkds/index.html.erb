@@ -1,0 +1,46 @@
+<% provide(:title, 'Lista kodów PKD') %>
+<h1>Lista kodów PKD</h1>
+
+ 
+
+
+<%= will_paginate %>
+
+	<table class="table table-striped pkd">
+		<tr>
+			<th style="width: 10%"><%= sort_link(@search, :pkd_id, "Kod PKD") %></th> 
+			<th ><%= sort_link(@search, :pkd_name, "Nazwa PKD") %></th>
+			<th style="width: 35%"><%= sort_link(@search, :branch, "Branża") %></th>
+		</tr>
+  		<% @pkds.each do |pkd| %>
+    		<%= render pkd %>
+  		<% end %>
+	</table>
+
+<%= will_paginate %>
+
+<p><b>Filtrowanie tabeli PKD</b></p>
+<div class="row">
+	
+  <div class="span4 pkd">
+	<%= search_form_for @search do |r| %>	
+		<%= r.label :pkd_id_cont, "pole Kod PKD zawiera:" %>
+  		<%= r.search_field :pkd_id_cont %>
+		  				  		
+ 		<%= r.submit "wyszukaj",class: "btn btn-large btn-primary" %>
+	<% end %>  
+  </div>  
+  
+   <div class="span4 pkd">
+	<%= search_form_for @search do |r| %>	
+		<%= r.label :pkd_name_cont, "pole Nazwa PKD zawiera:" %>
+  		<%= r.search_field :pkd_name_cont %>		
+	<% end %>  
+  </div>  
+   <div class="span4 pkd">
+	<%= search_form_for @search do |r| %>
+		<%= r.label :branch_cont, "pole Branża zawiera:" %>
+  		<%= r.search_field :branch_cont %>  	
+	<% end %>  
+  </div>  
+</div> 

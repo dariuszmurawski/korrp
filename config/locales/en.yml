@@ -41,5 +41,5 @@ en:
   "Value error1": "Wartość przedziału WYSOKI musi być większa niż przedziału NISKI"
   "Value error2": "Wartość przedziału NISKI musi być mniejsza niż przedziału WYSOKI"
   "Value has already been taken": "Wprowadzona wartość jest już w użyciu w innym przedziale"
-
+  "previous": "poprzedni"
  

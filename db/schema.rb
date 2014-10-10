@@ -11,14 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006070423) do
+ActiveRecord::Schema.define(version: 20141008121713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "answers", force: true do |t|
+    t.integer  "check_id"
+    t.string   "q_description"
+    t.integer  "q_strength"
+    t.boolean  "q_answer",      default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "checks", force: true do |t|
+    t.integer  "user_id"
+    t.string   "forename"
+    t.string   "name"
+    t.string   "org_name"
+    t.string   "city"
+    t.string   "postal_code"
+    t.string   "street"
+    t.string   "home_no"
+    t.integer  "flat_no"
+    t.integer  "pesel"
+    t.integer  "regon"
+    t.integer  "nip"
+    t.string   "pkd_full"
+    t.string   "pkd_branch"
+    t.string   "branch"
+    t.boolean  "cancelled",   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "levels", force: true do |t|
     t.string   "description"
     t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pkds", force: true do |t|
+    t.string   "pkd_id"
+    t.string   "pkd_name"
+    t.string   "branch"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

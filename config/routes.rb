@@ -1,6 +1,8 @@
 Korrp::Application.routes.draw do
   
+  resources :checks, only: [:new,:create, :destroy, :index, :show]
   resources :users
+  resources :pkds, only: [:index, :autocomplete]
   resources :questions, only: [:new,:create, :destroy, :index, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :levels, only: [:edit, :update, :index]

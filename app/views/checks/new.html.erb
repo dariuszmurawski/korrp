@@ -1,7 +1,7 @@
 <% provide(:title, 'Analiza') %>
 <h1>Dane podatnika</h1>
 
-<%= form_for(@check) do |f| %>
+<%= form_for(@check, id: "check_form") do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 <div class="row">
   <div class="span4">
@@ -69,14 +69,17 @@
 <div class="row">
   <div class="span8">
 	  <%= f.label :pkd_full,"kod oraz opis PKD" %>
-      <%= f.select :pkd_full,@pkds.all.map {|u| [u.description]}, {:prompt => "wybierz PKD"} %>
-
+      <%= f.select :pkd_full,@pkds.all.map {|u| [u.description]}, {prompt: "wybierz PKD"} , id: "pkd_field"%>
 
       
   </div>
+  
+  
+  
   <div class="span4">
 	  <%= f.label :branch,"branża" %>
-      <%= f.text_field :branch %>
+	  <%= f.text_field :branch, :id => "branch_field",   value: @branch %>  
+	  <%#= f.text_field :branch, :id => "branch_field",   value: @branch,  disabled: 'disabled'  %>   
   </div>
 </div>
 

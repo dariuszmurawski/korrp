@@ -9,23 +9,27 @@ class ChecksController < ApplicationController
     get_questions(@check)
     
     get_pkds
+    get_branch
+       
+  #  respond_to do |format|
+  #    format.html
+  #    format.js 
+  #  end
     
-    respond_to do |format|
-      format.html
-      format.js 
-    end
    # 3.times { @check.answers.build}
   end
  
- # def create
- #   @check = Check.new(check_params)
- #   if @check.save
- #     flash[:success] = "Dodano nową analizę"
- #     redirect_to questions_path
- #   else
- #     render 'new'
- #   end
- # end
+  def create
+  #TESTOWO
+
+    @check = Check.new(check_params)
+    if @check.save
+      flash[:success] = "Dodano nową analizę"
+      redirect_to questions_path
+    else
+      render 'new'
+    end
+  end
   
   
   

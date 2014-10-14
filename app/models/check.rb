@@ -1,5 +1,6 @@
 class Check < ActiveRecord::Base
   has_many :answers, :dependent => :destroy
+  belongs_to :pkd
   accepts_nested_attributes_for :answers
 
   validates :forename, presence: true, length: { maximum: 50 }
@@ -19,4 +20,16 @@ class Check < ActiveRecord::Base
   validates :cancelled, presence: true
   
   default_scope -> { order('created_at') }
+  
+  
+  
+  def pkd_description
+    pkd.try(:description)
+  end
+  
+  def pkd_description=(description)
+    self.pkd = Pkd.find_by_description(description) if description.present?
+  end
+  
+  
 end

@@ -13,7 +13,8 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'seed_dump','3.2.0'
 gem 'ransack', '1.4.1'
-
+gem 'jquery-ui-rails','5.0.0'
+gem 'jquery-turbolinks','2.1.0'
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'

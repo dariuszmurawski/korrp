@@ -68,9 +68,12 @@
 
 <div class="row">
   <div class="span8">
-	  <%= f.label :pkd_full,"kod oraz opis PKD" %>
-      <%= f.select :pkd_full,@pkds.all.map {|u| [u.description]}, {prompt: "wybierz PKD"} , id: "pkd_field"%>
+	  <%#= f.label :pkd_full,"kod oraz opis PKD" %>
+      <%#= f.select :pkd_full,@pkds.all.map {|u| [u.description]}, {prompt: "wybierz PKD"} , id: "pkd_field"%>
 
+      <%= f.label :pkd_description,"kod oraz opis PKD" %>
+      <%= f.text_field :pkd_description, data: {autocomplete_source: autocomplete_path}%>
+ 
       
   </div>
   
@@ -79,7 +82,7 @@
   <div class="span4">
 	  <%= f.label :branch,"branża" %>
 	  <%= f.text_field :branch, :id => "branch_field",   value: @branch %>  
-	  <%#= f.text_field :branch, :id => "branch_field",   value: @branch,  disabled: 'disabled'  %>   
+ 
   </div>
 </div>
 

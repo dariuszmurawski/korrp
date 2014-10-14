@@ -8,16 +8,16 @@ module ChecksHelper
    end 
   
   
-  def get_pkds
-      @pkds=Pkd.all
-  end
+#  def get_pkds
+#      @pkds=Pkd.all
+#  end
   
-  def get_branch
-     @branch="wybierz kod PKD"
-     if params[:description]
-      @branch=Pkd.where(description: params[:description])  
-     end
-  end
+#  def get_branch
+#     @branch="wybierz kod PKD"
+#     if params[:description]
+#      @branch=Pkd.where(description: params[:description])  
+#     end
+#  end
 
   
   

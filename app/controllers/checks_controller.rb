@@ -8,8 +8,8 @@ class ChecksController < ApplicationController
     @check = Check.new
     get_questions(@check)
     
-    get_pkds
-    get_branch
+ #   get_pkds
+ #   get_branch
        
   #  respond_to do |format|
   #    format.html

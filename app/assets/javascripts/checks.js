@@ -11,7 +11,7 @@ jQuery(function() {
 //	$('#check_pkd_description').autocomplete({source: ['foo', 'food', 'four']});
 	$('#check_pkd_description').autocomplete({source: $('#check_pkd_description').data('autocomplete-source') });
 
-
+	
 
 });
 

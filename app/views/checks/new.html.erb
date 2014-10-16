@@ -109,11 +109,12 @@
 			</td>
 			<td>
      		    <%= builder.hidden_field :q_strength %>	
-     		    <b><%= builder.object.q_strength%></b>
+     		    <b class="strength_class"><%= builder.object.q_strength%></b>
+     		    <b class="strength_class_null">0</b>
 			</td>
 			<td>				
 				<% builder.label :q_answer,"Kryterium:" %>
-     		    <%= builder.select :q_answer, [['TAK', true], ['NIE', false]] %>
+     		    <%= builder.select :q_answer, [['TAK', true], ['NIE', false]],{} ,{class: 'answer_class'} %>
 			</td>	
 	 		 	
 		</tr>
@@ -123,9 +124,22 @@
   </div>
 </div>
 
-
-
-
+<div class="row">
+	<div class="span3">
+		<%= f.label :score,"wartość punktowa ryzyka" %>
+    </div>
+    <div class="span2">
+		<%= f.text_field :score , readonly: true%>
+    </div>
+</div>
+<div class="row">
+	<div class="span3">
+		<%= f.label :level,"poziom ryzyka" %>
+    </div>
+    <div class="span2">
+		<%= f.text_field :level , readonly: true%>
+    </div>
+</div>
 
 <div class="row">
 	<div class="span8">

@@ -28,19 +28,16 @@
   		<%= r.search_field :pkd_id_cont %>
 		  				  		
  		<%= r.submit "wyszukaj",class: "btn btn-large btn-primary" %>
-	<% end %>  
+	
   </div>  
   
    <div class="span4 pkd">
-	<%= search_form_for @search do |r| %>	
 		<%= r.label :pkd_name_cont, "pole Nazwa PKD zawiera:" %>
   		<%= r.search_field :pkd_name_cont %>		
-	<% end %>  
   </div>  
    <div class="span4 pkd">
-	<%= search_form_for @search do |r| %>
 		<%= r.label :branch_cont, "pole Branża zawiera:" %>
-  		<%= r.search_field :branch_cont %>  	
+  		<%= r.search_field :branch_cont %>  
 	<% end %>  
   </div>  
 </div> 

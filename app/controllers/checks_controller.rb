@@ -1,27 +1,38 @@
 class ChecksController < ApplicationController
   before_action :signed_in_user, only: [:destroy, :index, :create, :new, :show]
   before_action :admin_user,     only: [:destroy]
-  include ChecksHelper
+#  include ChecksHelper
 
   
   def new
     @check = Check.new
-    get_questions(@check)
-    
- #   get_pkds
- #   get_branch
-       
+    get_questions(@check)     
   #  respond_to do |format|
   #    format.html
   #    format.js 
   #  end
-    
-   # 3.times { @check.answers.build}
   end
  
-  def create
-  #TESTOWO
+ 
+ def get_questions(check) 
+      @questions=Question.all      
+      @questions.each do |question|
+        check.answers.build(q_description: question.description,q_strength: question.strength)       
+      end
+ end 
 
+ 
+# def get_pkd_branch
+#   @pkd1=Pkd.find(params[:description])
+#   respond_to do |format|
+#      format.js
+#   end
+# end
+ 
+ 
+ 
+ def create
+  #TESTOWO
     @check = Check.new(check_params)
     if @check.save
       flash[:success] = "Dodano nową analizę"
@@ -29,7 +40,7 @@ class ChecksController < ApplicationController
     else
       render 'new'
     end
-  end
+ end
   
   
   

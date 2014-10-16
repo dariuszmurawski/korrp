@@ -19,10 +19,8 @@ jQuery(function() {
 	
 
 	$('#check_pkd_description').on('autocompleteclose',function(event, ui){
-		var description=$('#check_pkd_description').val();
-		
-	//	var tmp2 = $.get('/pkds/get_branch', description, function() { });
-	
+		var description=$('#check_pkd_description').val();		
+		$.get('/checks/get_pkd_branch', description, function() { });
 		$('#check_branch').val(description);
 	//	alert($('#check_pkd_description').val());
 	});

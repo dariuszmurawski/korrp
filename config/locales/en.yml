@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:	
-  "Name can't be blank": "Imię i nazwisko nie może być puste"
+  "Name can't be blank": "Nazwisko nie może być puste"
   "Email can't be blank": "Adres e-mail nie może być pusty"  
   "Email is invalid": "Format adresu e-mail jest niepoprawny"
   "Password can't be blank": "Hasło nie może być puste"
@@ -42,4 +42,29 @@ en:
   "Value error2": "Wartość przedziału NISKI musi być mniejsza niż przedziału WYSOKI"
   "Value has already been taken": "Wprowadzona wartość jest już w użyciu w innym przedziale"
   "previous": "poprzedni"
- 
+  "City can't be blank": "Nazwa miasta nie może być pusta" 
+  "Postal code can't be blank": "Kod pocztowy nie może być pusty"
+  "Pesel can't be blank": "Numer PESEL nie może być pusty"
+  "Pesel is invalid": "Format numeru PESEL jest błędny - PESEL powinien się składać z 11 cyfr"
+  "Regon can't be blank": "Numer REGON nie może być pusty"
+  "Regon is invalid": "Format numeru REGON jest błędny - REGON powinien się składać z 9 cyfr"
+  "Postal code is invalid": "Format kodu pocztowego jest niepoprawny"
+  "Nip can't be blank": "Numer NIP nie może być pusty"
+  "Nip is invalid": "Format numeru NIP jest niepoprawny - NIP powinien się składać z 10 cyfr"
+  "Home no can't be blank": "Numer domu nie może być pusty"
+  "Branch is reserved": "Niepoprawnie wypełnione pole branża"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

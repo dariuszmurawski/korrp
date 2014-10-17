@@ -17,10 +17,7 @@ jQuery(function() {
 
 	$('#check_pkd_description').on('autocompleteclose input',function(event, ui){
 		var description=$('#check_pkd_description').val();	
-	//	$('#check_branch').val(description);	
-		
-		
-		
+	
 		$.getJSON('/get_branch',{description: description}, function(data) {
 					$('#check_branch').val(data.branch);	
 	
@@ -28,9 +25,7 @@ jQuery(function() {
 		.fail(function(){
 			$('#check_branch').val("Zły kod PKD!");
 		});
-
-
-		
+	
 	});
 
 
@@ -41,24 +36,18 @@ jQuery(function() {
 
 
 
-// ryzyko punkty
-	$('#check_level').val("NISKI");
+// ryzyko punkty start
 	$('.strength_class').hide();
-	$('.answer_class').on('change', function(){
-		
-		var answer=$(this).attr('id');
-		var index=answer.slice(25,26);
-		var strength='check_answers_attributes_'+index+'_q_strength';
-		var value=$(this).val();
+	$('#check_level').val("NISKI");
+	$('#check_score').val('0');
+//init
+	$('.answer_class').each(function(){
+		init_fields(this);
+	});
 	
-		if (value=='true') {
-			$('#'+strength+' + b').show();
-			$('#'+strength+' + b + b').hide();
-		}
-		else {
-			$('#'+strength+' + b').hide();
-			$('#'+strength+' + b + b').show();
-		}
+//change
+	$('.answer_class').on('change', function(){
+		init_fields(this);
 		sum_strength();
 	});
 
@@ -83,6 +72,23 @@ jQuery(function() {
 			
 
 		});
+		
+	};
+	
+	function init_fields(val){
+		var answer=$(val).attr('id');
+		var index=answer.slice(25,26);
+		var strength='check_answers_attributes_'+index+'_q_strength';
+		var value=$(val).val();
+	
+		if (value=='true') {
+			$('#'+strength+' + b').show();
+			$('#'+strength+' + b + b').hide();
+		}
+		else {
+			$('#'+strength+' + b').hide();
+			$('#'+strength+' + b + b').show();
+		}
 		
 	};
 

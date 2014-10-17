@@ -35,7 +35,7 @@ namespace :db do
                      strength: 2)   
                      
                      
-    Level.create!(description: "NISKI",
+    Level.create!(description: "ŚREDNI",
                      value: 20)
     Level.create!(description: "WYSOKI",
                      value: 50)               

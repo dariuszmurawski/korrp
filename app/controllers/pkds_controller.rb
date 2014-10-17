@@ -10,5 +10,13 @@ class PkdsController < ApplicationController
     render json: @pkds2.map(&:description)
   end
   
+  
+  def get_branch
+    if @branch = Pkd.find_by(description: params[:description])  
+      render json: @branch
+    end
+    
+  end
+  
 end
 

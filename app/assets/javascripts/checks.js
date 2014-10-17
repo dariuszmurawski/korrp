@@ -10,17 +10,39 @@
 
 
 jQuery(function() {
+	
+	
 	$('#check_pkd_description').autocomplete({source: $('#check_pkd_description').data('autocomplete-source') 	});
 
 
-	$('#check_pkd_description').on('autocompleteclose',function(event, ui){
-		var description=$('#check_pkd_description').val();		
-		$.get('/checks/get_pkd_branch', description, function() { });
-		$('#check_branch').val(description);
-	//	alert($('#check_pkd_description').val());
+	$('#check_pkd_description').on('autocompleteclose input',function(event, ui){
+		var description=$('#check_pkd_description').val();	
+	//	$('#check_branch').val(description);	
+		
+		
+		
+		$.getJSON('/get_branch',{description: description}, function(data) {
+					$('#check_branch').val(data.branch);	
+	
+		})
+		.fail(function(){
+			$('#check_branch').val("Zły kod PKD!");
+		});
+
+
+		
 	});
 
 
+
+ 
+
+
+
+
+
+// ryzyko punkty
+	$('#check_level').val("NISKI");
 	$('.strength_class').hide();
 	$('.answer_class').on('change', function(){
 		
@@ -47,21 +69,23 @@ jQuery(function() {
 			suma=+suma + +$(this).text();
 		});
 		$('#check_score').val(suma);
+		$.getJSON('/get_levels', function(data) {
+			if (suma < data[0].value){
+				$('#check_level').val("NISKI");
+			}
+			else if (suma < data[1].value){
+				$('#check_level').val(data[0].description);
+				
+			}
+			else {
+				$('#check_level').val(data[1].description);
+			}
+			
+
+		});
 		
 	};
 
-//	var val1=$('#check_answers_attributes_0_q_strength + b').html();
-//	$('#check_answers_attributes_0_q_strength + b').html('0');
-//	$('#check_answers_attributes_0_q_answer').change(function() {
-//	var val=$('#check_answers_attributes_0_q_answer').val();
-//	if (val=='true') {
-//		$('#check_answers_attributes_0_q_strength + b').html(val1);
-//	} 		
-//	else {
-//		$('#check_answers_attributes_0_q_strength + b').html('0');
-//	}
-	
-//	});
 
 
 

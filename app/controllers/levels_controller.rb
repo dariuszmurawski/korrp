@@ -40,10 +40,15 @@ class LevelsController < ApplicationController
           end                    
         end      
     end
-    
-      
-     
   end
+
+      
+  def get_levels
+    @levels = Level.all
+    render json: @levels
+  end
+     
+
   
   
    private

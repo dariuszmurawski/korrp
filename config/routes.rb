@@ -2,10 +2,10 @@ Korrp::Application.routes.draw do
   
   resources :checks, only: [:new,:create, :destroy, :index, :show]
   resources :users
-  resources :pkds, only: [:index, :autocomplete]
+  resources :pkds, only: [:index, :autocomplete, :get_branch]
   resources :questions, only: [:new,:create, :destroy, :index, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :levels, only: [:edit, :update, :index]
+  resources :levels, only: [:edit, :update, :index, :get_levels]
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
@@ -14,6 +14,8 @@ Korrp::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/autocomplete', to: 'pkds#autocomplete',     via: 'get'
+  match '/get_branch', to: 'pkds#get_branch',     via: 'get'
+  match '/get_levels', to: 'levels#get_levels',     via: 'get'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

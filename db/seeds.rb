@@ -1,5 +1,5 @@
 Level.create!([
-  {description: "NISKI", value: 20},
+  {description: "ŚREDNI", value: 20},
   {description: "WYSOKI", value: 50}
 ])
 Pkd.create!([

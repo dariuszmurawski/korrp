@@ -19,7 +19,8 @@ jQuery(function() {
 		var description=$('#check_pkd_description').val();	
 	
 		$.getJSON('/get_branch',{description: description}, function(data) {
-					$('#check_branch').val(data.branch);	
+					$('#check_branch').val(data.branch);
+					$('#check_pkd_full').val($('#check_pkd_description').val());
 	
 		})
 		.fail(function(){

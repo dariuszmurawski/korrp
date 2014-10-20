@@ -7,10 +7,6 @@ class ChecksController < ApplicationController
   def new
     @check = Check.new(user_id: @current_user.login)
     get_questions(@check)     
-  #  respond_to do |format|
-  #    format.html
-  #    format.js 
-  #  end
   end
  
  
@@ -45,7 +41,7 @@ class ChecksController < ApplicationController
    private
 
     def check_params
-      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkd_full, :branch, :score ,:level, :user_id, answers_attributes: [:q_description, :q_strength, :q_answer])
+      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkd_full,:pkd_description, :branch, :score ,:level, :user_id, answers_attributes: [:q_description, :q_strength, :q_answer])
     end
   
 end

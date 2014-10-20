@@ -68,8 +68,7 @@
 
 <div class="row">
   <div class="span8">
-	  <%#= f.label :pkd_full,"kod oraz opis PKD" %>
-      <%#= f.select :pkd_full,@pkds.all.map {|u| [u.description]}, {prompt: "wybierz PKD"} , id: "pkd_field"%>
+      <%= f.hidden_field :pkd_full%>
 
       <%= f.label :pkd_description,"kod oraz opis PKD" %>
       <%= f.text_field :pkd_description, data: {autocomplete_source: autocomplete_path}, placeholder: 'wybierz kod PKD...'%>  

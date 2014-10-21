@@ -12,15 +12,15 @@
 jQuery(function() {
 	
 	
-	$('#check_pkd_description').autocomplete({source: $('#check_pkd_description').data('autocomplete-source') 	});
+	$('#check_pkdfull').autocomplete({source: $('#check_pkdfull').data('autocomplete-source') 	});
 
 
-	$('#check_pkd_description').on('autocompleteclose input',function(event, ui){
-		var description=$('#check_pkd_description').val();	
+	$('#check_pkdfull').on('autocompleteclose input',function(event, ui){
+		var description=$('#check_pkdfull').val();	
 	
 		$.getJSON('/get_branch',{description: description}, function(data) {
 					$('#check_branch').val(data.branch);
-					$('#check_pkd_full').val($('#check_pkd_description').val());
+					//$('#check_pkd_full').val($('#check_pkd_description').val());
 	
 		})
 		.fail(function(){
@@ -44,6 +44,7 @@ jQuery(function() {
 //init
 	$('.answer_class').each(function(){
 		init_fields(this);
+		sum_strength();
 	});
 	
 //change

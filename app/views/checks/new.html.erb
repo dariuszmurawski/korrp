@@ -68,10 +68,9 @@
 
 <div class="row">
   <div class="span8">
-      <%= f.hidden_field :pkd_full%>
 
-      <%= f.label :pkd_description,"kod oraz opis PKD" %>
-      <%= f.text_field :pkd_description, data: {autocomplete_source: autocomplete_path}, placeholder: 'wybierz kod PKD...'%>  
+      <%= f.label :pkdfull,"kod oraz opis PKD" %>
+      <%= f.text_field :pkdfull, data: {autocomplete_source: autocomplete_path}, placeholder: 'wybierz kod PKD...'%>  
   </div>
 
   
@@ -88,7 +87,7 @@
 <div class="row">
   <div class="span12">
 	<table class="table">
-		<tr style="background: #eaeaea">
+		<tr class="new_check_ans_header">
 			<th>
 				Opis
 			</th>
@@ -142,7 +141,7 @@
 
 <div class="row">
 	<div class="span8">
-	  <%= f.hidden_field :user_id %>	
+	  <%= f.hidden_field :userlogin %>	
       <%= f.submit "Zatwierdź analizę", class: "btn btn-large btn-primary" %>
       <%= link_to "Anuluj", checks_path, class: "btn btn-large btn-primary" %>
     </div>

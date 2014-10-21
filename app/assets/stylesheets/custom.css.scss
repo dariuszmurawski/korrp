@@ -1,9 +1,72 @@
-@import "bootstrap";
 
 /* mixins, variables, etc. */
 
-$grayMediumLight: #eaeaea;
-$blueMediumLight: #6699FF;
+$orangeMediumLight: #DBA97A;
+
+
+$USlinkcolor:       #003355;
+
+$USbluelight:       #EEF5F9;
+$USbluelightmedium: #B7D1E1;
+$USbluelightdark:   #015077;
+
+$US1:               #006fb7;
+$US2:               #0560af;
+$US3:               #03469b;
+
+// Navbar
+// -------------------------
+
+$navbarBackgroundHighlight:              #ffffff !default;
+$navbarText:                             #777 !default;
+$navbarLinkColor:                        #777 !default;
+//$navbarLinkColorHover:            $grayDark !default;
+//$navbarLinkColorActive:           $gray !default;
+
+
+$navbarInverseBackground:                $US1 !default;
+$navbarInverseBackgroundHighlight:       $US2 !default;
+$navbarInverseBorder:                    $US2 !default;
+
+//$navbarInverseText:                      $grayLight !default;
+$navbarInverseLinkColor:                 $USbluelightmedium !default;
+//$navbarInverseLinkColorHover:            $white !default;
+//$navbarInverseSearchBackgroundFocus:     $white !default;
+$navbarInverseSearchPlaceholderColor:    #ccc !default;
+
+$tableBackgroundAccent:                  $USbluelight !default; 
+$tableBorder:                            $USbluelightmedium !default;
+
+$paginationBackground:                   #fff !default;
+$paginationBorder:                       $USbluelightmedium !default;
+$paginationActiveBackground:             $USbluelight !default;
+
+
+$inputBorder:                            $USbluelightmedium !default;
+$inputDisabledBackground:                $USbluelight !default;
+
+
+
+
+//$textColor:                              $USbluelightdark !default;
+$placeholderText:                        $USbluelightdark !default;
+
+//$dropdownBorder:                rgba(0,0,0,.2) !default;
+//$dropdownDividerTop:            #e5e5e5 !default;
+//$dropdownLinkColor:             $grayDark !default;
+
+
+
+
+
+
+
+
+@import "bootstrap";
+
+
+
+
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -11,7 +74,11 @@ $blueMediumLight: #6699FF;
   box-sizing: border-box;
 }
 
+.hero-unit{
+  background-color: $USbluelight;
+}
 /* universal */
+
 
 html {
   overflow-y: scroll;
@@ -21,6 +88,7 @@ html {
 body {
   /*padding-top: 60px;*/
   padding-top: 120px;
+  color: $USbluelightdark;
   
 }
 
@@ -33,7 +101,16 @@ table {
   
 }
 
+.new_check_ans_header {
+  background-color: $USbluelight;
+}
+
 .pkd {
+  
+  font-size: 0.8em;
+}
+
+.check {
   
   font-size: 0.8em;
 }
@@ -74,19 +151,14 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $grayLight;
+
 }
 
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-p.show_user{
-  width: 40%;
-  float: left;
-  margin: 5px;
-  padding: 5px;
-}
+
 
 /* header */
 
@@ -108,7 +180,7 @@ p.show_user{
 }
 
 .user-color {
-  color: $blueMediumLight;
+  color: $orangeMediumLight;
   
 }
 /* footer */
@@ -122,12 +194,12 @@ footer {
     
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
+  border-top: 1px solid $US1;
+  color: $gray;
   a {
-    color: $gray;
+    color: $USlinkcolor;
     &:hover {
-      color: $grayDarker;
+      color: $USbluelightdark;
     }
   }
   small {
@@ -223,31 +295,6 @@ input {
   }
 }
 
-/* autocomplete*/
-/*
-ul.ui-autocomplete {
-  position: absolute;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border: solid 1px #999;
-  cursor: default;
-  li {
-    background-color: #FFF;
-    border-top: solid 1px #DDD;
-    margin: 0;
-    padding: 0;
-    a {
-      color: #000;
-      display: block;
-      padding: 300px;
-    }
-    a.ui-state-hover, a.ui-state-active {
-      background-color: #FFFCB2;
-    } 
-  } 
-}
-*/
 
 .ui-autocomplete {
   cursor: pointer;
@@ -263,8 +310,8 @@ ul.ui-autocomplete {
   margin: 2px 0 0 0;
   list-style: none;
   background-color: #ffffff;
-  border-color: #ccc;
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: $USbluelightmedium;
+//  border-color: rgba(0, 0, 0, 0.2);
   border-style: solid;
   border-width: 1px;
   -webkit-border-radius: 5px;
@@ -285,7 +332,7 @@ ul.ui-autocomplete {
     clear: both;
     font-weight: normal;
     line-height: 18px;
-    color: #555555;
+    color: $USbluelightdark;
     white-space: nowrap;
  }
 
@@ -293,7 +340,7 @@ ul.ui-autocomplete {
 .ui-state-focus {
       color: #ffffff;
       text-decoration: none;
-      background-color: #0088cc;
+      background-color: $US1;
       border-radius: 0px;
       -webkit-border-radius: 0px;
       -moz-border-radius: 0px;

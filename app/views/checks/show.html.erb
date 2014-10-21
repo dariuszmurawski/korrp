@@ -1,0 +1,79 @@
+<% provide(:title, "Analiza") %>
+<div class="row">
+  <aside class="span8">
+      <table class="table-bordered table table-condensed">
+      	<tr>
+      		<th colspan="2">
+      			 Dane podatnika 
+      		</th>
+      	</tr>
+      	<tr>
+      		<td>
+      			<b><i>Imię i nazwisko:</i></b>
+      		</td>
+      		<td>
+      			<%= @check.forename %> <%= @check.name %>
+      		</td>
+      	</tr>
+		<tr>
+			<td>
+				<b><i>Nazwa:</i></b>
+			</td>
+			<td>
+				<%= @check.org_name %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<b><i>Adres:</i></b>
+			</td>
+			<td>
+				<%= @check.postal_code %> <%= @check.city %> <%= @check.street %> <%= @check.home_no %> <%= @check.flat_no %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<b><i>NIP:</i></b>
+			</td>
+			<td>
+				<%= @check.nip %>
+			</td>	
+		</tr>
+		<tr>
+			<td>
+				<b><i>PESEL:</i></b>
+			</td>
+			<td>
+				<%= @check.pesel %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<b><i>REGON:</i></b>
+			</td>
+			<td>
+				<%= @check.regon %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<b><i>Kod i opis PKD:</i></b> 
+			</td>
+			<td>
+				<%= @check.pkdfull %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<b><i>Branża:</i></b>
+			</td>
+			<td>
+				<%= @check.branch %>
+			</td>
+		</tr>
+
+       
+    </table>
+  </aside>
+  
+</div>

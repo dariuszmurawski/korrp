@@ -55,9 +55,9 @@ module SessionsHelper
         flash[:notice] = "Brak uprawnień"
         redirect_to(root_url) 
       end
-    end
+  end
 
-    def signed_in_user
+  def signed_in_user
       unless signed_in?
         flash[:notice] = "Zaloguj się..."
         store_location

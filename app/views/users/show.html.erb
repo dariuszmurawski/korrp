@@ -1,22 +1,47 @@
 <% provide(:title, @user.name) %>
+
 <div class="row">
-  <aside class="span8">
-    <section>
-      <div>
-       <p class="show_user"> <b><i>Login:</i></b> </p>
-       <p class="show_user"> <%= @user.login %></p>
-       <p class="show_user"> <b><i>Imię:</i></b> </p>
-       <p class="show_user"> <%= @user.forename %></p>
-       <p class="show_user"> <b><i>Nazwisko:</i></b> </p>
-       <p class="show_user"> <%= @user.name %></p>
-       <p class="show_user"> <b><i>Adres e-mail:</i></b> </p>
-       <p class="show_user"> <%= @user.email %></p>
-       <p class="show_user"> <b><i>Uprawnienia kierownika?</i></b> </p>
-       <p class="show_user"> <% if @user.admin? %> TAK <%else%> NIE <%end%></p>
+  <div class="span6">
+	<b><i>Login:</i></b>
+  </div>
+  <div class="span6">
+	<%= @user.login %>
+  </div>
+</div>  
+<div class="row">
+  <div class="span6">
+	<b><i>Imię:</i></b>
+  </div>
+  <div class="span6">
+	<%= @user.forename %>
+  </div>
+</div>  
+<div class="row">
+  <div class="span6">
+	<b><i>Nazwisko:</i></b> 
+  </div>
+  <div class="span6">
+	<%= @user.name %>
+  </div>
+</div>  
+<div class="row">
+  <div class="span6">
+	<b><i>Adres e-mail:</i></b>
+  </div>
+  <div class="span6">
+	<%= @user.email %>
+  </div>
+</div> 
+<div class="row">
+  <div class="span6">
+	<b><i>Uprawnienia kierownika?</i></b> 
+  </div>
+  <div class="span6">
+	<% if @user.admin? %> TAK <%else%> NIE <%end%>
+  </div>
+</div> 
+
+
        
        
-      </div>
-    </section>
-  </aside>
   
-</div>

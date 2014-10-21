@@ -1,0 +1,31 @@
+<tr>
+	
+  <td>
+  	<%= check.forename+" "+check.name %>
+  
+  <td>
+  	<%= check.org_name%>
+  </td>
+  <td>
+  	<%= check.pesel%>
+  </td>
+  <td>
+  	<%= check.nip%>
+  </td>
+  <td>
+  	<%= check.score%>
+  </td>
+  <td>
+  	<%= check.level%>
+  </td>
+  <td>
+  	<%= link_to "podgląd", check %>
+  </td>
+  <td>
+  	<% if current_user.admin? %>
+    <%= link_to "kasuj", check, method: :delete, data: { confirm: "Na pewno chcesz skasować?" } %>
+    <% end %>
+  </td>	
+    
+
+</tr>

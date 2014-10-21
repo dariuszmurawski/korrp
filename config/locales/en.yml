@@ -53,11 +53,11 @@ en:
   "Nip is invalid": "Format numeru NIP jest niepoprawny - NIP powinien się składać z 10 cyfr"
   "Home no can't be blank": "Numer domu nie może być pusty"
   "Branch is reserved": "Niepoprawnie wypełnione pole branża"
-
-
-
-
-
+  "Pkdfull can't be blank": "Pole kod oraz opis PKD nie może buć puste"
+  "Org name can't be blank": "Nazwa organizacji nie może być pusta"
+  "Name is too long (maximum is 30 characters)": "Nazwisko jest za długe (max 30 znaków)"
+  "Forename is too long (maximum is 15 characters)": "Imię jest za długie (max 15 znaków)"
+  "Org Name Is Too Long (Maximum Is 50 Characters)": "Nazwa organizacji jest za długa (max 50 znaków)"
 
 
 

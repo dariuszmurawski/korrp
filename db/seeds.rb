@@ -950,11 +950,8 @@ Pkd.create!([
 ])
 Question.create!([
   {description: "pytanie1", strength: 1, cancelled: false},
-  {description: "pytanie2", strength: 2, cancelled: false}
-])
-User.create!([
-  {name: "admin", email: "admin@wp.pl", password_digest: "$2a$10$hgfmh5JQ5QQoeh9t6E6qquB6cDkLGp6hTpQdHswhcBeOBOOege0ii", remember_token: "ea9b3a557d12de2ba2d9f5f1bcae8c79ab0a4fe8", admin: true, forename: "admin", login: "ADM"},
-  {name: "Murawski", email: "darek@wp.pl", password_digest: "$2a$10$/Ky7IEw3GCotfGQ0hQEwl.exJJaQ.5BCGXdmXf9ap8oiyrsH3o.Zu", remember_token: "124f37d3c75bffeb789de13a995c073b25ca420c", admin: true, forename: "Dariusz", login: "DMU"},
-  {name: "nie-admin1", email: "nie-admin1@wp.pl", password_digest: "$2a$10$IVXxWcsdBqyZkLMPy0CaqOMBUnGFlTN0h5EeoD6H88WbSZkQsQzge", remember_token: "5f266f6bb4a2ee3da5f7f13ae940f8b7dc0094c2", admin: false, forename: "nie-admin1", login: "NAD1"},
-  {name: "nie-admin2", email: "nie-admin2@wp.pl", password_digest: "$2a$10$5NIxWzK5JiogpAUxVnitOOWIKXE5244XFXdV/8zqfj4sSGG/V9NOa", remember_token: "3217d9a1b3ef567828c96f04027f7b2d45a5029b", admin: false, forename: "nie-admin2", login: "NAD2"}
+  {description: "pytanie2", strength: 2, cancelled: false},
+  {description: "pytanie3", strength: 30, cancelled: false},
+  {description: "pytanie4", strength: 20, cancelled: false},
+  {description: "pytanie5", strength: 20, cancelled: false}
 ])

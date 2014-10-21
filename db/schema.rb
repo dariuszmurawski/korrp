@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016101826) do
+ActiveRecord::Schema.define(version: 20141020090515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20141016101826) do
   end
 
   create_table "checks", force: true do |t|
-    t.integer  "user_id"
     t.string   "forename"
     t.string   "name"
     t.string   "org_name"
@@ -34,19 +33,18 @@ ActiveRecord::Schema.define(version: 20141016101826) do
     t.string   "postal_code"
     t.string   "street"
     t.string   "home_no"
-    t.integer  "flat_no"
-    t.integer  "pesel"
-    t.integer  "regon"
-    t.integer  "nip"
-    t.string   "pkd_full"
-    t.string   "pkd_branch"
+    t.string   "flat_no"
+    t.string   "pesel"
+    t.string   "regon"
+    t.string   "nip"
     t.string   "branch"
     t.boolean  "cancelled",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pkd_id"
     t.integer  "score"
     t.string   "level"
+    t.string   "pkdfull"
+    t.string   "userlogin"
   end
 
   create_table "levels", force: true do |t|

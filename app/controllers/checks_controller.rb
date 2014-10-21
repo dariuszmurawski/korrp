@@ -5,7 +5,7 @@ class ChecksController < ApplicationController
 
   
   def new
-    @check = Check.new(user_id: @current_user.login)
+    @check = Check.new(userlogin: @current_user.login)
     get_questions(@check)     
   end
  
@@ -17,8 +17,15 @@ class ChecksController < ApplicationController
       end
  end 
 
+
+ def show
+    @check = Check.find(params[:id])
+ end
+  
  
- 
+ def index
+    @checks = Check.paginate(page: params[:page])
+ end
  
  
  def create
@@ -26,14 +33,18 @@ class ChecksController < ApplicationController
     @check = Check.new(check_params)
     if @check.save
       flash[:success] = "Dodano nową analizę"
-      redirect_to questions_path
+      redirect_to checks_path
     else
-      #get_questions(@check) 
       render action: 'new'
     end
  end
   
-  
+ def destroy
+    Check.find(params[:id]).destroy
+    flash[:success] = "Analiza skasowana."
+    redirect_to checks_path
+  end
+   
   
   
   
@@ -41,7 +52,7 @@ class ChecksController < ApplicationController
    private
 
     def check_params
-      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkd_full,:pkd_description, :branch, :score ,:level, :user_id, answers_attributes: [:q_description, :q_strength, :q_answer])
+      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkdfull, :branch, :score ,:level, :userlogin, answers_attributes: [:q_description, :q_strength, :q_answer])
     end
   
 end

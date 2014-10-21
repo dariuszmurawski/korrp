@@ -29,17 +29,7 @@ namespace :db do
                  password_confirmation: "test1234")
                  
                  
-    Question.create!(description: "pytanie1",
-                     strength: 1)                                  
-    Question.create!(description: "pytanie2",
-                     strength: 2)   
-                     
-                     
-    Level.create!(description: "ŚREDNI",
-                     value: 20)
-    Level.create!(description: "WYSOKI",
-                     value: 50)               
-                     
+ 
                      
                                                 
                  

@@ -25,7 +25,7 @@ $navbarLinkColor:                        #777 !default;
 
 
 $navbarInverseBackground:                $US1 !default;
-$navbarInverseBackgroundHighlight:       $US2 !default;
+$navbarInverseBackgroundHighlight:       $US1 !default;
 $navbarInverseBorder:                    $US2 !default;
 
 //$navbarInverseText:                      $grayLight !default;
@@ -51,9 +51,16 @@ $inputDisabledBackground:                $USbluelight !default;
 //$textColor:                              $USbluelightdark !default;
 $placeholderText:                        $USbluelightdark !default;
 
-//$dropdownBorder:                rgba(0,0,0,.2) !default;
-//$dropdownDividerTop:            #e5e5e5 !default;
-//$dropdownLinkColor:             $grayDark !default;
+
+
+
+
+
+$dropdownBorder:                $USbluelightmedium !default;
+$dropdownDividerTop:            $USbluelightmedium !default;
+$dropdownLinkColor:             $USbluelightdark !default;
+
+
 
 
 
@@ -92,12 +99,54 @@ body {
   
 }
 
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  color: $USbluelightdark;
+}
+
 section {
   overflow: auto;
 }
 
 table {
   font-size: 0.9em;
+  
+}
+
+
+select::-ms-expand {
+    width:12px;
+    border:none;
+    color: $USbluelightdark;
+    background:#fff;
+}
+
+
+.logoname{
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+.aplogo{
+  background-image: url("APlogo1.gif");
+  background-repeat: no-repeat;
+  background-size: 90px 90px;
+  background-position: left top;
   
 }
 
@@ -255,7 +304,7 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+//  border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;

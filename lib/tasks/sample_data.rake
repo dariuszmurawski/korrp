@@ -15,6 +15,13 @@ namespace :db do
                  password: "test1234",
                  password_confirmation: "test1234",
                  admin: true)
+    User.create!(login: "mag",
+                 forename: "Marek",
+                 name: "Głowacki",
+                 email: "marek@wp.pl",
+                 password: "test1234",
+                 password_confirmation: "test1234",
+                 admin: true)
     User.create!(login: "nad1",
                  forename: "nie-admin1",
                  name: "nie-admin1",

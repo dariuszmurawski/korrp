@@ -79,7 +79,14 @@ jQuery(function() {
 	
 	function init_fields(val){
 		var answer=$(val).attr('id');
-		var index=answer.slice(25,26);
+		var tmp=answer.slice(26,27);
+		if (tmp=='_'){
+			var index=answer.slice(25,26);
+		}
+		else{
+			var index=answer.slice(25,27);
+		}
+		
 		var strength='check_answers_attributes_'+index+'_q_strength';
 		var value=$(val).val();
 	

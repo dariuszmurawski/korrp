@@ -144,13 +144,26 @@ select::-ms-expand {
   margin-left: 100px;
 }
 
+@mixin ie-background-cover($image-path) {
+ // filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=#{image_path($image-path)}, sizingMethod='scale');
+ // -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=#{image_path($image-path)}, sizingMethod='scale')";
+  background-image: none;
+}
+
 .aplogo{
   background-image: url("APlogo1.gif");
   background-repeat: no-repeat;
   background-size: 90px 90px;
   background-position: left top;
-  
+  .ie8 & {
+    @include ie-background-cover('APlogo1.gif');
+  }
+
 }
+
+
+
+
 
 .new_check_ans_header {
   background-color: $USbluelight;

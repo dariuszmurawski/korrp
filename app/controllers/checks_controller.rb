@@ -5,7 +5,7 @@ class ChecksController < ApplicationController
 
   
   def new
-    @check = Check.new(userlogin: @current_user.name + @current_user.forename)
+    @check = Check.new(userlogin: @current_user.name+' '+@current_user.forename)
     get_questions(@check)     
   end
  

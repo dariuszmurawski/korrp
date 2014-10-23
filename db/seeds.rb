@@ -1,6 +1,6 @@
 Level.create!([
-  {description: "ŚREDNI", value: 20},
-  {description: "WYSOKI", value: 50}
+  {description: "ŚREDNI", value: 10},
+  {description: "WYSOKI", value: 20}
 ])
 Pkd.create!([
   {pkd_id: "01.1", pkd_name: "Uprawy rolne inne niż wieloletnie", branch: "Rolnictwo i rybactwo", description: "01.1 Uprawy rolne inne niż wieloletnie"},
@@ -949,9 +949,29 @@ Pkd.create!([
   {pkd_id: "99.00.Z", pkd_name: "Organizacje i zespoły eksterytorialne ", branch: "Organizacje członkowskie", description: "99.00.Z Organizacje i zespoły eksterytorialne "}
 ])
 Question.create!([
-  {description: "pytanie1", strength: 1, cancelled: false},
-  {description: "pytanie2", strength: 2, cancelled: false},
-  {description: "pytanie3", strength: 30, cancelled: false},
-  {description: "pytanie4", strength: 20, cancelled: false},
-  {description: "pytanie5", strength: 20, cancelled: false}
+  {description: "Podmiot deklaruje jako jeden z głównych przedmiotów działalności działalność w tzw.branżach podwyższonego ryzyka określonych w KPD", strength: 7, cancelled: false},
+  {description: "Pod adresem siedziby lub prowadzenia działalności zarejestrowanych jest więcej niż 10 podmiotów", strength: 3, cancelled: false},
+  {description: "Miejsce siedziby lub prowadzenia działalności pod adresem nieistniejącym, \"ryzykownym\" (np. wirtualne biura) lub nieadekwatnym w stosunku do rodzaju działalności ( np. hurtowa sprzedaż materiałów budowlanych w bloku mieszkalnym , itp) ", strength: 10, cancelled: false},
+  {description: "Miejsce przechowywania dokumentów w miejscowości znacząco odległej niż siedziba lub miejsce prowadzenia działalności (dystans nie krótszy niż 100 km)", strength: 4, cancelled: false},
+  {description: "Podatnik deklarujący rozpoczęcie działalności jest osobą w wieku poniżej 26 lat lub powyżej 69 lat (w przypadku spółek osobowych co najmniej 51% liczby wszystkich wspólników, w przypadku osób prawnych co najmniej co najmniej 51% liczby wszystkich członków zarządu)", strength: 3, cancelled: false},
+  {description: "Odmowa nadania NIP w innym urzędzie (podmiotowi rejestrującemu się lub powiązanemu)", strength: 10, cancelled: false},
+  {description: "Podatnik (osoba fizyczna) lub osoba powiązana (w przypadku rejestracji organizacji) był/jest objęty sądowym zakazem prowadzenia działalności lub zakazem pełnienia funkcji ", strength: 10, cancelled: false},
+  {description: "Kapitał zakładowy spółki jest niski (do 10 tys. zł)", strength: 5, cancelled: false},
+  {description: "Jedno ze zgłoszonych kont mieści się w banku nieposiadającym siedziby na terytorium RP; nr zgłoszonego konta przypisany jest do więcej niż jednego podmiotu; nie wskazanie żadnego rachunku bankowego do działalności gospodarczej ", strength: 3, cancelled: false},
+  {description: "Rejestracja VAT-UE", strength: 2, cancelled: false},
+  {description: "Podatnik deklaruje kwartalny sposób rozliczania VAT", strength: 2, cancelled: false},
+  {description: "Znamiona aktywności w sieci nieadekwatne do rodzaju prowadzonej działalności (np. adresy e-mail na domenach typu Onet, Gmail, WP, brak strony internetowej, itp.) ", strength: 1, cancelled: false},
+  {description: "Średni poziom ryzyka podmiotu powiązanego, określony na podstawie segmentacji ogólnej ", strength: 10, cancelled: false},
+  {description: "Wysoki poziom ryzyka podmiotu powiązanego, określony na podstawie segmentacji ogólnej ", strength: 20, cancelled: false}
 ])
+
+
+
+
+
+
+
+
+
+
+

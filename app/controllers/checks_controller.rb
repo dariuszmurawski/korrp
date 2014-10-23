@@ -5,7 +5,7 @@ class ChecksController < ApplicationController
 
   
   def new
-    @check = Check.new(userlogin: @current_user.login)
+    @check = Check.new(userlogin: @current_user.name + @current_user.forename)
     get_questions(@check)     
   end
  
@@ -20,6 +20,7 @@ class ChecksController < ApplicationController
 
  def show
     @check = Check.find(params[:id])
+    @answers = @check.answers
  end
   
  

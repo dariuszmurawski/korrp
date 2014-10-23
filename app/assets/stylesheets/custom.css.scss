@@ -125,9 +125,11 @@ section {
 
 table {
   font-size: 0.9em;
-  
 }
 
+.table_bg{
+  background-color: $USbluelight;
+}
 
 select::-ms-expand {
     width:12px;

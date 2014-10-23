@@ -1,79 +1,98 @@
 <% provide(:title, "Analiza") %>
 <div class="row">
-  <aside class="span8">
+  <div class="span8">
       <table class="table-bordered table table-condensed">
-      	<tr>
-      		<th colspan="2">
-      			 Dane podatnika 
-      		</th>
+      	<tr class="table_bg">
+      		<th colspan="2">Dane podatnika </th>
       	</tr>
       	<tr>
-      		<td>
-      			<b><i>Imię i nazwisko:</i></b>
-      		</td>
-      		<td>
-      			<%= @check.forename %> <%= @check.name %>
-      		</td>
+      		<td class="table_bg"><b><i>Imię i nazwisko:</i></b></td>
+      		<td><%= @check.forename %> <%= @check.name %></td>
       	</tr>
 		<tr>
-			<td>
-				<b><i>Nazwa:</i></b>
-			</td>
-			<td>
-				<%= @check.org_name %>
-			</td>
+			<td class="table_bg"><b><i>Nazwa:</i></b>
+			<td><%= @check.org_name %></td>
 		</tr>
 		<tr>
-			<td>
-				<b><i>Adres:</i></b>
-			</td>
-			<td>
-				<%= @check.postal_code %> <%= @check.city %> <%= @check.street %> <%= @check.home_no %> <%= @check.flat_no %>
-			</td>
+			<td class="table_bg"><b><i>Adres:</i></b></td>
+			<td><%= @check.postal_code %> <%= @check.city %> <%= @check.street %> <%= @check.home_no %> <%= @check.flat_no %></td>
 		</tr>
 		<tr>
-			<td>
-				<b><i>NIP:</i></b>
-			</td>
-			<td>
-				<%= @check.nip %>
-			</td>	
+			<td class="table_bg"><b><i>NIP:</i></b></td>
+			<td><%= @check.nip %></td>	
 		</tr>
 		<tr>
-			<td>
-				<b><i>PESEL:</i></b>
-			</td>
-			<td>
-				<%= @check.pesel %>
-			</td>
+			<td class="table_bg"><b><i>PESEL:</i></b></td>
+			<td><%= @check.pesel %></td>
 		</tr>
 		<tr>
-			<td>
-				<b><i>REGON:</i></b>
-			</td>
-			<td>
-				<%= @check.regon %>
-			</td>
+			<td class="table_bg"><b><i>REGON:</i></b></td>
+			<td><%= @check.regon %></td>
 		</tr>
 		<tr>
-			<td>
-				<b><i>Kod i opis PKD:</i></b> 
-			</td>
-			<td>
-				<%= @check.pkdfull %>
-			</td>
+			<td class="table_bg"><b><i>Kod i opis PKD:</i></b> </td>
+			<td><%= @check.pkdfull %></td>
 		</tr>
 		<tr>
-			<td>
-				<b><i>Branża:</i></b>
-			</td>
-			<td>
-				<%= @check.branch %>
-			</td>
-		</tr>
-
-       
+			<td class="table_bg"><b><i>Branża:</i></b></td>
+			<td><%= @check.branch %></td>
+		</tr>    
     </table>
-  </aside>
-  
-</div>
+   </div>  
+</div>   
+    
+    
+<div class="row">
+  <div class="span12">
+  	<table class="table-bordered table table-condensed">
+  		<tr class="table_bg">
+      		<th >Nazwa kryterium </th>
+      		<th style="width: 15%" >Siła kryterium </th>
+      		<th style="width: 10%" >TAK/NIE </th>
+      	</tr>
+    	<% if @check.answers.any? %>
+        	<%= render @answers %>
+    	<% end %>
+    </table>
+   </div>  
+</div>     
+
+<div class="row">
+  <div class="span12">
+  	<table class="table-bordered table table-condensed">
+  		<tr class="table_bg">
+  			<th colspan="4">
+  				Podsumowanie:
+  			</th>
+  		</tr>
+  		<tr>
+  			<td>
+  				Suma punktów:
+  			</td>
+  			<td>
+  				<%= @check.score%>
+  			</td>
+  			<td>
+  				Wykonano przez:
+  			</td>
+  			<td>
+  				<%= @check.userlogin%>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				Poziom ryzyka:
+  			</td>
+  			<td>
+  				<%= @check.level%>
+  			</td>
+  			<td>
+  				Wykonano dnia:
+  			</td>
+  			<td>
+  				<%= @check.created_at.strftime('%F %H:%M') %>
+  			</td>
+  		</tr>
+  	</table>
+   </div>  
+</div> 

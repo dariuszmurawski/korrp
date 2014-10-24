@@ -13,7 +13,10 @@ class CheckPdf < Prawn::Document
   end
   
   def check_subject
-
+    font_size 16
+    text "Analiza ryzyka rejestracji podmiotu"
+    font_size 8
+    move_down 10
     data = [ [ {content: "Dane podatnika", colspan: 2 } ],
             ["Imię i nazwisko:", @check.forename+" "+@check.name] , 
             ["Nazwa:", @check.org_name],
@@ -24,20 +27,20 @@ class CheckPdf < Prawn::Document
             ["Kod i opis PKD:",@check.pkdfull],
             ["Branża:",@check.branch]
           ]
-    table data,  column_widths: [100, 200] do
+    table data,  column_widths: [100, 260] do
       cells.row(0).background_color = "dddddd"
       cells.column(0).background_color = "dddddd"
     end
   end
   
   def check_answers
-    move_down 20
+    move_down 10
     
     answers_rows=[["Nazwa kryterium","Siła kryterium","TAK/NIE"]] +
       @check.answers.map do |ans|
         [ans.q_description.to_s, ans.q_strength.to_s, map_bool(ans)]
       end
-    table answers_rows,header: true, column_widths: [410, 50, 50] do
+    table answers_rows,header: true, column_widths: [420, 50, 45] do
       cells.row(0).background_color = "dddddd"
     end
   end
@@ -46,7 +49,7 @@ class CheckPdf < Prawn::Document
   
   
   def check_summary
-    move_down 20
+    move_down 10
     
     data = [ [ {content: "Podsumowanie:", colspan: 4} ],
             ["Suma punktów: ", @check.score, "Wykonano przez:", @check.userlogin] , 

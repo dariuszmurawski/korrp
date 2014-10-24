@@ -21,23 +21,24 @@
 
 <p><b>Filtrowanie tabeli PKD</b></p>
 <div class="row">
-	
-  <div class="span4 pkd">
-	<%= search_form_for @search do |r| %>	
-		<%= r.label :pkd_id_cont, "pole Kod PKD zawiera:" %>
+
+ <%= search_form_for @search do |r| %>	
+  <div class="span2 pkd">
+		<%= r.label :pkd_id_cont, "Kod PKD zawiera:" %>
   		<%= r.search_field :pkd_id_cont %>
-		  				  		
- 		<%= r.submit "wyszukaj",class: "btn btn-large btn-primary" %>
-	
   </div>  
   
-   <div class="span4 pkd">
-		<%= r.label :pkd_name_cont, "pole Nazwa PKD zawiera:" %>
+   <div class="span2 pkd">
+		<%= r.label :pkd_name_cont, "Nazwa PKD zawiera:" %>
   		<%= r.search_field :pkd_name_cont %>		
   </div>  
-   <div class="span4 pkd">
-		<%= r.label :branch_cont, "pole Branża zawiera:" %>
+   <div class="span2 pkd">
+		<%= r.label :branch_cont, "Branża zawiera:" %>
   		<%= r.search_field :branch_cont %>  
-	<% end %>  
   </div>  
+  <div class="span12 pkd">
+ 	<%= r.submit "Wyszukaj",class: "btn btn-large btn-primary" %>
+ 	<%= link_to "Zeruj wyszukiwanie", pkds_path, class: "btn btn-large btn-primary" %> 
+  </div>
+ <% end %> 
 </div> 

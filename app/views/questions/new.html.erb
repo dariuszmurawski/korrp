@@ -7,7 +7,7 @@
     <%= render 'shared/error_messages', object: f.object %>  
 
 	  <%= f.label :description,"opis kryterium" %>
-      <%= f.text_field :description %>
+      <%= f.text_area :description, rows:5 %>
 
 	  <%= f.label :strength,"siła kryterium" %>
       <%= f.text_field :strength %>

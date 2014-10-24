@@ -1,7 +1,7 @@
 <tr>
 	
   <td>
-  	<%= check.forename+" "+check.name %>
+  	<%= check.name+' '+check.forename %>
   
   <td>
   	<%= check.org_name%>
@@ -16,7 +16,17 @@
   	<%= check.score%>
   </td>
   <td>
-  	<%= check.level%>
+  	<% if check.level=='NISKI'%>
+  	NISKIE
+  	<% elsif check.level=='ŚREDNI'%> 
+  	ŚREDNIE
+  	<% else%>
+  	WYSOKIE
+  	<% end %>
+  	
+  </td>
+  <td>
+  	<%= check.created_at.strftime('%F') %>
   </td>
   <td>
   	<%= link_to "podgląd", check %>

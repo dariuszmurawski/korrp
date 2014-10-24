@@ -4,13 +4,15 @@
 <%= will_paginate %>
 	<table class="table table-striped check">
 		<tr>
-			<th style="width: 15%">Imię i nazwisko</th>
-			<th>Nazwa</th>
-			<th style="width: 1%">PESEL</th>
-			<th style="width: 1%">NIP</th>
-			<th colspan='2' style="width: 10%">Poziom ryzyka</th>
-			<th style="width: 1%">Szczegóły</th>	
-			<th style="width: 1%">Kasuj?</th>			
+			
+			<th style="width: 15%"><%= sort_link(@search, :name, "Nazwisko i imię") %></th>
+			<th><%= sort_link(@search, :org_name, "Nazwa") %></th>
+			<th style="width: 1%"><%= sort_link(@search, :pesel, "PESEL") %></th>
+			<th style="width: 1%"><%= sort_link(@search, :nip, "NIP") %></th>
+			<th colspan='2' style="width: 8%"><%= sort_link(@search, :score, "Ryzyko") %></th>
+			<th style="width: 9%"><%= sort_link(@search, :created_at, "Utw. dnia") %></th>
+			<th style="width: 1%"> </th>	
+			<th style="width: 1%"> </th>			
 		</tr>
   		<% @checks.each do |check| %>
     		<%= render check %>
@@ -18,3 +20,32 @@
 	</table>
 <%= will_paginate %>
 <%= link_to "Doadaj nową analizę", new_check_path, class: "btn btn-large btn-primary" %>
+
+<p style="margin-top: 30px"><b>Wyszukiwanie Analiz</b></p>
+<div class="row">
+
+ <%= search_form_for @search do |r| %>	
+  <div class="span2 pkd">
+		<%= r.label :name_cont, "Nazwisko zawiera:" %>
+  		<%= r.search_field :name_cont %>  
+  </div>  
+  <div class="span2 pkd">
+		<%= r.label :org_name_cont, "Nazwa zawiera:" %>
+  		<%= r.search_field :org_name_cont %>  
+  </div> 
+  <div class="span2 pkd">
+		<%= r.label :nip_cont, "NIP zawiera:" %>
+  		<%= r.search_field :nip_cont %>
+  </div>  
+  
+   <div class="span2 pkd">
+		<%= r.label :pesel_cont, "PESEL zawiera:" %>
+  		<%= r.search_field :pesel_cont %>		
+  </div>  
+  
+  <div class="span6 pkd">
+ 	<%= r.submit "Wyszukaj",class: "btn btn-large btn-primary" %>
+ 	<%= link_to "Zeruj wyszukiwanie", checks_path, class: "btn btn-large btn-primary" %> 
+  </div>
+ <% end %> 
+</div> 

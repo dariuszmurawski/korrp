@@ -21,11 +21,23 @@ class ChecksController < ApplicationController
  def show
     @check = Check.find(params[:id])
     @answers = @check.answers
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = CheckPdf.new(@check)
+        send_data pdf.render, filename: "Analiza_#{@check.nip}.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+      end
+    end
  end
   
  
  def index
-    @checks = Check.paginate(page: params[:page])
+   
+    @search = Check.ransack(params[:q])
+    @checks = @search.result.paginate(page: params[:page],  :per_page => 15)
+
  end
  
  

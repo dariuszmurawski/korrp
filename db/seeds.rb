@@ -951,7 +951,7 @@ Pkd.create!([
 Question.create!([
   {description: "Podmiot deklaruje jako jeden z głównych przedmiotów działalności działalność w tzw.branżach podwyższonego ryzyka określonych w KPD", strength: 7, cancelled: false},
   {description: "Pod adresem siedziby lub prowadzenia działalności zarejestrowanych jest więcej niż 10 podmiotów", strength: 3, cancelled: false},
-  {description: "Miejsce siedziby lub prowadzenia działalności pod adresem nieistniejącym, \"ryzykownym\" (np. wirtualne biura) lub nieadekwatnym w stosunku do rodzaju działalności ( np. hurtowa sprzedaż materiałów budowlanych w bloku mieszkalnym , itp) ", strength: 10, cancelled: false},
+  {description: "Miejsce siedziby lub prowadzenia działalności pod adresem nieistniejącym, 'ryzykownym' (np. wirtualne biura) lub nieadekwatnym w stosunku do rodzaju działalności ( np. hurtowa sprzedaż materiałów budowlanych w bloku mieszkalnym , itp) ", strength: 10, cancelled: false},
   {description: "Miejsce przechowywania dokumentów w miejscowości znacząco odległej niż siedziba lub miejsce prowadzenia działalności (dystans nie krótszy niż 100 km)", strength: 4, cancelled: false},
   {description: "Podatnik deklarujący rozpoczęcie działalności jest osobą w wieku poniżej 26 lat lub powyżej 69 lat (w przypadku spółek osobowych co najmniej 51% liczby wszystkich wspólników, w przypadku osób prawnych co najmniej co najmniej 51% liczby wszystkich członków zarządu)", strength: 3, cancelled: false},
   {description: "Odmowa nadania NIP w innym urzędzie (podmiotowi rejestrującemu się lub powiązanemu)", strength: 10, cancelled: false},

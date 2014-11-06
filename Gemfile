@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-#ruby-gemset=railstutorial_rails_4_0
+#ruby-gemset=korrp_rails_4_0
 
 gem 'rails', '4.0.8'
 #gem 'rails'
@@ -17,6 +17,8 @@ gem 'jquery-ui-rails','5.0.0'
 gem 'jquery-turbolinks','2.1.0'
 gem 'prawn', '1.3.0'
 gem 'prawn-table', '0.2.0'
+gem 'puma', '2.9.2'
+
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'
@@ -44,5 +46,5 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-#gem 'tzinfo-data'
-#gem 'tzinfo'
+gem 'tzinfo-data'
+gem 'tzinfo'

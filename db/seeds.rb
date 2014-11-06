@@ -965,6 +965,20 @@ Question.create!([
   {description: "Wysoki poziom ryzyka podmiotu powiązanego, określony na podstawie segmentacji ogólnej ", strength: 20, cancelled: false}
 ])
 
+Parameter.create!([
+  {
+    us_code: "0000", 
+    us_name: "Urząd Skarbowy w ...........", 
+    us_street: "przykładowe dane",
+    us_city: "przykładowe dane",
+    us_house: "000",
+    us_nip: "0000000000",
+    us_regon: "000000000",
+    us_www: "www.adres-us.pl",
+    us_tel: "000000000",
+    us_fax: "000000000"
+  }
+])
 
 
 

@@ -35,7 +35,8 @@
       <%= f.password_field :password_confirmation %> 
 
       <%= f.submit "Zapisz zmiany", class: "btn btn-large btn-primary" %>
-      <%= link_to "Anuluj zmiany", users_path, class: "btn btn-large btn-primary" %>
+      <%#= link_to "Anuluj zmiany", user_path(params[:id]), class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj zmiany", users_setpath_path, method: :post, class: "btn btn-large btn-primary" %></p>
     <% end %>
 
 

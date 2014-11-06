@@ -1,7 +1,8 @@
 Korrp::Application.routes.draw do
   
+  resources :parameters, only: [:edit, :show, :update]
   resources :checks, only: [:new,:create, :destroy, :index, :show]
-  resources :users
+  resources :users 
   resources :pkds, only: [:index, :autocomplete, :get_branch]
   resources :questions, only: [:new,:create, :destroy, :index, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
@@ -16,6 +17,7 @@ Korrp::Application.routes.draw do
   match '/autocomplete', to: 'pkds#autocomplete',     via: 'get'
   match '/get_branch', to: 'pkds#get_branch',     via: 'get'
   match '/get_levels', to: 'levels#get_levels',     via: 'get'
+  post 'users/setpath'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

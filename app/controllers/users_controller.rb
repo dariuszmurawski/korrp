@@ -9,25 +9,22 @@ class UsersController < ApplicationController
   end
   
   def show
+    store_location
     @user = User.find(params[:id])
   end
   
   def index
+    store_location
     @users = User.paginate(page: params[:page])
   end
  
- 
+
+  def setpath 
+    redirect_to(session[:return_to])
+    session.delete(:return_to)
+  end
   
-#  def create
-#    @user = User.new(user_params)
-#    if @user.save
-#      sign_in @user
-#      flash[:success] = "Witamy w Karcie Oceny Ryzyka Rejestracji Podmiotów"
-#      redirect_to @user
-#    else
-#      render 'new'
-#    end
-#  end
+  
   
   def create
     @user = User.new(user_params)

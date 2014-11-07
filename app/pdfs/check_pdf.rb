@@ -1,8 +1,9 @@
 class CheckPdf < Prawn::Document
   
-  def initialize(check)
-    super(top_margin: 20,bottom_margin: 10,page_size: 'A4',layout: 'portrait')
+  def initialize(check, parameter)
+    super(top_margin: 10,bottom_margin: 10,page_size: 'A4',layout: 'portrait')
     @check=check
+    @parameter=parameter
 
     font_families.update("dejavu"=>{:normal =>"app/assets/fonts/DejaVuSans.ttf"})
     font "dejavu"
@@ -10,11 +11,11 @@ class CheckPdf < Prawn::Document
 
     bounding_box [bounds.left, bounds.top], width: bounds.width, height: bounds.height - 15 do
   
- #   text "Analiza ryzyka rejestracji podmiotu"
+
 
       check_subject   
       check_answers 
-      if cursor<150 
+      if cursor<130 
         start_new_page
         check_summary
         check_accept
@@ -29,10 +30,22 @@ class CheckPdf < Prawn::Document
   
   
   def check_subject
-    font_size 16
-    text "Analiza ryzyka rejestracji podmiotu"
+    move_up 5
+    draw_text @parameter.us_city+",............................", :at => [bounds.right-100,cursor-15]
+    image "#{Rails.root}/app/assets/images/APlogo2.png", :width => 35
+
+    font_size 6
+    draw_text "Administracja", :at => [bounds.left+5,cursor]
+    move_down 5
+    draw_text "Podatkowa", :at => [bounds.left+5,cursor]
     font_size 8
-    move_down 10
+    move_down 8
+    text @parameter.us_name
+
+    font_size 14
+    text "Analiza ryzyka rejestracji podmiotu", :align => :center
+    font_size 8
+    move_down 5
     data = [ [ {content: "Dane podatnika", colspan: 2 } ],
             ["Imię i nazwisko:", @check.forename+" "+@check.name] , 
             ["Nazwa:", @check.org_name],
@@ -50,7 +63,7 @@ class CheckPdf < Prawn::Document
   end
   
   def check_answers
-    move_down 10
+    move_down 5
     
     answers_rows=[["Nazwa kryterium","Siła kryterium","TAK/NIE"]] +
       @check.answers.map do |ans|
@@ -65,7 +78,7 @@ class CheckPdf < Prawn::Document
   
   
   def check_summary
-    move_down 10
+    move_down 5
     
     data = [ [ {content: "Podsumowanie:", colspan: 4} ],
             ["Suma punktów: ", @check.score, "Wykonano przez:", @check.userlogin] , 
@@ -89,17 +102,17 @@ class CheckPdf < Prawn::Document
   def header_footer
     repeat :all do
     # footer
-      bounding_box [bounds.left, bounds.bottom + 50], :width  => bounds.width do
-        image "#{Rails.root}/app/assets/images/APlogo2.png", :width => 35
+      bounding_box [bounds.left, bounds.bottom + 15], :width  => bounds.width do
+ #       image "#{Rails.root}/app/assets/images/APlogo2.png", :width => 35
         stroke_horizontal_rule
         move_down(5)
         bounding_box [bounds.left, cursor], :width  => bounds.width-130 do
-          text "Urząd Skarbowy w ..... | tel.: ...... | fax: .......", :size => 6
-          text "e-mail ..... | NIP: ...... | REGON .......", :size => 6
+          text "ul. "+@parameter.us_street+" "+@parameter.us_house+", "+@parameter.us_postalcode+" "+@parameter.us_city+" | tel.: "+@parameter.us_tel+" | fax: "+@parameter.us_fax, :size => 6
+          text "e-mail:"+@parameter.us_email+" | NIP: "+@parameter.us_nip+" | REGON: "+@parameter.us_regon, :size => 6
         end
         move_up(10)
-        bounding_box [bounds.right-100, cursor], :width  => 120 do
-          text "www............", :size => 6
+        bounding_box [bounds.right-120, cursor], :width  => 120 do
+          text @parameter.us_www, :size => 6, :align => :right
         end
       end
     end

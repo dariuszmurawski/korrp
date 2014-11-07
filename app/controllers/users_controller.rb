@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
 
     def user_params
-      params.require(:user).permit(:login, :forename, :name, :email, :password,
+      params.require(:user).permit(:admin, :kiera, :login, :forename, :name, :email, :password,
                                    :password_confirmation)
     end
     
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
     end
     
     def user_params_no_login_with_admin
-      params.require(:user).permit(:admin,:forename, :name, :email, :password,
+      params.require(:user).permit(:admin,:kiera,:forename, :name, :email, :password,
                                    :password_confirmation)
     end
    

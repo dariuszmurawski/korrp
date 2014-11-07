@@ -27,6 +27,7 @@ module SessionsHelper
                                   User.digest(User.new_remember_token))
     cookies.delete(:remember_token)
     self.current_user = nil
+    session.delete(:return_to)
   end
 
   
@@ -52,6 +53,21 @@ module SessionsHelper
   
   def admin_user 
      unless current_user.admin?
+        flash[:notice] = "Brak uprawnień"
+        redirect_to(root_url) 
+      end
+  end
+  
+  def kiera_user 
+     unless current_user.kiera?
+        flash[:notice] = "Brak uprawnień"
+        redirect_to(root_url) 
+      end
+  end
+  
+  
+  def admin_kiera_user 
+     unless (current_user.kiera? || current_user.admin?)
         flash[:notice] = "Brak uprawnień"
         redirect_to(root_url) 
       end

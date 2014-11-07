@@ -70,7 +70,7 @@ $dropdownLinkColor:             $USbluelightdark !default;
 
 
 @import "bootstrap";
-
+/*@import "bootstrap-sprockets";*/
 
 
 
@@ -245,7 +245,9 @@ p {
 
 .user-color {
   color: $orangeMediumLight;
-  
+}
+.us-color {
+  color: $orangeMediumLight;
 }
 /* footer */
 

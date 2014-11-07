@@ -1,6 +1,6 @@
 class ChecksController < ApplicationController
   before_action :signed_in_user, only: [:destroy, :index, :create, :new, :show]
-  before_action :admin_user,     only: [:destroy]
+  before_action :admin_kiera_user,     only: [:destroy]
 #  include ChecksHelper
 
   
@@ -19,12 +19,13 @@ class ChecksController < ApplicationController
 
 
  def show
+    @parameter = Parameter.first
     @check = Check.find(params[:id])
     @answers = @check.answers
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = CheckPdf.new(@check)
+        pdf = CheckPdf.new(@check,@parameter)
         send_data pdf.render, filename: "Analiza_#{@check.nip}.pdf",
                                 type: "application/pdf",
                                 disposition: "inline"

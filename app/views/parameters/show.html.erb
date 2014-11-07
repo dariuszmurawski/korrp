@@ -1,21 +1,83 @@
-<% provide(:title, "Informacje o urzędzie") %>
-<h1>Informacje o urzędzie</h1>
+<% provide(:title, "Informacje o Urzędzie") %>
+<h1>Informacje o Urzędzie</h1>
 
 <div class="row">
-  <div class="span6">
+  <div class="span4">
 	<b><i>Kod Urzędu Skarbowego:</i></b>
   </div>
-  <div class="span6">
+  <div class="span8">
 	<%= @parameter.us_code %>
   </div>
 </div>  
 <div class="row">
-  <div class="span6">
+  <div class="span4">
 	<b><i>Nazwa Urzędu Skarbowego:</i></b>
   </div>
-  <div class="span6">
+  <div class="span8">
 	<%= @parameter.us_name %>
   </div>
 </div>  
+<div class="row">
+  <div class="span4">
+	<b><i>Adres:</i></b>
+  </div>
+  <div class="span8">
+	<%= @parameter.us_postalcode%> <%= @parameter.us_city %> ul. <%= @parameter.us_street %> <%= @parameter.us_house %>
+  </div>
+</div> 
+<div class="row">
+  <div class="span4">
+	<b><i>NIP:</i></b>
+  </div>
+  <div class="span8">
+	<%= @parameter.us_nip %>
+  </div>
+</div> 
+<div class="row">
+  <div class="span4">
+	<b><i>REGON:</i></b>
+  </div>
+  <div class="span8">
+	<%= @parameter.us_regon %>
+  </div>
+</div> 
+<div class="row">
+  <div class="span4">
+	<b><i>Adres strony www:</i></b>
+  </div>
+  <div class="span8">
+	<%= @parameter.us_www %>
+  </div>
+</div> 
+<div class="row">
+  <div class="span4">
+	<b><i>Adres e-mail:</i></b>
+  </div>
+  <div class="span8">
+	<%= @parameter.us_email %>
+  </div>
+</div> 
+<div class="row">
+  <div class="span4">
+	<b><i>Numer telefonu:</i></b>
+  </div>
+  <div class="span8">
+	<%= @parameter.us_tel %>
+  </div>
+</div> 
+<div class="row">
+  <div class="span4">
+	<b><i>Numer faxu:</i></b>
+  </div>
+  <div class="span8">
+	<%= @parameter.us_fax %>
+  </div>
+</div> 
+<% if current_user.admin? %>
+<p style="padding-top:20px"><%= link_to "Edytuj dane", edit_parameter_path(@parameter), class: "btn btn-large btn-primary" %></p>
+<% end %>
+
+
+
 
 

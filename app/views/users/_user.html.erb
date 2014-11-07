@@ -20,6 +20,13 @@
   	<%end%>
   </td>	
   <td>
+  	<%if user.kiera%>
+  		TAK
+  	<%else%>
+  		NIE
+  	<%end%>
+  </td>	
+  <td>
 	<%= link_to "edytuj", edit_user_path(user) %>
  <!-- 	<%= link_to user.login, user %> -->
   </td>

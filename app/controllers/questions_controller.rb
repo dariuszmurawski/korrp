@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
     before_action :signed_in_user, only: [:destroy, :index, :create, :new, :edit, :update]
-    before_action :admin_user,     only: [:destroy, :index, :create, :new, :edit, :update]
+    before_action :admin_kiera_user,     only: [:destroy, :index, :create, :new, :edit, :update]
 
   
   def index

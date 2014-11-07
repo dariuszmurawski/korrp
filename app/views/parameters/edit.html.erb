@@ -1,0 +1,76 @@
+<% provide(:title, "Edycja informacji o Urzędzie") %>
+<h1>Edycja informacji o Urzędzie</h1>
+
+
+ <%= form_for(@parameter) do |f| %>
+      
+<div class="row">
+      <%= render 'shared/error_messages', object: f.object %>	
+  <div class="span6">
+	  <%= f.label :us_code,"Kod Urzędu Skarbowego" %>
+      <%= f.text_field :us_code %>
+  </div>	
+  <div class="span6">
+	  <%= f.label :us_name,"Nazwa Urzędu Skarbowego" %>
+      <%= f.text_field :us_name %>
+  </div>	
+</div>    
+<div class="row">   
+  <div class="span6">  
+      <%= f.label :us_city,"Adres - miasto" %>
+      <%= f.text_field :us_city %>
+  </div>	
+  <div class="span6">   
+      <%= f.label :us_postalcode,"Adres - kod pocztowy" %>
+      <%= f.text_field :us_postalcode %>
+  </div>	
+</div>
+<div class="row">   
+  <div class="span6">   
+      <%= f.label :us_street,"Adres - ulica" %>
+      <%= f.text_field :us_street %>
+  </div>	
+  <div class="span6">  
+      <%= f.label :us_house,"Adres - numer budynku" %>
+      <%= f.text_field :us_house %>
+  </div>	
+</div>
+<div class="row"> 
+  <div class="span6"> 
+      <%= f.label :us_nip,"Numer NIP" %>
+      <%= f.text_field :us_nip %>
+  </div>	
+  <div class="span6">  
+      <%= f.label :us_regon,"Numer REGON" %>
+      <%= f.text_field :us_regon %>
+  </div>	
+</div>
+<div class="row"> 
+  <div class="span6">  
+      <%= f.label :us_www,"Adres strony www" %>
+      <%= f.text_field :us_www %>
+  </div>
+  <div class="span6">  
+      <%= f.label :us_email,"Adres e-mail" %>
+      <%= f.text_field :us_email %>
+  </div>
+</div>	
+<div class="row"> 
+  <div class="span6">  
+      <%= f.label :us_tel,"Numer telefonu" %>
+      <%= f.text_field :us_tel %>
+  </div>	
+  <div class="span6">  
+      <%= f.label :us_fax,"Numer faxu" %>
+      <%= f.text_field :us_fax %>
+   </div>	
+</div>
+<div class="row"> 
+  <div class="span6"> 
+      
+      <%= f.submit "Zapisz zmiany", class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj zmiany", parameter_path(params[:id]), class: "btn btn-large btn-primary" %>
+
+  </div>
+</div>
+<% end %>

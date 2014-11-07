@@ -32,7 +32,7 @@
   	<%= link_to "podgląd", check %>
   </td>
   <td>
-  	<% if current_user.admin? %>
+  	<% if current_user.admin? ||  current_user.kiera? %>
     <%= link_to "kasuj", check, method: :delete, data: { confirm: "Na pewno chcesz skasować?" } %>
     <% end %>
   </td>	

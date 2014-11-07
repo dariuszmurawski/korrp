@@ -18,13 +18,17 @@
   </td>	
 -->  
   <td>
-	<%= link_to "edytuj", edit_question_path(question) %> 
+  	<% if current_user.admin? ||  current_user.kiera? %>
+		<%= link_to "edytuj", edit_question_path(question) %> 
+	<% end %>
   </td>
   
    <td>
-      <%= link_to "kasuj", question, method: :delete,
-                                  data: { confirm: "Na pewno chcesz skasować?" } %>	
+   	<% if current_user.admin? ||  current_user.kiera? %>
+      <%= link_to "kasuj", question, method: :delete, data: { confirm: "Na pewno chcesz skasować?" } %>	
+    <% end %>
   </td>	
   
 
 </tr>
+

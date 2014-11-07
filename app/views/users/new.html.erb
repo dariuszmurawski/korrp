@@ -1,36 +1,61 @@
 <% provide(:title, 'Rejestracja') %>
 <h1>Rejestracja Użytkownika</h1>
 
+<%= form_for(@user) do |f| %>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
 	  <%= f.label :login,"login" %>
       <%= f.text_field :login %>
+  </div>
+</div> 
 
+<div class="row">
+  <div class="span3 offset3">
 	  <%= f.label :forename,"imię" %>
       <%= f.text_field :forename %>
-
+  </div>    
+  <div class="span3 ">
       <%= f.label :name,"nazwisko" %>
       <%= f.text_field :name %>
-
-      <%= f.label :email,"adres e-mial" %>
-      <%= f.text_field :email %>
+  </div>
+</div>       
       
+<div class="row">
+  <div class="span6 offset3">
+      <%= f.label :email ,"adres e-mial"%>
+      <%= f.text_field :email %>
+  </div>
+</div>      
+      
+<div class="row">
+  <div class="span3 offset3">      
       <% if current_user.admin? %>
-      		<%= f.label :admin ,"uprawnienia kierownika"%>
+      		<%= f.label :admin ,"uprawnienia administratora"%>
       		<%= f.select :admin, [['TAK', true], ['NIE', false]] %>
       <%end%>
-
-      <%= f.label :password,"hasło" %>
+   </div>
+   <div class="span3">      
+      <% if current_user.admin? %>
+      		<%= f.label :kiera ,"uprawnienia kierownika"%>
+      		<%= f.select :kiera, [['TAK', true], ['NIE', false]] %>
+      <%end%>
+   </div>
+</div>     
+ 
+<div class="row">
+  <div class="span6 offset3">
+      <%= f.label :password,"hasło"  %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Potwierdzenie hasła" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation %> 
 
-      <%= f.submit "Utwórz konto", class: "btn btn-large btn-primary" %>
-      <%= link_to "Anuluj", users_path, class: "btn btn-large btn-primary" %>
-    <% end %>
+      <%= f.submit "Zapisz zmiany", class: "btn btn-large btn-primary" %>
+      <%#= link_to "Anuluj zmiany", user_path(params[:id]), class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj zmiany", users_setpath_path, method: :post, class: "btn btn-large btn-primary" %></p>
+    
+
   </div>
 </div>
+<% end %>

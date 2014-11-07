@@ -10,8 +10,10 @@
   </td>
    
   <td>
-  	
-	<%= link_to "edytuj", edit_level_path(level) %> 
+  	<% if current_user.admin? ||  current_user.kiera? %>
+		<%= link_to "edytuj", edit_level_path(level) %> 
+	<% end %>
   </td>
  
 </tr>
+

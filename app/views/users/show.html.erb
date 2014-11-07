@@ -1,4 +1,5 @@
 <% provide(:title, @user.name) %>
+<h1>Informacje o Użytkowniku</h1>
 
 <div class="row">
   <div class="span6">
@@ -34,13 +35,21 @@
 </div> 
 <div class="row">
   <div class="span6">
-	<b><i>Uprawnienia kierownika?</i></b> 
+	<b><i>Uprawnienia administratora?</i></b> 
   </div>
   <div class="span6">
 	<% if @user.admin? %> TAK <%else%> NIE <%end%>
   </div>
 </div> 
-<p style="padding-top:20px"><%= link_to "Edytuj dane", edit_user_path(current_user), class: "btn btn-primary" %></p>
+<div class="row">
+  <div class="span6">
+	<b><i>Uprawnienia kierownika?</i></b> 
+  </div>
+  <div class="span6">
+	<% if @user.kiera? %> TAK <%else%> NIE <%end%>
+  </div>
+</div> 
+<p style="padding-top:20px"><%= link_to "Edytuj dane", edit_user_path(current_user), class: "btn btn-large btn-primary" %></p>
 
 
 

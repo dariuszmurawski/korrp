@@ -58,6 +58,26 @@ en:
   "Name is too long (maximum is 30 characters)": "Nazwisko jest za długe (max 30 znaków)"
   "Forename is too long (maximum is 15 characters)": "Imię jest za długie (max 15 znaków)"
   "Org Name Is Too Long (Maximum Is 50 Characters)": "Nazwa organizacji jest za długa (max 50 znaków)"
+  "Us code is invalid": "Format Kodu Urzędu jest niepoprawny - powinny być 4 cyfry"
+  "Us code can't be blank": "Kod Urzedu nie może być pusty"
+  "Us regon is invalid": "Format numeru REGON jest błędny - REGON powinien się składać z 9 cyfr"
+  "Us regon can't be blank": "Numer REGON nie może być pusty"
+  "Us nip can't be blank": "Numer NIP nie może być pusty"
+  "Us nip is invalid": "Format numeru NIP jest niepoprawny - NIP powinien się składać z 10 cyfr"
+  "Us name can't be blank": "Nazwa Urzędu Skarbowego nie może być pusta"
+  "Us street can't be blank": "Nazwa ulicy nie może być pusta" 
+  "Us city can't be blank": "Nazwa miasta nie może być pusta" 
+  "Us house can't be blank": "Numer budynku Urzędu nie może być pusty"
+  "Us www can't be blank": "Adres strony www Urzedu nie może być pusty"
+  "Us tel can't be blank": "Numer telefonu Urzędu nie może być pusty"
+  "Us fax can't be blank": "Numer faxu Urzędu nie może być pusty"
+  "Us email can't be blank": "Adres e-mail nie może być pusty"  
+  "Us email is invalid": "Format adresu e-mail jest niepoprawny"
+  "Us postalcode can't be blank": "Kod pocztowy nie może być pusty"
+  "Us postalcode is invalid": "Format kodu pocztowego jest niepoprawny"
+
+
+
 
 
 

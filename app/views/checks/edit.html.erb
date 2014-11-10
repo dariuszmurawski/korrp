@@ -1,0 +1,150 @@
+<% provide(:title, 'Analiza') %>
+<h1>Dane podatnika</h1>
+
+<%= form_for(@check, id: "check_form") do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+<div class="row">
+  <div class="span4">
+	  <%= f.label :nip,"numer NIP" %>
+      <%= f.text_field :nip %>
+  </div>
+  
+  <div class="span4">
+	  <%= f.label :pesel,"numer PESEL" %>
+      <%= f.text_field :pesel %>
+  </div>
+  
+  <div class="span4">
+	  <%= f.label :regon,"numer REGON" %>
+      <%= f.text_field :regon %>
+  </div>
+</div>  
+
+<div class="row">
+  <div class="span4">          
+	  <%= f.label :forename,"imię" %>
+      <%= f.text_field :forename %>     
+  </div>
+  
+  <div class="span4">
+      <%= f.label :name,"nazwisko" %>
+      <%= f.text_field :name %>
+  </div>	
+</div>
+
+<div class="row">
+  <div class="span12">
+	  <%= f.label :org_name,"nazwa organizacji" %>
+      <%= f.text_field :org_name %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span4">
+	  <%= f.label :city,"miasto" %>
+      <%= f.text_field :city %>
+  </div>    
+  
+  <div class="span4">        
+      <%= f.label :postal_code,"kod pocztowy" %>
+      <%= f.text_field :postal_code %>
+  </div>    
+</div>  
+      
+<div class="row">
+  <div class="span4">           
+      <%= f.label :street,"ulica" %>
+      <%= f.text_field :street %>
+  </div>
+  <div class="span4">   
+      <%= f.label :home_no,"numer domu" %>
+      <%= f.text_field :home_no %>
+  </div>
+  <div class="span4"> 
+      <%= f.label :flat_no,"numer mieszkania" %>
+      <%= f.text_field :flat_no %>
+  </div>
+</div>  
+
+<div class="row">
+  <div class="span8">
+
+      <%= f.label :pkdfull,"kod oraz opis PKD" %>
+      <%= f.text_field :pkdfull, data: {autocomplete_source: autocomplete_path}, placeholder: 'wybierz kod PKD...'%>  
+  </div>
+
+  
+  
+  <div class="span4">
+	  <%= f.label :branch,"branża" %>
+	  <%= f.text_field :branch, readonly: true , placeholder:'automatycznie po wybraniu PKD ze słownika' %>  
+ 
+  </div>
+</div>
+
+<h1>Kryteria - rodzaje analizowanej informacji </h1>
+
+<div class="row">
+  <div class="span12">
+	<table class="table">
+		<tr class="new_check_ans_header">
+			<th>
+				Opis
+			</th>
+			<th style="width: 10%">
+				Siła 
+			</th>
+			<th style="width: 10%">
+				Odpowiedź
+			</th>				
+		</tr>
+		
+		<%= f.fields_for :answers do |builder| %>
+		<tr>
+			<td>
+     		    <%= builder.hidden_field :q_description %>
+     		    <%= builder.object.q_description%>
+			</td>
+			<td>
+     		    <%= builder.hidden_field :q_strength %>	
+     		    <b class="strength_class"><%= builder.object.q_strength%></b>
+     		    <b class="strength_class_null">0</b>
+			</td>
+			<td>				
+				<% builder.label :q_answer,"Kryterium:" %>
+     		    <%= builder.select :q_answer, [['TAK', true], ['NIE', false]],{} ,{class: 'answer_class'} %>
+			</td>	
+	 		 	
+		</tr>
+		<% end %>
+
+	</table>
+  </div>
+</div>
+
+<div class="row">
+	<div class="span3">
+		<%= f.label :score,"wartość punktowa ryzyka" %>
+    </div>
+    <div class="span2">
+		<%= f.text_field :score , readonly: true%>
+    </div>
+</div>
+<div class="row">
+	<div class="span3">
+		<%= f.label :level,"poziom ryzyka" %>
+    </div>
+    <div class="span2">
+		<%= f.text_field :level , readonly: true%>
+    </div>
+</div>
+
+<div class="row">
+	<div class="span8">
+	  <%= f.hidden_field :userlogin %>	
+      <%= f.submit "Zatwierdź zmiany", class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj", check_path(@check), class: "btn btn-large btn-primary" %>
+    </div>
+  </div>
+ 
+<% end %>

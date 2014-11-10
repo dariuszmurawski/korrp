@@ -31,7 +31,11 @@ class CheckPdf < Prawn::Document
   
   def check_subject
     move_up 5
-    draw_text @parameter.us_city+",............................", :at => [bounds.right-100,cursor-15]
+ #   draw_text @parameter.us_city+",............................", :at => [bounds.right-400,cursor-15],:align => :right
+    bounding_box [[bounds.right-400,cursor-15]], :width  => 400 do
+      text @parameter.us_city+",............................", :align => :right
+    end
+    move_up 20
     image "#{Rails.root}/app/assets/images/APlogo2.png", :width => 35
 
     font_size 6
@@ -46,16 +50,29 @@ class CheckPdf < Prawn::Document
     text "Analiza ryzyka rejestracji podmiotu", :align => :center
     font_size 8
     move_down 5
-    data = [ [ {content: "Dane podatnika", colspan: 2 } ],
+    if @check.flat_no!=""
+      data = [ [ {content: "Dane podatnika", colspan: 2 } ],
             ["Imię i nazwisko:", @check.forename+" "+@check.name] , 
             ["Nazwa:", @check.org_name],
-            ["Adres:", @check.postal_code+' '+@check.city+' '+@check.street+' '+@check.home_no+' '+@check.flat_no],
+            ["Adres:", @check.postal_code+' '+@check.city+' '+@check.street+' '+@check.home_no+' m. '+@check.flat_no],
             ["NIP:",@check.nip],
             ["PESEL:",@check.pesel],
             ["REGON:",@check.regon],
             ["Kod i opis PKD:",@check.pkdfull],
             ["Branża:",@check.branch]
           ]
+    else
+      data = [ [ {content: "Dane podatnika", colspan: 2 } ],
+            ["Imię i nazwisko:", @check.forename+" "+@check.name] , 
+            ["Nazwa:", @check.org_name],
+            ["Adres:", @check.postal_code+' '+@check.city+' '+@check.street+' '+@check.home_no],
+            ["NIP:",@check.nip],
+            ["PESEL:",@check.pesel],
+            ["REGON:",@check.regon],
+            ["Kod i opis PKD:",@check.pkdfull],
+            ["Branża:",@check.branch]
+          ]
+    end      
     table data,  column_widths: [100, 260] do
       cells.row(0).background_color = "dddddd"
       cells.column(0).background_color = "dddddd"

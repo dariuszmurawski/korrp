@@ -15,7 +15,11 @@
 		</tr>
 		<tr>
 			<td class="table_bg"><b><i>Adres:</i></b></td>
-			<td><%= @check.postal_code %> <%= @check.city %> <%= @check.street %> <%= @check.home_no %> <%= @check.flat_no %></td>
+			<% if @check.flat_no!="" %>
+			<td><%= @check.postal_code %> <%= @check.city %> <%= @check.street %> <%= @check.home_no %> m. <%= @check.flat_no %></td>
+			<%else%>
+				<td><%= @check.postal_code %> <%= @check.city %> <%= @check.street %> <%= @check.home_no %></td>
+			<%end%>
 		</tr>
 		<tr>
 			<td class="table_bg"><b><i>NIP:</i></b></td>
@@ -100,5 +104,19 @@
   <div class="span8">
   		<p><%= link_to "Analiza do pobrania/wydruku w formacie PDF", check_path(@check, format: "pdf"), target: "_blank"%></p>
    </div>  
-</div>   	
+</div>  
+
+<% if current_user.admin? || current_user.kiera? %>
+  			<div class="row">
+ 				 <div class="span8">
+  					<p><%= link_to "Edycja analizy", edit_check_path(@check),class: "btn btn-large btn-primary" %></p>
+   				</div>  
+			</div> 
+<% end %>
+
+ 	
   	
+  	
+  	
+  	
+

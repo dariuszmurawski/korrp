@@ -1,6 +1,6 @@
 class ChecksController < ApplicationController
-  before_action :signed_in_user, only: [:destroy, :index, :create, :new, :show]
-  before_action :admin_kiera_user,     only: [:destroy]
+  before_action :signed_in_user,       only: [:destroy, :index, :create, :new, :show]
+  before_action :admin_kiera_user,     only: [:destroy,:edit,:update]
 #  include ChecksHelper
 
   
@@ -9,6 +9,11 @@ class ChecksController < ApplicationController
     get_questions(@check)     
   end
  
+ 
+  def edit
+    @check = Check.find(params[:id]) 
+#    get_questions(@check)     
+  end
  
  def get_questions(check) 
       @questions=Question.all      
@@ -37,8 +42,13 @@ class ChecksController < ApplicationController
  def index
    
     @search = Check.ransack(params[:q])
+    @checksall = Check.all
     @checks = @search.result.paginate(page: params[:page],  :per_page => 15)
-
+    respond_to do |format|
+      format.html
+      format.csv {send_data @checksall.to_csv(col_sep: "*", row_sep: "\r\n")}
+      format.xls {}#{send_data @checksall.to_csv(col_sep: "\t", row_sep: "\r\n")}
+    end
  end
  
  
@@ -53,6 +63,21 @@ class ChecksController < ApplicationController
     end
  end
   
+  
+ def update
+    @check = Check.find(params[:id]) 
+    if @check.update_attributes(check_params)
+      flash[:success] = "Zmodyfikowano analizę"
+      redirect_to check_path(@check)
+    else
+      render action: 'edit'
+    end
+ end
+  
+  
+
+  
+  
  def destroy
     Check.find(params[:id]).destroy
     flash[:success] = "Analiza skasowana."
@@ -66,7 +91,7 @@ class ChecksController < ApplicationController
    private
 
     def check_params
-      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkdfull, :branch, :score ,:level, :userlogin, answers_attributes: [:q_description, :q_strength, :q_answer])
+      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkdfull, :branch, :score ,:level, :userlogin, answers_attributes: [:id, :q_description, :q_strength, :q_answer])
     end
   
 end

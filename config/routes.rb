@@ -1,7 +1,7 @@
 Korrp::Application.routes.draw do
   
   resources :parameters, only: [:edit, :show, :update]
-  resources :checks, only: [:new,:create, :destroy, :index, :show]
+  resources :checks, only: [:new,:create, :destroy, :index, :show, :edit, :update]
   resources :users 
   resources :pkds, only: [:index, :autocomplete, :get_branch]
   resources :questions, only: [:new,:create, :destroy, :index, :edit, :update]

@@ -1,6 +1,15 @@
 <% provide(:title, 'Wykonane analizy') %>
 <h1>Wykonane Analizy</h1>
 
+<p>
+	<b>Lista analiz do pobrania:</b>
+	<%= link_to "CSV ", checks_path(format: "csv") %>
+	|
+	<%= link_to " Excel", checks_path(format: "xls") %>
+</p>
+
+
+
 <%= will_paginate %>
 	<table class="table table-striped check">
 		<tr>

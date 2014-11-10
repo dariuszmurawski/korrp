@@ -25,14 +25,33 @@ class Check < ActiveRecord::Base
   default_scope -> { order('created_at') }
   
   
- # def pkdfull
- #   try(:pkd_full)
- # end
+  def self.to_csv(options ={})
+    CSV.generate(options) do |csv|
+      @headers=["Imię i Nazwisko","Nazwa orgenizacji","Adres", "PESEL", "REGON", "NIP", "Kod PKD", "Branża",  "Ryzyko", "Pkt. ryzyka"]
+      csv << @headers
+      all.each do |check|
+        if check.flat_no !=  ""
+           @subject_data=[check.name+" "+check.forename, check.org_name, check.postal_code+" "+check.city+" "+check.street+" "+check.home_no+" m. "+check.flat_no, check.pesel, check.regon, check.nip, 
+              check.pkdfull, check.branch,check.level, check.score]
+        else
+           @subject_data=[check.name+" "+check.forename, check.org_name, check.postal_code+" "+check.city+" "+check.street+" "+check.home_no, check.pesel, check.regon, check.nip, 
+              check.pkdfull, check.branch,check.level, check.score]
+        end
+        @answers_data=["Odpowiedzi:"]
+        check.answers.each do |answer|
+          tmp=nil
+          if answer.q_answer==true
+            tmp="TAK"
+          else
+            tmp="NIE"
+          end
+          @answers_data=@answers_data+[answer.q_description,answer.q_strength,tmp]
+        end
+        csv << @subject_data+@answers_data
+      end   
+    end   
+  end
   
-#  def pkdfull=(description)
-            #   self.pkdfull = Pkd.find_by_description(description).description if description.present?
-#    pkdfull = description if description.present?
- # end
-  
+
   
 end

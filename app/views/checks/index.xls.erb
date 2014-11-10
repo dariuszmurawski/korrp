@@ -1,0 +1,55 @@
+/app/views/products/index.xls.erb 
+
+
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      		<Row>
+  	  			<Cell><Data ss:Type="String">Imię i Nazwisko</Data></Cell>
+  	`			<Cell><Data ss:Type="String">Nazwa orgenizacji</Data></Cell>
+ 	   			<Cell><Data ss:Type="String">Adres</Data></Cell>
+   	 			<Cell><Data ss:Type="String">PESEL</Data></Cell>
+    			<Cell><Data ss:Type="String">REGON</Data></Cell>
+    			<Cell><Data ss:Type="String">NIP</Data></Cell>
+    			<Cell><Data ss:Type="String">Kod PKD</Data></Cell>
+    			<Cell><Data ss:Type="String">Branża</Data></Cell>
+    			<Cell><Data ss:Type="String">Ryzyko</Data></Cell>
+    			<Cell><Data ss:Type="String">Pkt. ryzyka</Data></Cell>
+ 			 </Row>
+  		<% @checksall.each do |check| %>
+     		<Row>
+      			<Cell><Data ss:Type="String"><%= check.name+" "+check.forename %></Data></Cell>
+      			<Cell><Data ss:Type="String"><%= check.org_name %></Data></Cell>
+      			<% if check.flat_no=="" %>
+       				<Cell><Data ss:Type="String"><%= check.postal_code+" "+check.city+" "+check.street+" "+check.home_no %></Data></Cell>
+      			<%else%>
+        			<Cell><Data ss:Type="String"><%= check.postal_code+" "+check.city+" "+check.street+" "+check.home_no+" m. "+check.flat_no %></Data></Cell>
+      			<%end%>
+      			<Cell><Data ss:Type="String"><%= check.pesel %></Data></Cell>
+      			<Cell><Data ss:Type="String"><%= check.regon %></Data></Cell>
+      			<Cell><Data ss:Type="String"><%= check.nip %></Data></Cell>
+      			<Cell><Data ss:Type="String"><%= check.pkdfull %></Data></Cell>
+      			<Cell><Data ss:Type="String"><%= check.branch %></Data></Cell>
+      			<Cell><Data ss:Type="String"><%= check.level %></Data></Cell>
+      			<Cell><Data ss:Type="String"><%= check.score %></Data></Cell>
+      			<Cell><Data ss:Type="String">Odpowiedzi:</Data></Cell>
+      			<% check.answers.each do |answer| %>
+        			<Cell><Data ss:Type="String"><%= answer.q_description %></Data></Cell>
+        			<Cell><Data ss:Type="String"><%= answer.q_strength %></Data></Cell>
+        			<% if answer.q_answer==true %>
+          				<Cell><Data ss:Type="String">TAK</Data></Cell>
+        			<%else%>
+          				<Cell><Data ss:Type="String">NIE</Data></Cell>
+        			<%end%>
+      			<%end%>
+			</Row>
+  		<%end%>
+     
+    </Table>
+  </Worksheet>
+</Workbook>

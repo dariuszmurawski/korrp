@@ -1,0 +1,2 @@
+@echo on
+gem install rails -N & bundle config build.puma --with-opt-dir=c:\ruby200\sll & bundle install & bundle exec rake db:create rails_env=production & bundle exec rake db:migrate rails_env=production & bundle exec rake db:seed rails_env=production & bundle exec rake assets:precompile rails_env=production & pause

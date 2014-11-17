@@ -1,0 +1,1 @@
+rails s puma -e production

@@ -976,11 +976,27 @@ Parameter.create!([
     us_regon: "000000000",
     us_www: "www.adres-us.pl",
     us_tel: "000000000",
-    us_fax: "000000000"
+    us_fax: "000000000",
+    us_postalcode: "00-000",
+    us_email: "email@email.pl"
+  }
+])
+
+User.create!([
+  {
+    name: "KIERA1",
+    forename: "KIERA1",
+    login: "KIERA1",
+    email: "kiera1@kiera1.pl",
+    admin: true,
+    kiera: true,
+    password: "test1234",
+    password_confirmation: "test1234"
   }
 ])
 
 
+               
 
 
 

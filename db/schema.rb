@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107100506) do
+ActiveRecord::Schema.define(version: 20141117101237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,13 +38,14 @@ ActiveRecord::Schema.define(version: 20141107100506) do
     t.string   "regon"
     t.string   "nip"
     t.string   "branch"
-    t.boolean  "cancelled",   default: false
+    t.boolean  "cancelled",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "score"
     t.string   "level"
     t.string   "pkdfull"
     t.string   "userlogin"
+    t.string   "userloginedit"
   end
 
   create_table "levels", force: true do |t|

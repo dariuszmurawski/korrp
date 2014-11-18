@@ -65,7 +65,7 @@
   <div class="span12">
   	<table class="table-bordered table table-condensed">
   		<tr class="table_bg">
-  			<th colspan="4">
+  			<th colspan="6">
   				Podsumowanie:
   			</th>
   		</tr>
@@ -82,6 +82,12 @@
   			<td>
   				<%= @check.userlogin%>
   			</td>
+  			<td>
+  				Zmodyfikowano przez:
+  			</td>
+  			<td>
+  				<%= @check.userloginedit%>
+  			</td>
   		</tr>
   		<tr>
   			<td>
@@ -95,6 +101,12 @@
   			</td>
   			<td>
   				<%= @check.created_at.strftime('%F %H:%M') %>
+  			</td>
+  			<td>
+  				Zmodyfikowano dnia:
+  			</td>
+  			<td>
+  				<%= @check.updated_at.strftime('%F %H:%M') %>
   			</td>
   		</tr>
   	</table>

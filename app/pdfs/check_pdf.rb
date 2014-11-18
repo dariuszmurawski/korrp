@@ -96,14 +96,15 @@ class CheckPdf < Prawn::Document
   
   def check_summary
     move_down 5
-    
-    data = [ [ {content: "Podsumowanie:", colspan: 4} ],
-            ["Suma punktów: ", @check.score, "Wykonano przez:", @check.userlogin] , 
-            ["Poziom ryzyka:", @check.level,"Wykonano dnia:", @check.created_at.strftime('%F %H:%M') ]
+    font_size 6
+    data = [ [ {content: "Podsumowanie:", colspan: 6} ],
+            ["Suma punktów: ", @check.score, "Wykonano przez:", @check.userlogin,"Zmodyfikowano przez:", @check.userloginedit] , 
+            ["Poziom ryzyka:", @check.level,"Wykonano dnia:", @check.created_at.strftime('%F %H:%M'), "Zmodyfikowano dnia:", @check.updated_at.strftime('%F %H:%M') ]
          ]
-    table data,  column_widths: [80, 50,80,150] do
+    table data,  column_widths: [58, 33,62,140,82,140] do
       cells.row(0).background_color = "dddddd"
     end
+    font_size 8
   end
   
   

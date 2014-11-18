@@ -65,7 +65,9 @@ class ChecksController < ApplicationController
   
   
  def update
+   
     @check = Check.find(params[:id]) 
+    @check.userloginedit=@current_user.name+' '+@current_user.forename
     if @check.update_attributes(check_params)
       flash[:success] = "Zmodyfikowano analizę"
       redirect_to check_path(@check)

@@ -123,6 +123,17 @@
 </div>
 
 <div class="row">
+	<div class="span10 reset_info">
+		<p><i><b>* </b>Obecnie widoczne kryteria ryzyka wygenerowane zostały na podstawie danych słownikowych aktualnych na 
+			dzień tworzenia analizy. By uzyskać kryteria jakie aktualnie znajdują sie w słowniku wciśnij 
+			<B>"Zresetuj kryteria"</B>. <b>UWAGA - wyzerowane zostaną dotychczasowe wybory w poszczególnych kryteriach.</b></i></p>
+	</div>
+	<div class="span2">
+		<%= link_to "Zresetuj kryteria", {controller: 'checks', action: 'reset', id: @check.id},method: :post,confirm: 'Na pewno chcesz zresetować kryteria?', class: "btn btn-primary" %>
+	</div>	
+</div>
+
+<div class="row">
 	<div class="span3">
 		<%= f.label :score,"wartość punktowa ryzyka" %>
     </div>

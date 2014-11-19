@@ -51,6 +51,14 @@ class ChecksController < ApplicationController
     end
  end
  
+  def reset
+    @check = Check.find(params[:id]) 
+    @check.answers.destroy_all 
+    get_questions(@check)
+    #redirect_to edit_check_path(@check)   
+    render action: 'edit'
+  end
+ 
  
  def create
   #TESTOWO

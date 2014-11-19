@@ -1,7 +1,7 @@
 Korrp::Application.routes.draw do
   
   resources :parameters, only: [:edit, :show, :update]
-  resources :checks, only: [:new,:create, :destroy, :index, :show, :edit, :update]
+  resources :checks, only: [:new,:create, :destroy, :index, :show, :edit, :update, :reset]
   resources :users 
   resources :pkds, only: [:index, :autocomplete, :get_branch]
   resources :questions, only: [:new,:create, :destroy, :index, :edit, :update]
@@ -17,6 +17,7 @@ Korrp::Application.routes.draw do
   match '/autocomplete', to: 'pkds#autocomplete',     via: 'get'
   match '/get_branch', to: 'pkds#get_branch',     via: 'get'
   match '/get_levels', to: 'levels#get_levels',     via: 'get'
+  post 'checks/reset'
   post 'users/setpath'
 
 

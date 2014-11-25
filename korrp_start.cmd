@@ -1,1 +1,1 @@
-rails s puma -e production
+rails s puma -e production -p 3000

@@ -19,6 +19,7 @@ Korrp::Application.routes.draw do
   match '/get_levels', to: 'levels#get_levels',     via: 'get'
   post 'checks/reset'
   post 'users/setpath'
+  mount Judge::Engine => '/judge'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

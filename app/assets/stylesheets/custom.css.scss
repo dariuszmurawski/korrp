@@ -97,6 +97,8 @@ body {
   padding-top: 120px;
   color: $USbluelightdark;
   
+  
+  
 }
 
 select,
@@ -117,6 +119,15 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   color: $USbluelightdark;
+  
+  
+
+ // outline: none;
+ // border: none !important;
+ // -webkit-box-shadow: none !important;
+ // -moz-box-shadow: none !important;
+ // box-shadow: none !important;
+
 }
 
 section {

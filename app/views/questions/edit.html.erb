@@ -5,14 +5,16 @@
   <div class="span6 offset3">
     <%= form_for(@question, :builder => Judge::FormBuilder) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>  
-
-	  <%= f.label :description,"opis kryterium" %>
-      <%= f.text_area :description ,rows:5, :validate => true%>
-
-	  <%= f.label :strength,"siła kryterium" %>
-      <%= f.text_field :strength, :validate => true %>
-
-    
+		<div>
+			<%= f.label :description,"opis kryterium" %>
+     		<%= f.text_area :description ,rows:5, :validate => true%>
+		</div>
+	  
+ 		<div>
+ 			<%= f.label :strength,"siła kryterium" %>
+    		<%= f.text_field :strength, :validate => true %>
+ 		</div>
+ 		
       <%= f.submit "Akceptuj zmiany", class: "btn btn-large btn-primary" %>
       <%= link_to "Anuluj zmiany", questions_path, class: "btn btn-large btn-primary" %>
     <% end %>

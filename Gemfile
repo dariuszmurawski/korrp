@@ -18,7 +18,7 @@ gem 'jquery-turbolinks','2.1.0'
 gem 'prawn', '1.3.0'
 gem 'prawn-table', '0.2.0'
 gem 'puma', '2.9.2'
-gem 'client_side_validations', '3.2.6'
+#gem 'client_side_validations', '3.2.6'
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'

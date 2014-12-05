@@ -17,6 +17,9 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
+//= require underscore
+//= require json2
+//= require judge
 
 
 

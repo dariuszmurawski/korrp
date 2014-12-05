@@ -11,7 +11,7 @@ jQuery(function() {
   			 '-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
   			 'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)'		 	 	
    		     });
-   		//     $(element).nextAll().remove();
+   		     $('#question_description').nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -21,8 +21,8 @@ jQuery(function() {
   			'-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392',
   			'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392'		 
    		     });
-   	//	    $(element).nextALL().remove();
-   	//	    $(element).after("<p>"+messages.join(',')+"</p>");
+   		     $('#question_description').nextAll().remove();
+   			 $('#question_description').after("<p>"+messages+"</p>");
    		//   alert(messages.join(','));
   		}
 	});
@@ -37,7 +37,7 @@ jQuery(function() {
   			 '-moz-box-shadow': 'none',
   			 'box-shadow': 'none'	
   			 });
-  		//	 $(element).nextAll().remove();
+  			 $('#question_description').nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -47,8 +47,8 @@ jQuery(function() {
            	'-moz-box-shadow': 'none',
            	'box-shadow': 'none'	
            	});
-      //     	$(element).nextALL().remove();
-   		//    $(element).after("<p>"+messages.join(',')+"</p>");
+    		$('#question_description').nextAll().remove();
+   			$('#question_description').after("<p>"+messages+"</p>");
   		}
 	});
  });

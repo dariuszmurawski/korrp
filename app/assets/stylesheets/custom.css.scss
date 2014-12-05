@@ -97,9 +97,13 @@ body {
   padding-top: 120px;
   color: $USbluelightdark;
   
-  
-  
 }
+
+
+.field_with_errors textarea {
+  color: $USbluelightdark;
+}
+
 
 select,
 textarea,

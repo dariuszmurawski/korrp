@@ -15,7 +15,7 @@ jQuery(function() {
   			 '-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
   			 'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)'		 	 	
    		     });
-   		     $('#question_description').nextAll().remove();
+   		     $(element).nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -25,8 +25,8 @@ jQuery(function() {
   			'-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392',
   			'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392'		 
    		     });
-   		     $('#question_description').nextAll().remove();
-   			 $('#question_description').after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
+   		     $(element).nextAll().remove();
+   			 $(element).after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
    		//   alert(messages.join(','));
   		}
 	});
@@ -41,7 +41,7 @@ jQuery(function() {
   			 '-moz-box-shadow': 'none',
   			 'box-shadow': 'none'	
   			 });
-  			 $('#question_description').nextAll().remove();
+  			 $(element).nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -51,8 +51,8 @@ jQuery(function() {
            	'-moz-box-shadow': 'none',
            	'box-shadow': 'none'	
            	});
-    		$('#question_description').nextAll().remove();
-   			$('#question_description').after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
+    		$(element).nextAll().remove();
+   			$(element).after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
   		}
 	});
  });
@@ -72,7 +72,7 @@ jQuery(function() {
   			 '-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
   			 'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)'		 	 	
    		     });
-   		     $('#question_strength').nextAll().remove();
+   		     $(element).nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -82,8 +82,8 @@ jQuery(function() {
   			'-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392',
   			'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392'	
    		     });
-   		     $('#question_strength').nextAll().remove();
-   			 $('#question_strength').after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
+   		     $(element).nextAll().remove();
+   			 $(element).after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
 
   		}
 	});
@@ -102,7 +102,7 @@ jQuery(function() {
  			 '-moz-box-shadow': 'none',
 			 'box-shadow': 'none'			 	 	
    		     });
-   		     $('#question_strength').nextAll().remove();
+   		     $(element).nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -112,8 +112,8 @@ jQuery(function() {
  			'-moz-box-shadow': 'none',
 			'box-shadow': 'none'	
    		     });
-			 $('#question_strength').nextAll().remove();
-   			 $('#question_strength').after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
+			 $(element).nextAll().remove();
+   			 $(element).after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
   		}
 	});
  });

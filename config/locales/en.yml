@@ -19,6 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+
 en:	
   "Name can't be blank": "Nazwisko nie może być puste"
   "Email can't be blank": "Adres e-mail nie może być pusty"  
@@ -75,7 +76,14 @@ en:
   "Us email is invalid": "Format adresu e-mail jest niepoprawny"
   "Us postalcode can't be blank": "Kod pocztowy nie może być pusty"
   "Us postalcode is invalid": "Format kodu pocztowego jest niepoprawny"
-  "can't be blank": "sdfsdfsdfs"
+  errors:
+    messages:
+      blank:
+        "Pole nie może być puste"
+      not_an_integer:
+        "Pole musi zawierać wartość numeryczną"
+      less_than:
+        "Wartość musi byc mniejsza niż: %{count}"
   
 
 

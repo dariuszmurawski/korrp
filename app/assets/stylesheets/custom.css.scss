@@ -243,6 +243,12 @@ p {
   line-height: 1.7em;
 }
 
+div.error_judge>p{
+  font-size: 0.7em !important;
+  color: #f00;
+  line-height: 0.9em !important;
+//  margin: 0px;
+}
 
 /* header */
 

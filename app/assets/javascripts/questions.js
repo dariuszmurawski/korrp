@@ -1,6 +1,10 @@
 
 jQuery(function() {
 	
+	
+	
+	
+	
  $('#question_description').on('keyup focusin input', function(){
 	judge.validate(document.getElementById('question_description'), {
   		valid: function(element) {
@@ -22,7 +26,7 @@ jQuery(function() {
   			'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392'		 
    		     });
    		     $('#question_description').nextAll().remove();
-   			 $('#question_description').after("<p>"+messages+"</p>");
+   			 $('#question_description').after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
    		//   alert(messages.join(','));
   		}
 	});
@@ -48,7 +52,7 @@ jQuery(function() {
            	'box-shadow': 'none'	
            	});
     		$('#question_description').nextAll().remove();
-   			$('#question_description').after("<p>"+messages+"</p>");
+   			$('#question_description').after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
   		}
 	});
  });
@@ -68,6 +72,7 @@ jQuery(function() {
   			 '-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
   			 'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)'		 	 	
    		     });
+   		     $('#question_strength').nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -77,6 +82,9 @@ jQuery(function() {
   			'-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392',
   			'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392'	
    		     });
+   		     $('#question_strength').nextAll().remove();
+   			 $('#question_strength').after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
+
   		}
 	});
  });
@@ -94,6 +102,7 @@ jQuery(function() {
  			 '-moz-box-shadow': 'none',
 			 'box-shadow': 'none'			 	 	
    		     });
+   		     $('#question_strength').nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -103,7 +112,8 @@ jQuery(function() {
  			'-moz-box-shadow': 'none',
 			'box-shadow': 'none'	
    		     });
-
+			 $('#question_strength').nextAll().remove();
+   			 $('#question_strength').after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
   		}
 	});
  });

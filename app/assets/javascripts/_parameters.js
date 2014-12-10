@@ -1,7 +1,18 @@
 
 jQuery(function() {
 
-var tab = ["#user_login", "#user_forename", "#user_name", "#user_email"];
+var tab = ["#parameter_us_code", 
+		   "#parameter_us_city",
+		   "#parameter_us_postalcode",
+		   "#parameter_us_street",
+		   "#parameter_us_nip",
+		   "#parameter_us_regon",
+		   "#parameter_us_www",
+		   "#parameter_us_house",
+		   "#parameter_us_email",
+		   "#parameter_us_tel",
+		   "#parameter_us_fax",
+		   "#parameter_us_name"];
 
 	
 	
@@ -9,7 +20,7 @@ var tab = ["#user_login", "#user_forename", "#user_name", "#user_email"];
 	judge.validate(this, {
   		valid: function(element) {
   			 $(element).css({	 	
-  			 'border' : '1px solid #b7d1e1',
+  			 'border' : '1px solid rgba(82,168,236,0.8)',
  			 'outline' : 'thin dotted \9',
   			 '-moz-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
   			 '-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
@@ -36,7 +47,7 @@ var tab = ["#user_login", "#user_forename", "#user_name", "#user_email"];
   	judge.validate(this, {
   		valid: function(element) {
   			 $(element).css({	 	
-  			 'border' : '1px solid #b7d1e1',
+  			 'border' : '1px solid rgba(82,168,236,0.8)',
  			 'outline': 'none',
   			 '-webkit-box-shadow': 'none',
   			 '-moz-box-shadow': 'none',

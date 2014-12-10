@@ -1,7 +1,7 @@
 <% provide(:title, 'Zarejestrowani użytkownicy') %>
 <h1>Zarejestrowani użytkownicy</h1>
 
-<%= will_paginate %>
+<%= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>
 <ul class="users">
 	<table class="table table-striped">
 		<tr>
@@ -19,5 +19,5 @@
   		<% end %>
 	</table>
 </ul>
-<%= will_paginate %>
+<%= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>
 <%= link_to "Doadaj nowego użytkownika", new_user_path, class: "btn btn-large btn-primary" %>

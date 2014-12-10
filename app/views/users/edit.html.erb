@@ -1,7 +1,7 @@
 <% provide(:title, "Edycja użytkownika") %>
 <h1>Modyfikacja danych użytkownika</h1>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :builder => Judge::FormBuilder) do |f| %>
 <div class="row">
   <div class="span6 offset3">
   	<p>Modyfikacja użytkownika o loginie: <i> <b class="user-color"><%=@user.login%></b></p></i>   
@@ -14,18 +14,18 @@
 <div class="row">
   <div class="span3 offset3">
 	  <%= f.label :forename,"imię" %>
-      <%= f.text_field :forename %>
+      <%= f.text_field :forename, :validate => true %>
   </div>    
   <div class="span3 ">
       <%= f.label :name,"nazwisko" %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name , :validate => true%>
   </div>
 </div>       
       
 <div class="row">
   <div class="span6 offset3">
       <%= f.label :email ,"adres e-mial"%>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :validate => true %>
   </div>
 </div>      
       

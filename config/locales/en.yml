@@ -21,28 +21,9 @@
 
 
 en:	
-  "Name can't be blank": "Nazwisko nie może być puste"
-  "Email can't be blank": "Adres e-mail nie może być pusty"  
-  "Email is invalid": "Format adresu e-mail jest niepoprawny"
-  "Password can't be blank": "Hasło nie może być puste"
-  "Password is too short (minimum is 6 characters)": "Hasło jest za krótkie (minimum 6 znaków)"
-  "Password confirmation doesn't match Password": "Hasło oraz potwierdzenie hasła są różne"
-  "Login can't be blank": "Login nie może być pusty"
-  "Forename can't be blank": "Imię nie może być puste"
-  "Login is too long (maximum is 6 characters)": "Login jest za długi (maksimum 6 znaków)"
-  "Login has already been taken": "Login jest już używany przez innego użytkownika"
-  "Email has already been taken": "Adres e-mail jest już używany przez innego użytkownika"
-  "Description can't be blank": "Opis kryterium nie może być pusty"
-  "Strength can't be blank": "Siła kryterium nie może być pusta"
-  "Strength is not a number": "Siła kryterium musi być warotścią numeryczną"
-  "Strength must be less than 100": "Siła ktyterium musi mieć watość mniejszą od 100"
-  "Description has already been taken": "Istnieje już taki opis w bazie"
-  "Value is not a number": "Podana wartość przedziału nie jest liczbą"
-  "Value must be less than 100": "Wartość przedziału musi być mniejsza niz 100" 
   "Value error1": "Wartość przedziału WYSOKI musi być większa niż przedziału NISKI"
   "Value error2": "Wartość przedziału NISKI musi być mniejsza niż przedziału WYSOKI"
-  "Value has already been taken": "Wprowadzona wartość jest już w użyciu w innym przedziale"
-  "previous": "poprzedni"
+
   "City can't be blank": "Nazwa miasta nie może być pusta" 
   "Postal code can't be blank": "Kod pocztowy nie może być pusty"
   "Pesel can't be blank": "Numer PESEL nie może być pusty"
@@ -59,33 +40,59 @@ en:
   "Name is too long (maximum is 30 characters)": "Nazwisko jest za długe (max 30 znaków)"
   "Forename is too long (maximum is 15 characters)": "Imię jest za długie (max 15 znaków)"
   "Org Name Is Too Long (Maximum Is 50 Characters)": "Nazwa organizacji jest za długa (max 50 znaków)"
-  "Us code is invalid": "Format Kodu Urzędu jest niepoprawny - powinny być 4 cyfry"
-  "Us code can't be blank": "Kod Urzedu nie może być pusty"
-  "Us regon is invalid": "Format numeru REGON jest błędny - REGON powinien się składać z 9 cyfr"
-  "Us regon can't be blank": "Numer REGON nie może być pusty"
-  "Us nip can't be blank": "Numer NIP nie może być pusty"
-  "Us nip is invalid": "Format numeru NIP jest niepoprawny - NIP powinien się składać z 10 cyfr"
-  "Us name can't be blank": "Nazwa Urzędu Skarbowego nie może być pusta"
-  "Us street can't be blank": "Nazwa ulicy nie może być pusta" 
-  "Us city can't be blank": "Nazwa miasta nie może być pusta" 
-  "Us house can't be blank": "Numer budynku Urzędu nie może być pusty"
-  "Us www can't be blank": "Adres strony www Urzedu nie może być pusty"
-  "Us tel can't be blank": "Numer telefonu Urzędu nie może być pusty"
-  "Us fax can't be blank": "Numer faxu Urzędu nie może być pusty"
-  "Us email can't be blank": "Adres e-mail nie może być pusty"  
-  "Us email is invalid": "Format adresu e-mail jest niepoprawny"
-  "Us postalcode can't be blank": "Kod pocztowy nie może być pusty"
-  "Us postalcode is invalid": "Format kodu pocztowego jest niepoprawny"
+ 
+
+  "previous_label": "poprzednia"
+  "next_label": "następna"
+
+  activerecord:
+    attributes:
+      user:
+        forename: "Imię"
+        name: "Nazwisko"
+        login: "Login"
+        password: "Hasło"
+        password_confirmation: "Potwierdzenie hasła"
+        email: "Adres e-mail"
+      level:
+        value: "Wartość przedziału"
+      question:
+        description: "Opis kryterium"
+        strength: "Siła kryterium"
+      parameter:
+        us_regon: "Numer REGON"
+        us_nip: "Numer NIP"
+        us_code: "Kod Urzędu Skarbowego"
+        us_name: "Nazwa Urzędu Skarbowego"
+        us_street: "Adres - ulica"
+        us_city: "Adres - miasto"
+        us_house: "Adres - numer budynku"
+        us_www: "Adres strony www"
+        us_tel: "Numer telefonu"
+        us_fax: "Numer faxu"
+        us_postalcode: "Adres - kod pocztowy"
+        us_email: "Adres e-mail"
+        
   errors:
     messages:
       blank:
-        "Pole nie może być puste"
+        "wartość pola nie może być pusta"
       not_an_integer:
-        "Pole musi zawierać wartość numeryczną"
+        "wartość pola musi zawierać wartość numeryczną"
       less_than:
-        "Wartość musi byc mniejsza niż: %{count}"
-  
-
+        "wartość pola musi byc mniejsza niż: %{count}"
+      not_a_number:
+        "wartość pola musi zawierać wartość numeryczną"
+      too_long:
+        "długość wpisu musi byc mniejsza niż: %{count} znaków"
+      too_short:
+        "długość wpisu musi byc większa niż: %{count} znaków"
+      invalid:
+        "wartość pola - format jest niepoprawny"
+      confirmation:
+        ! "nie jest takie samo jak %{attribute}"
+      taken:
+        "wartość pola już występuje"
 
 
 

@@ -10,7 +10,7 @@
 
 
 
-<%= will_paginate %>
+<%= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>
 	<table class="table table-striped check">
 		<tr>
 			
@@ -27,7 +27,7 @@
     		<%= render check %>
   		<% end %>
 	</table>
-<%= will_paginate %>
+<%= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>
 <%= link_to "Dodaj nową analizę", new_check_path, class: "btn btn-large btn-primary" %>
 
 <p style="margin-top: 30px"><b>Wyszukiwanie Analiz</b></p>

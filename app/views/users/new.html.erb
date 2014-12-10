@@ -1,30 +1,30 @@
 <% provide(:title, 'Rejestracja') %>
 <h1>Rejestracja Użytkownika</h1>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :builder => Judge::FormBuilder) do |f| %>
 <div class="row">
   <div class="span6 offset3">
       <%= render 'shared/error_messages', object: f.object %>
 	  <%= f.label :login,"login" %>
-      <%= f.text_field :login %>
+      <%= f.text_field :login, :validate => true %>
   </div>
 </div> 
 
 <div class="row">
   <div class="span3 offset3">
 	  <%= f.label :forename,"imię" %>
-      <%= f.text_field :forename %>
+      <%= f.text_field :forename , :validate => true%>
   </div>    
   <div class="span3 ">
       <%= f.label :name,"nazwisko" %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :validate => true %>
   </div>
 </div>       
       
 <div class="row">
   <div class="span6 offset3">
       <%= f.label :email ,"adres e-mial"%>
-      <%= f.text_field :email %>
+      <%= f.text_field :email , :validate => true%>
   </div>
 </div>      
       
@@ -46,7 +46,7 @@
 <div class="row">
   <div class="span6 offset3">
       <%= f.label :password,"hasło"  %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password%>
 
       <%= f.label :password_confirmation, "Potwierdzenie hasła" %>
       <%= f.password_field :password_confirmation %> 

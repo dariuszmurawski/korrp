@@ -1,7 +1,7 @@
 
 jQuery(function() {
 
-var tab = ["#question_description", "#question_strength"];
+var tab = ["#user_login", "#user_forename", "#user_name", "#user_email"];
 
 	
 	

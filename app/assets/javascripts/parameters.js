@@ -1,7 +1,18 @@
 
 jQuery(function() {
 
-var tab = ["#question_description", "#question_strength"];
+var tab = ["#parameter_us_code", 
+		   "#parameter_us_city",
+		   "#parameter_us_postalcode",
+		   "#parameter_us_street",
+		   "#parameter_us_nip",
+		   "#parameter_us_regon",
+		   "#parameter_us_www",
+		   "#parameter_us_house",
+		   "#parameter_us_email",
+		   "#parameter_us_tel",
+		   "#parameter_us_fax",
+		   "#parameter_us_name"];
 
 	
 	

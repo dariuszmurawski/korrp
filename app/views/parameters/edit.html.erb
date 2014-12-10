@@ -2,67 +2,67 @@
 <h1>Edycja informacji o Urzędzie</h1>
 
 
- <%= form_for(@parameter) do |f| %>
+ <%= form_for(@parameter, :builder => Judge::FormBuilder) do |f| %>
       
 <div class="row">
       <%= render 'shared/error_messages', object: f.object %>	
   <div class="span6">
 	  <%= f.label :us_code,"Kod Urzędu Skarbowego" %>
-      <%= f.text_field :us_code %>
+      <%= f.text_field :us_code , :validate => true%>
   </div>	
   <div class="span6">
 	  <%= f.label :us_name,"Nazwa Urzędu Skarbowego" %>
-      <%= f.text_field :us_name %>
+      <%= f.text_field :us_name , :validate => true%>
   </div>	
 </div>    
 <div class="row">   
   <div class="span6">  
       <%= f.label :us_city,"Adres - miasto" %>
-      <%= f.text_field :us_city %>
+      <%= f.text_field :us_city, :validate => true %>
   </div>	
   <div class="span6">   
       <%= f.label :us_postalcode,"Adres - kod pocztowy" %>
-      <%= f.text_field :us_postalcode %>
+      <%= f.text_field :us_postalcode , :validate => true%>
   </div>	
 </div>
 <div class="row">   
   <div class="span6">   
       <%= f.label :us_street,"Adres - ulica" %>
-      <%= f.text_field :us_street %>
+      <%= f.text_field :us_street , :validate => true%>
   </div>	
   <div class="span6">  
       <%= f.label :us_house,"Adres - numer budynku" %>
-      <%= f.text_field :us_house %>
+      <%= f.text_field :us_house , :validate => true%>
   </div>	
 </div>
 <div class="row"> 
   <div class="span6"> 
       <%= f.label :us_nip,"Numer NIP" %>
-      <%= f.text_field :us_nip %>
+      <%= f.text_field :us_nip , :validate => true%>
   </div>	
   <div class="span6">  
       <%= f.label :us_regon,"Numer REGON" %>
-      <%= f.text_field :us_regon %>
+      <%= f.text_field :us_regon , :validate => true%>
   </div>	
 </div>
 <div class="row"> 
   <div class="span6">  
       <%= f.label :us_www,"Adres strony www" %>
-      <%= f.text_field :us_www %>
+      <%= f.text_field :us_www , :validate => true%>
   </div>
   <div class="span6">  
       <%= f.label :us_email,"Adres e-mail" %>
-      <%= f.text_field :us_email %>
+      <%= f.text_field :us_email , :validate => true%>
   </div>
 </div>	
 <div class="row"> 
   <div class="span6">  
       <%= f.label :us_tel,"Numer telefonu" %>
-      <%= f.text_field :us_tel %>
+      <%= f.text_field :us_tel , :validate => true%>
   </div>	
   <div class="span6">  
       <%= f.label :us_fax,"Numer faxu" %>
-      <%= f.text_field :us_fax %>
+      <%= f.text_field :us_fax , :validate => true%>
    </div>	
 </div>
 <div class="row"> 

@@ -4,7 +4,7 @@
  
 
 
-<%= will_paginate %>
+<%= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>
 
 	<table class="table table-striped pkd">
 		<tr>
@@ -17,7 +17,7 @@
   		<% end %>
 	</table>
 
-<%= will_paginate %>
+<%= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>
 
 <p><b>Filtrowanie tabeli PKD</b></p>
 <div class="row">

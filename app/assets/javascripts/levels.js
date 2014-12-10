@@ -1,7 +1,7 @@
 
 jQuery(function() {
 
-var tab = ["#question_description", "#question_strength"];
+var tab = ["#level_value"];
 
 	
 	

@@ -14,11 +14,7 @@ var tab = ["#parameter_us_code",
 		   "#parameter_us_fax",
 		   "#parameter_us_name"];
 
-/*	
-$.getScript("judge_js_error_handle.js", function(){
-//	judge_handle(tab);
-});
-*/	
+
 
 
  $(tab.join(',')).on('keyup focusin change', function(){

@@ -1,11 +1,14 @@
 
 jQuery(function() {
 
-var tab = ["#user_login", "#user_forename", "#user_name", "#user_email"];
+var tab = ["#user_login", 
+		   "#user_forename", 
+		   "#user_name", 
+		   "#user_email"];
 
 	
 	
- $(tab.join(',')).on('keyup focusin input', function(){
+ $(tab.join(',')).on('keyup focusin change', function(){
 	judge.validate(this, {
   		valid: function(element) {
   			 $(element).css({	 	

@@ -1,11 +1,12 @@
 
 jQuery(function() {
 
-var tab = ["#question_description", "#question_strength"];
+var tab = ["#question_description", 
+           "#question_strength"];
 
 	
 	
- $(tab.join(',')).on('keyup focusin input', function(){
+ $(tab.join(',')).on('keyup focusin change', function(){
 	judge.validate(this, {
   		valid: function(element) {
   			 $(element).css({	 	

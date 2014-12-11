@@ -5,7 +5,7 @@ var tab = ["#level_value"];
 
 	
 	
- $(tab.join(',')).on('keyup focusin input', function(){
+ $(tab.join(',')).on('keyup focusin change', function(){
 	judge.validate(this, {
   		valid: function(element) {
   			 $(element).css({	 	

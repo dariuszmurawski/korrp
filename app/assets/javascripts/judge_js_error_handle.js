@@ -1,27 +1,6 @@
-
-jQuery(function() {
-
-var tab = ["#parameter_us_code", 
-		   "#parameter_us_city",
-		   "#parameter_us_postalcode",
-		   "#parameter_us_street",
-		   "#parameter_us_nip",
-		   "#parameter_us_regon",
-		   "#parameter_us_www",
-		   "#parameter_us_house",
-		   "#parameter_us_email",
-		   "#parameter_us_tel",
-		   "#parameter_us_fax",
-		   "#parameter_us_name"];
-
-/*	
-$.getScript("judge_js_error_handle.js", function(){
-//	judge_handle(tab);
-});
-*/	
-
-
- $(tab.join(',')).on('keyup focusin change', function(){
+/*jQuery(function() {
+	
+ $(tab.join(',')).on('keyup focusin input', function(){
 	judge.validate(this, {
   		valid: function(element) {
   			 $(element).css({	 	
@@ -73,9 +52,5 @@ $.getScript("judge_js_error_handle.js", function(){
   		}
 	});
  });
- 
- 
- 
 
-
-});
+});*/

@@ -118,15 +118,16 @@
    </div>  
 </div>  
 
-<% if current_user.admin? || current_user.kiera? %>
-  			<div class="row">
- 				 <div class="span8">
-  					<p><%= link_to "Edycja analizy", edit_check_path(@check),class: "btn btn-large btn-primary" %></p>
-   				</div>  
-			</div> 
-<% end %>
 
- 	
+<div class="row">
+ 	<div class="span8">
+		<% if current_user.admin? || current_user.kiera? %>
+  			<%= link_to "Edycja analizy", edit_check_path(@check),class: "btn btn-large btn-primary" %>
+
+		<% end %>
+		<%= link_to "Powrót do listy analiz", checks_path,class: "btn btn-large btn-primary" %>
+   	</div>  
+</div>  	
   	
   	
   	

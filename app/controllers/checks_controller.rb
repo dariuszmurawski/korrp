@@ -1,6 +1,6 @@
 class ChecksController < ApplicationController
   before_action :signed_in_user,       only: [:destroy, :index, :create, :new, :show]
-  before_action :admin_kiera_user,     only: [:destroy,:edit,:update]
+  before_action :admin_kiera_user,     only: [:destroy,:edit,:update, :reset]
 #  include ChecksHelper
 
   
@@ -11,8 +11,7 @@ class ChecksController < ApplicationController
  
  
   def edit
-    @check = Check.find(params[:id]) 
-#    get_questions(@check)     
+    @check = Check.find(params[:id])     
   end
  
  def get_questions(check) 
@@ -55,8 +54,14 @@ class ChecksController < ApplicationController
     @check = Check.find(params[:id]) 
     @check.answers.destroy_all 
     get_questions(@check)
-    #redirect_to edit_check_path(@check)   
-    render action: 'edit'
+        if @check.save
+          @check.userloginedit=@current_user.name+' '+@current_user.forename
+          flash.now[:success] = "Zresetowano kryteria analizy - pozostałe wprowadzone zmiany w formularzu zostały pominięte"
+          render action: 'edit'
+        else
+         flash.now[:error] = 'Błąd podczas resetowania analizy' 
+         render action: 'edit'
+       end
   end
  
  
@@ -73,10 +78,9 @@ class ChecksController < ApplicationController
   
   
  def update
-   
     @check = Check.find(params[:id]) 
-    @check.userloginedit=@current_user.name+' '+@current_user.forename
     if @check.update_attributes(check_params)
+      @check.userloginedit=@current_user.name+' '+@current_user.forename
       flash[:success] = "Zmodyfikowano analizę"
       redirect_to check_path(@check)
     else

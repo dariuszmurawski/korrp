@@ -1,68 +1,68 @@
 <% provide(:title, 'Analiza') %>
 <h1>Dane podatnika</h1>
 
-<%= form_for(@check, id: "check_form") do |f| %>
+<%= form_for(@check, :builder => Judge::FormBuilder) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 <div class="row">
   <div class="span4">
 	  <%= f.label :nip,"numer NIP" %>
-      <%= f.text_field :nip %>
+      <%= f.text_field :nip , :validate => true%>
   </div>
   
   <div class="span4">
 	  <%= f.label :pesel,"numer PESEL" %>
-      <%= f.text_field :pesel %>
+      <%= f.text_field :pesel , :validate => true%>
   </div>
   
   <div class="span4">
 	  <%= f.label :regon,"numer REGON" %>
-      <%= f.text_field :regon %>
+      <%= f.text_field :regon , :validate => true%>
   </div>
 </div>  
 
 <div class="row">
   <div class="span4">          
 	  <%= f.label :forename,"imię" %>
-      <%= f.text_field :forename %>     
+      <%= f.text_field :forename , :validate => true%>     
   </div>
   
   <div class="span4">
       <%= f.label :name,"nazwisko" %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name , :validate => true%>
   </div>	
 </div>
 
 <div class="row">
   <div class="span12">
 	  <%= f.label :org_name,"nazwa organizacji" %>
-      <%= f.text_field :org_name %>
+      <%= f.text_field :org_name , :validate => true%>
   </div>
 </div>
 
 <div class="row">
   <div class="span4">
 	  <%= f.label :city,"miasto" %>
-      <%= f.text_field :city %>
+      <%= f.text_field :city , :validate => true%>
   </div>    
   
   <div class="span4">        
       <%= f.label :postal_code,"kod pocztowy" %>
-      <%= f.text_field :postal_code %>
+      <%= f.text_field :postal_code , :validate => true%>
   </div>    
 </div>  
       
 <div class="row">
   <div class="span4">           
       <%= f.label :street,"ulica" %>
-      <%= f.text_field :street %>
+      <%= f.text_field :street , :validate => true%>
   </div>
   <div class="span4">   
       <%= f.label :home_no,"numer domu" %>
-      <%= f.text_field :home_no %>
+      <%= f.text_field :home_no , :validate => true%>
   </div>
   <div class="span4"> 
       <%= f.label :flat_no,"numer mieszkania" %>
-      <%= f.text_field :flat_no %>
+      <%= f.text_field :flat_no , :validate => true%>
   </div>
 </div>  
 

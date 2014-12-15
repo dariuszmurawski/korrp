@@ -26,3 +26,9 @@ production:
   password: admin56mus
   host: localhost
   port: 5432
+
+poltax:
+  adapter: oracle_enhanced
+  database: //10.2.21.210:1521/PLTX
+  username: ruby
+  password: ruby  

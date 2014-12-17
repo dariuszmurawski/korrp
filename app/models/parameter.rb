@@ -1,7 +1,7 @@
 class Parameter < ActiveRecord::Base
-  validates :us_regon, presence: true, format: { with: /^[\d]{9}$/i ,:multiline => true}
-  validates :us_nip, presence: true, format: { with: /^[\d]{10}$/i ,:multiline => true}
-  validates :us_code, presence: true, format: { with: /^[\d]{4}$/i ,:multiline => true}
+  validates :us_regon, presence: true, format: { with: /^[\d]{9}$/i ,:multiline => true},length: {minimum: 9,maximum: 9}
+  validates :us_nip, presence: true, format: { with: /^[\d]{10}$/i ,:multiline => true},length: {minimum: 10,maximum: 10}
+  validates :us_code, presence: true, format: { with: /^[\d]{4}$/i ,:multiline => true},length: {minimum: 4,maximum: 4}
   validates :us_name, presence: true
   validates :us_street, presence: true
   validates :us_city, presence: true

@@ -6,7 +6,9 @@ Korrp::Application.routes.draw do
   resources :pkds, only: [:index, :autocomplete, :get_branch]
   resources :questions, only: [:new,:create, :destroy, :index, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :poltaxconns, only: [:show, :edit, :update, :test]
   resources :levels, only: [:edit, :update, :index, :get_levels]
+  
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
@@ -19,6 +21,7 @@ Korrp::Application.routes.draw do
   match '/get_levels', to: 'levels#get_levels',     via: 'get'
   post 'checks/reset'
   post 'users/setpath'
+  post 'poltaxconns/test'
   mount Judge::Engine => '/judge'
 
 

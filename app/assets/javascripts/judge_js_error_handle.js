@@ -37,9 +37,11 @@ var tab_check = ["#check_forename",
 					"#check_regon",
 					"#check_nip"];
 
+var tab_poltaxconn = ["#poltaxconn_database", 
+		   			"#poltaxconn_username", 
+		   			"#poltaxconn_password"];
 
-
-var tab = tab_question.concat(tab_user).concat(tab_parameter).concat(tab_level).concat(tab_check);
+var tab = tab_question.concat(tab_user).concat(tab_parameter).concat(tab_level).concat(tab_check).concat(tab_poltaxconn);
 console.log(tab.join(','));	
 	
  $(tab.join(',')).on('keyup focusin change', function(){

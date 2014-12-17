@@ -1,0 +1,37 @@
+<% provide(:title, "Edycja ustawień połączenia z bazą POLTAX") %>
+<h1>Edycja ustawień połączenia z bazą POLTAX</h1>
+
+
+ <%= form_for(@poltaxconn, :builder => Judge::FormBuilder) do |f| %>
+      
+<div class="row">
+      <%= render 'shared/error_messages', object: f.object %>	
+</div>  
+<div class="row">
+  <div class="span6 offset3">
+	  <%= f.label :database,"Adres IP bazy POLTAX" %>
+      <%= f.text_field :database , :validate => true%>
+  </div>
+</div>    
+<div class="row">   	
+  <div class="span6 offset3">
+	  <%= f.label :username,"Nazwa użytkownika" %>
+      <%= f.text_field :username , :validate => true%>
+  </div>	
+</div>    
+<div class="row">   
+  <div class="span6 offset3">  
+      <%= f.label :password,"Hasło" %>
+      <%= f.text_field :password, :validate => true %>
+  </div>	
+</div>
+
+<div class="row"> 
+  <div class="span6 offset3"> 
+      
+      <%= f.submit "Zapisz zmiany", class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj zmiany", poltaxconn_path(params[:id]), class: "btn btn-large btn-primary" %>
+        
+  </div>
+</div>
+<% end %>

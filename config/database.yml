@@ -29,6 +29,6 @@ production:
 
 #poltax:
 #  adapter: oracle_enhanced
-#  database: //10.2.21.210:1521/PLTX
-#  username: ruby
-#  password: ruby  
+#  database: //10.xxx.xxx.xxx:1521/PLTX
+#  username: pass
+#  password: pass  

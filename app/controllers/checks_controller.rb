@@ -1,6 +1,7 @@
 class ChecksController < ApplicationController
   before_action :signed_in_user,       only: [:destroy, :index, :create, :new, :show]
   before_action :admin_kiera_user,     only: [:destroy,:edit,:update, :reset]
+
 #  include ChecksHelper
 
   
@@ -9,6 +10,10 @@ class ChecksController < ApplicationController
     get_questions(@check)     
   end
  
+  def objsearch
+#    session[:check] ||= params[:check]
+  end
+  
  
   def edit
     @check = Check.find(params[:id])     
@@ -96,7 +101,7 @@ class ChecksController < ApplicationController
     Check.find(params[:id]).destroy
     flash[:success] = "Analiza skasowana."
     redirect_to checks_path
-  end
+ end
    
   
   

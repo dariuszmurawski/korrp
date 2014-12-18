@@ -1,0 +1,38 @@
+<% provide(:title, 'Wyszukiwanie podatnika - OSOBY z POLTAX') %>
+<h1>Wyszukiwanie podatnika - OSOBY z POLTAX</h1>
+
+
+<%= form_tag searchresult_path,method: :get do %>
+<div class="row">
+	<div class="span6 offset3">
+		<%= label_tag "Wyszukaj osobę poprzez numer NIP"%>
+  		<%= text_field_tag "NIP" %>  		
+    </div>
+    <div class="span6 offset3">
+		<%= label_tag "Wyszukaj osobę poprzez numer PESEL"%>
+  		<%= text_field_tag "PESEL" %>  		
+    </div>
+    <div class="span6 offset3">
+		<%= label_tag "Wyszukaj osobę poprzez Imię"%>
+  		<%= text_field_tag "forename" %>  		
+    </div>
+    <div class="span6 offset3">
+		<%= label_tag "Wyszukaj osobę poprzez Nazwisko"%>
+  		<%= text_field_tag "name" %>  		
+    </div>
+</div>  
+
+
+
+
+<div class="row">
+	<div class="span6 offset3">
+	  <%= hidden_field_tag 'type','person'%>
+      <%= submit_tag "Wyszukaj", class: "btn btn-large btn-primary" %>
+      <%= link_to "Anuluj wyszukiwanie", new_check_path, class: "btn btn-large btn-primary" %>
+    </div>
+</div>
+
+
+
+<% end %>

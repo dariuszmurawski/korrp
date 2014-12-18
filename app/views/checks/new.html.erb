@@ -3,6 +3,16 @@
 
 <%= form_for(@check, :builder => Judge::FormBuilder) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
+      
+<div class="row">
+	<div class="span8">
+		<p>
+		<%= link_to "Wyszukaj OSOBĘ z POLTAX", persearch_path, class: "btn btn-primary" %>
+		<%= link_to "Wyszukaj ORGANIZACJĘ z POLTAX", orgsearch_path, class: "btn btn-primary" %>
+		</p>
+	</div>	
+</div>
+      
 <div class="row">
   <div class="span4">
 	  <%= f.label :nip,"numer NIP" %>
@@ -82,11 +92,7 @@
   </div>
 </div>
 
-<div class="row">
-	<div class="span4">
-		<%= link_to "Wyszukaj podatnika z POLTAX", search_path, class: "btn btn-primary" %>
-	</div>	
-</div>
+
 
 <h1>Kryteria - rodzaje analizowanej informacji </h1>
 

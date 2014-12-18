@@ -1,7 +1,7 @@
 Korrp::Application.routes.draw do
   
   resources :parameters, only: [:edit, :show, :update]
-  resources :checks, only: [:new,:create, :destroy, :index, :show, :edit, :update, :reset, :objsearch]
+  resources :checks, only: [:new,:create, :destroy, :index, :show, :edit, :update, :reset]
   resources :users 
   resources :pkds, only: [:index, :autocomplete, :get_branch]
   resources :questions, only: [:new,:create, :destroy, :index, :edit, :update]
@@ -23,7 +23,9 @@ Korrp::Application.routes.draw do
   post 'users/setpath'
   post 'poltaxconns/test'
 #  get  'checks/objsearch'
-  match '/search',  to: 'checks#objsearch',         via: 'get'
+  match '/persearch',  to: 'checks#persearch',         via: 'get'
+  match '/orgsearch',  to: 'checks#orgsearch',         via: 'get'
+  match '/searchresult',  to: 'checks#searchresult',         via: 'get'
   mount Judge::Engine => '/judge'
 
 

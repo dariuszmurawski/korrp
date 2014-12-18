@@ -1,7 +1,8 @@
 class ChecksController < ApplicationController
   before_action :signed_in_user,       only: [:destroy, :index, :create, :new, :show]
   before_action :admin_kiera_user,     only: [:destroy,:edit,:update, :reset]
-
+  require 'connbuffer'
+  require 'will_paginate/array'
 #  include ChecksHelper
 
   
@@ -10,8 +11,60 @@ class ChecksController < ApplicationController
     get_questions(@check)     
   end
  
-  def objsearch
+  def persearch  
 #    session[:check] ||= params[:check]
+  end
+  
+  def orgsearch
+#    session[:check] ||= params[:check]
+  end
+  
+  def searchresult
+ 
+    if (params[:type]=="person")
+      if (params[:NIP]=='' && params[:PESEL]=='' && params[:name]=='') 
+        flash[:error] = "Przynajmniej jedno z pól: NIP, PESEL, Nazwisko musi być wypełnione"
+        redirect_to persearch_path
+      else
+        @poltaxconn = Poltaxconn.first
+        sql = "SELECT p.tin, p.pesel_no, p.family_name, p.forename_1, p.city, p.street, p.house_no, p.flat_no, p.postal_code from persons p where 1=1"
+          if params[:NIP]!=''
+            sql=sql+" and p.tin='"+params[:NIP]+"'"
+          end
+          if params[:PESEL]!=''
+            sql=sql+" and p.pesel_no='"+params[:PESEL]+"'"
+          end
+          if params[:name]!=''
+            sql=sql+" and p.family_name='"+params[:name]+"'"
+          end
+        @sql=sql
+        @results=Connbuffer.getdata(sql,@poltaxconn)
+     #   @results = @results.paginate(page: params[:page])
+      end 
+    end
+    
+     if (params[:type]=="organ")
+      if (params[:NIP]=='' && params[:REGON]=='' && params[:name]=='') 
+        flash[:error] = "Przynajmniej jedno z pól: NIP, REGON, Nazwa organizacji musi być wypełnione"
+        redirect_to orgsearch_path
+      else
+        @poltaxconn = Poltaxconn.first
+        sql = "SELECT o.tin, o.regon_no, o.full_name, o.city, o.street, o.house_no, o.flat_no, o.postal_code from organs o where 1=1"
+          if params[:NIP]!=''
+            sql=sql+" and o.tin='"+params[:NIP]+"'"
+          end
+          if params[:REGON]!=''
+            sql=sql+" and o.regon_no='"+params[:REGON]+"'"
+          end
+          if params[:name]!=''
+            sql=sql+" and o.full_name like '%"+params[:name]+"%'"
+          end
+        @sql=sql
+        @results=Connbuffer.getdata(sql,@poltaxconn)
+     #   @results = @results.paginate(page: params[:page])
+      end 
+    end
+    
   end
   
  

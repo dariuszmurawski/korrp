@@ -35,11 +35,11 @@ class ChecksController < ApplicationController
             sql=sql+" and p.pesel_no='"+params[:PESEL]+"'"
           end
           if params[:name]!=''
-            sql=sql+" and p.family_name='"+params[:name]+"'"
+            sql=sql+" and p.family_name='"+params[:name].mb_chars.upcase+"'"
           end
         @sql=sql
         @results=Connbuffer.getdata(sql,@poltaxconn)
-     #   @results = @results.paginate(page: params[:page])
+        @results = @results.paginate(page: params[:page],  :per_page => 15)
       end 
     end
     
@@ -57,11 +57,11 @@ class ChecksController < ApplicationController
             sql=sql+" and o.regon_no='"+params[:REGON]+"'"
           end
           if params[:name]!=''
-            sql=sql+" and o.full_name like '%"+params[:name]+"%'"
+            sql=sql+" and o.full_name like '%"+params[:name].mb_chars.upcase+"%'"
           end
         @sql=sql
         @results=Connbuffer.getdata(sql,@poltaxconn)
-     #   @results = @results.paginate(page: params[:page])
+        @results = @results.paginate(page: params[:page],  :per_page => 15)
       end 
     end
     

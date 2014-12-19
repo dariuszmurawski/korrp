@@ -2,6 +2,7 @@ class PoltaxconnsController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update, :show, :test]
   before_action :admin_user,     only: [:edit, :update, :show, :test]
   require 'connbuffer'
+
   
   def show
      @poltaxconn = Poltaxconn.first

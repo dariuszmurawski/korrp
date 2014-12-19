@@ -6,7 +6,7 @@
 
 
 <% if params[:type]=='person'%>	
-<%#= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>	
+<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
 		<table class="table table-striped check">
 		<tr>		
 			<th>NIP</th>
@@ -16,7 +16,7 @@
 			<th></th>			
 		</tr>		
 		<%#= @sql %>
-		<%#= @results[0] %>	
+		<%#= @results %>	
   		<% @results.each do |result| %>   		
     		<tr>
   				<td>
@@ -37,11 +37,11 @@
 			</tr>
   		<% end %>
 		</table>
-<%#= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>
+<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
 <% end %>		
 		
 <% if params[:type]=='organ'%>	
-<%#= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>	
+<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>	
 		<table class="table table-striped check">
 		<tr>		
 			<th>NIP</th>
@@ -51,7 +51,7 @@
 			<th></th>			
 		</tr>		
 		<%#= @sql %>
-		<%#= @results[0] %>	
+		<%#= @results %>	
   		<% @results.each do |result| %>   		
     		<tr>
   				<td>
@@ -72,7 +72,7 @@
 			</tr>
   		<% end %>
 		</table>
-<%#= will_paginate :previous_label => t("previous_label"), :next_label => t("next_label") %>
+<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
 <% end %>			
 		
 	</div>	

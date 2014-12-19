@@ -3,13 +3,14 @@ class Check < ActiveRecord::Base
  # belongs_to :pkd
   accepts_nested_attributes_for :answers
 
-  validates :forename, presence: true, length: { maximum: 15 }
-  validates :name, presence: true, length: { maximum: 30 }
-  validates :org_name, presence: true,length: { maximum: 50 }
-  validates :city, presence: true 
+  validates :forename, presence: true, length: { maximum: 15 } 
+  validates :name, presence: true, length: { maximum: 30 } 
+  validates :org_name, presence: true,length: { maximum: 50 } 
+  validates :city, presence: true
+#  validates :flat_no , format: { without: /\s/ }
   validates :postal_code, presence: true, format: { with: /^[\d][\d]-[\d][\d][\d]$/i ,:multiline => true}
 #  validates :street, presence: true
-  validates :home_no, presence: true, length: { maximum: 10 }
+  validates :home_no, presence: true, length: { maximum: 10 } 
  # validates :flat_no, presence: true, length: { maximum: 50 }
   validates :pesel, presence: true, format: { with: /^[\d]{11}$/i,:multiline => true },length: {minimum: 11,maximum: 11}
   validates :regon, presence: true, format: { with: /^[\d]{9}$/i ,:multiline => true},length: {minimum: 9,maximum: 9}

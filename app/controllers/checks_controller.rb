@@ -37,9 +37,17 @@ class ChecksController < ApplicationController
           if params[:name]!=''
             sql=sql+" and p.family_name='"+params[:name].mb_chars.upcase+"'"
           end
+          if params[:forename]!=''
+            sql=sql+" and p.forename_1='"+params[:forename].mb_chars.upcase+"'"
+          end
         @sql=sql
         @results=Connbuffer.getdata(sql,@poltaxconn)
-        @results = @results.paginate(page: params[:page],  :per_page => 15)
+        if @results!=nil
+          @results = @results.paginate(page: params[:page],  :per_page => 15)
+        else
+          flash[:error] = "Błąd połaczenia z bazą POLTAX"
+          redirect_to persearch_path
+        end  
       end 
     end
     
@@ -61,7 +69,12 @@ class ChecksController < ApplicationController
           end
         @sql=sql
         @results=Connbuffer.getdata(sql,@poltaxconn)
-        @results = @results.paginate(page: params[:page],  :per_page => 15)
+        if @results!=nil
+          @results = @results.paginate(page: params[:page],  :per_page => 15)
+        else
+          flash[:error] = "Błąd połaczenia z bazą POLTAX"
+          redirect_to orgsearch_path
+        end  
       end 
     end
     

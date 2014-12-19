@@ -1,86 +1,92 @@
 <% provide(:title, 'Wyniki wyszukiwania podmiotu z POLTAX') %>
 <h1>Wyniki wyszukiwania podmiotu z POLTAX</h1>
 
+<% if  @results.count==0 %>
+	<div class="row">
+		<div class="span12">
+			<h2 class='error'>Brak wyników wyszukiwania</h2>
+		</div>	
+	</div>
+<% else %>
+	<div class="row">
+		<div class="span12">	
+			<% if params[:type]=='person'%>	
+				<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
+						<table class="table table-striped check">
+						<tr>		
+							<th>NIP</th>
+							<th>PESEL</th>
+							<th>Podatnik</th>
+							<th>Adres</th>	
+							<th></th>			
+						</tr>		
+						<%#= @sql %>
+						<%#= @results.count %>	
+				  		<% @results.each do |result| %>   		
+				    		<tr>
+				  				<td>
+				  					<%= result["tin"] %>
+				  				</td>
+				  				<td>
+				  					<%= result["pesel_no"]%>
+				  				</td>
+				 				<td>
+				  					<%= result["family_name"]%> <%= result["forename_1"]%>
+				  				</td>
+				  				<td>
+				  					<%= result["postal_code"]%> <%= result["city"]%> <%= result["street"]%> <%= result["house_no"]%> <%= result["flat_no"]%>
+				  				</td>
+				  				<td>
+				  					wybierz
+				  				</td>
+							</tr>
+				  		<% end %>
+						</table>
+				<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
+			<% end %>		
+					
+			<% if params[:type]=='organ'%>	
+				<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>	
+						<table class="table table-striped check">
+						<tr>		
+							<th>NIP</th>
+							<th>REGON</th>
+							<th>Organizacja</th>
+							<th>Adres</th>	
+							<th></th>			
+						</tr>		
+						<%#= @sql %>
+						<%#= @results %>	
+				  		<% @results.each do |result| %>   		
+				    		<tr>
+				  				<td>
+				  					<%= result["tin"] %>
+				  				</td>
+				  				<td>
+				  					<%= result["regon_no"]%>
+				  				</td>
+				 				<td>
+				  					<%= result["full_name"]%> 
+				  				</td>
+				  				<td>
+				  					<%= result["postal_code"]%> <%= result["city"]%> <%= result["street"]%> <%= result["house_no"]%> <%= result["flat_no"]%>
+				  				</td>
+				  				<td>
+				  					wybierz
+				  				</td>
+							</tr>
+				  		<% end %>
+						</table>
+				<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
+			<% end %>					
+		</div>	
+	</div>
+<% end %>
 <div class="row">
 	<div class="span12">
-
-
-<% if params[:type]=='person'%>	
-<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
-		<table class="table table-striped check">
-		<tr>		
-			<th>NIP</th>
-			<th>PESEL</th>
-			<th>Podatnik</th>
-			<th>Adres</th>	
-			<th></th>			
-		</tr>		
-		<%#= @sql %>
-		<%#= @results %>	
-  		<% @results.each do |result| %>   		
-    		<tr>
-  				<td>
-  					<%= result["tin"] %>
-  				</td>
-  				<td>
-  					<%= result["pesel_no"]%>
-  				</td>
- 				<td>
-  					<%= result["family_name"]%> <%= result["forename_1"]%>
-  				</td>
-  				<td>
-  					<%= result["postal_code"]%> <%= result["city"]%> <%= result["street"]%> <%= result["house_no"]%> <%= result["flat_no"]%>
-  				</td>
-  				<td>
-  					wybierz
-  				</td>
-			</tr>
-  		<% end %>
-		</table>
-<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
-<% end %>		
-		
-<% if params[:type]=='organ'%>	
-<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>	
-		<table class="table table-striped check">
-		<tr>		
-			<th>NIP</th>
-			<th>REGON</th>
-			<th>Organizacja</th>
-			<th>Adres</th>	
-			<th></th>			
-		</tr>		
-		<%#= @sql %>
-		<%#= @results %>	
-  		<% @results.each do |result| %>   		
-    		<tr>
-  				<td>
-  					<%= result["tin"] %>
-  				</td>
-  				<td>
-  					<%= result["regon_no"]%>
-  				</td>
- 				<td>
-  					<%= result["full_name"]%> 
-  				</td>
-  				<td>
-  					<%= result["postal_code"]%> <%= result["city"]%> <%= result["street"]%> <%= result["house_no"]%> <%= result["flat_no"]%>
-  				</td>
-  				<td>
-  					wybierz
-  				</td>
-			</tr>
-  		<% end %>
-		</table>
-<%= will_paginate @results, :previous_label => t("previous_label"), :next_label => t("next_label") %>
-<% end %>			
-		
-	</div>	
-</div>
-
-<div class="row">
-	<div class="span8">
       <%= link_to "Anuluj wyszukiwanie", new_check_path, class: "btn btn-large btn-primary" %>
+      <%= link_to "Wyszukaj ponownie OSOBĘ", persearch_path, class: "btn btn-large btn-primary" %>
+	  <%= link_to "Wyszukaj ponownie ORGANIZACJĘ", orgsearch_path, class: "btn btn-large btn-primary" %>
     </div>
 </div>
 

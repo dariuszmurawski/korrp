@@ -24,23 +24,10 @@ en:
   "Value error1": "Wartość przedziału WYSOKI musi być większa niż przedziału NISKI"
   "Value error2": "Wartość przedziału NISKI musi być mniejsza niż przedziału WYSOKI"
 
-  "City can't be blank": "Nazwa miasta nie może być pusta" 
-  "Postal code can't be blank": "Kod pocztowy nie może być pusty"
-  "Pesel can't be blank": "Numer PESEL nie może być pusty"
-  "Pesel is invalid": "Format numeru PESEL jest błędny - PESEL powinien się składać z 11 cyfr"
-  "Regon can't be blank": "Numer REGON nie może być pusty"
-  "Regon is invalid": "Format numeru REGON jest błędny - REGON powinien się składać z 9 cyfr"
-  "Postal code is invalid": "Format kodu pocztowego jest niepoprawny"
-  "Nip can't be blank": "Numer NIP nie może być pusty"
-  "Nip is invalid": "Format numeru NIP jest niepoprawny - NIP powinien się składać z 10 cyfr"
-  "Home no can't be blank": "Numer domu nie może być pusty"
+
   "Branch is reserved": "Niepoprawnie wypełnione pole branża"
-  "Pkdfull can't be blank": "Pole kod oraz opis PKD nie może buć puste"
-  "Org name can't be blank": "Nazwa organizacji nie może być pusta"
-  "Name is too long (maximum is 30 characters)": "Nazwisko jest za długe (max 30 znaków)"
-  "Forename is too long (maximum is 15 characters)": "Imię jest za długie (max 15 znaków)"
-  "Org Name Is Too Long (Maximum Is 50 Characters)": "Nazwa organizacji jest za długa (max 50 znaków)"
- 
+
+
 
   "previous_label": "poprzednia"
   "next_label": "następna"
@@ -72,6 +59,21 @@ en:
         us_fax: "Numer faxu"
         us_postalcode: "Adres - kod pocztowy"
         us_email: "Adres e-mail"
+      poltaxconn:
+        database: "Adres IP bazy POLTAX"
+        username: "Nazwa użytkownika"
+        password: "Hasło"
+      check:
+        forename: "Imię"
+        name: "Nazwisko"
+        org_name: "Nazwa organizacji"
+        postal_code: "Kod pocztowy"
+        home_no: "Numer domu"
+        pesel: "PESEL"
+        regon: "REGON"
+        nip: "NIP"
+        pkdfull: "Kod PKD"
+        branch: "Branża"
         
   errors:
     messages:
@@ -93,6 +95,8 @@ en:
         ! "nie jest takie samo jak %{attribute}"
       taken:
         "wartość pola już występuje"
+      exclusion:
+        "niepoprawny wpis - wybrano zły kod PKD"
 
 
 

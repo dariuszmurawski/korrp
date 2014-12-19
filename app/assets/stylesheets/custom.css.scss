@@ -164,6 +164,10 @@ select::-ms-expand {
   margin-left: 100px;
 }
 
+h2.error{
+  color: #f00;
+}
+
 @mixin ie-background-cover($image-path) {
  // filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=#{image_path($image-path)}, sizingMethod='scale');
  // -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=#{image_path($image-path)}, sizingMethod='scale')";

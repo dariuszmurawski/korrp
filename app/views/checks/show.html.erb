@@ -15,7 +15,7 @@
 		</tr>
 		<tr>
 			<td class="table_bg"><b><i>Adres:</i></b></td>
-			<% if @check.flat_no!="" %>
+			<% if (@check.flat_no!="" && @check.flat_no!=nil)%>
 			<td><%= @check.postal_code %> <%= @check.city %> <%= @check.street %> <%= @check.home_no %> m. <%= @check.flat_no %></td>
 			<%else%>
 				<td><%= @check.postal_code %> <%= @check.city %> <%= @check.street %> <%= @check.home_no %></td>

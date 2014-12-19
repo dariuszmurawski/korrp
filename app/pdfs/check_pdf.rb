@@ -50,7 +50,7 @@ class CheckPdf < Prawn::Document
     text "Analiza ryzyka rejestracji podmiotu", :align => :center
     font_size 8
     move_down 5
-    if @check.flat_no!=""
+    if (@check.flat_no!="" && @check.flat_no!=nil)
       data = [ [ {content: "Dane podatnika", colspan: 2 } ],
             ["Imię i nazwisko:", @check.forename+" "+@check.name] , 
             ["Nazwa:", @check.org_name],

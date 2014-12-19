@@ -25,19 +25,19 @@
 				  		<% @results.each do |result| %>   		
 				    		<tr>
 				  				<td>
-				  					<%= result["tin"] %>
+				  					<%= result["nip"] %>
 				  				</td>
 				  				<td>
-				  					<%= result["pesel_no"]%>
+				  					<%= result["pesel"]%>
 				  				</td>
 				 				<td>
-				  					<%= result["family_name"]%> <%= result["forename_1"]%>
+				  					<%= result["name"]%> <%= result["forename"]%>
 				  				</td>
 				  				<td>
-				  					<%= result["postal_code"]%> <%= result["city"]%> <%= result["street"]%> <%= result["house_no"]%> <%= result["flat_no"]%>
+				  					<%= result["postal_code"]%> <%= result["city"]%> <%= result["street"]%> <%= result["home_no"]%> <%= result["flat_no"]%>
 				  				</td>
 				  				<td>
-				  					wybierz
+									<%= link_to "wybierz", new_check_path(check: result)%>
 				  				</td>
 							</tr>
 				  		<% end %>
@@ -60,19 +60,19 @@
 				  		<% @results.each do |result| %>   		
 				    		<tr>
 				  				<td>
-				  					<%= result["tin"] %>
+				  					<%= result["nip"] %>
 				  				</td>
 				  				<td>
-				  					<%= result["regon_no"]%>
+				  					<%= result["regon"] %>
 				  				</td>
 				 				<td>
-				  					<%= result["full_name"]%> 
+				  					<%= result["org_name"]%> 
 				  				</td>
 				  				<td>
-				  					<%= result["postal_code"]%> <%= result["city"]%> <%= result["street"]%> <%= result["house_no"]%> <%= result["flat_no"]%>
+				  					<%= result["postal_code"]%> <%= result["city"]%> <%= result["street"]%> <%= result["home_no"]%> <%= result["flat_no"]%>
 				  				</td>
 				  				<td>
-				  					wybierz
+				  					<%= link_to "wybierz", new_check_path(check: result)%>
 				  				</td>
 							</tr>
 				  		<% end %>

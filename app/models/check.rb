@@ -5,7 +5,7 @@ class Check < ActiveRecord::Base
 
   validates :forename, presence: true, length: { maximum: 15 } 
   validates :name, presence: true, length: { maximum: 30 } 
-  validates :org_name, presence: true,length: { maximum: 50 } 
+  validates :org_name, presence: true,length: { maximum: 150 } 
   validates :city, presence: true
 #  validates :flat_no , format: { without: /\s/ }
   validates :postal_code, presence: true, format: { with: /^[\d][\d]-[\d][\d][\d]$/i ,:multiline => true}
@@ -13,7 +13,7 @@ class Check < ActiveRecord::Base
   validates :home_no, presence: true, length: { maximum: 10 } 
  # validates :flat_no, presence: true, length: { maximum: 50 }
   validates :pesel, presence: true, format: { with: /^[\d]{11}$/i,:multiline => true },length: {minimum: 11,maximum: 11}
-  validates :regon, presence: true, format: { with: /^[\d]{9}$/i ,:multiline => true},length: {minimum: 9,maximum: 9}
+  validates :regon, presence: true, format: { with: /^[\d]{9}$/i ,:multiline => true},length: {minimum: 8,maximum: 8}
   validates :nip, presence: true, format: { with: /^[\d]{10}$/i ,:multiline => true},length: {minimum: 10,maximum: 10}
   validates :pkdfull, presence: true
   validates :branch, presence: true, exclusion: {in: proc { |record| ['Zły kod PKD!'] } }

@@ -7,7 +7,12 @@ class ChecksController < ApplicationController
 
   
   def new
-    @check = Check.new(userlogin: @current_user.name+' '+@current_user.forename)
+    if params[:check]!=nil
+      @check = Check.new(check_search_params)
+      @check.userlogin=@current_user.name+' '+@current_user.forename
+    else
+      @check = Check.new(userlogin: @current_user.name+' '+@current_user.forename)
+    end
     get_questions(@check)     
   end
  
@@ -22,17 +27,17 @@ class ChecksController < ApplicationController
   def searchresult
  
     if (params[:type]=="person")
-      if (params[:NIP]=='' && params[:PESEL]=='' && params[:name]=='') 
+      if (params[:nip]=='' && params[:pesel]=='' && params[:name]=='') 
         flash[:error] = "Przynajmniej jedno z pól: NIP, PESEL, Nazwisko musi być wypełnione"
         redirect_to persearch_path
       else
         @poltaxconn = Poltaxconn.first
-        sql = "SELECT p.tin, p.pesel_no, p.family_name, p.forename_1, p.city, p.street, p.house_no, p.flat_no, p.postal_code from persons p where 1=1"
-          if params[:NIP]!=''
-            sql=sql+" and p.tin='"+params[:NIP]+"'"
+        sql = "SELECT to_char(p.tin) nip, to_char(p.pesel_no) pesel, p.family_name name, p.forename_1 forename, p.city city, p.street street, p.house_no home_no, p.flat_no flat_no, p.postal_code postal_code from persons p where p.dereg_date is null"
+          if params[:nip]!=''
+            sql=sql+" and p.tin='"+params[:nip]+"'"
           end
-          if params[:PESEL]!=''
-            sql=sql+" and p.pesel_no='"+params[:PESEL]+"'"
+          if params[:pesel]!=''
+            sql=sql+" and p.pesel_no='"+params[:pesel]+"'"
           end
           if params[:name]!=''
             sql=sql+" and p.family_name='"+params[:name].mb_chars.upcase+"'"
@@ -52,17 +57,17 @@ class ChecksController < ApplicationController
     end
     
      if (params[:type]=="organ")
-      if (params[:NIP]=='' && params[:REGON]=='' && params[:name]=='') 
+      if (params[:nip]=='' && params[:regon]=='' && params[:name]=='') 
         flash[:error] = "Przynajmniej jedno z pól: NIP, REGON, Nazwa organizacji musi być wypełnione"
         redirect_to orgsearch_path
       else
         @poltaxconn = Poltaxconn.first
-        sql = "SELECT o.tin, o.regon_no, o.full_name, o.city, o.street, o.house_no, o.flat_no, o.postal_code from organs o where 1=1"
-          if params[:NIP]!=''
-            sql=sql+" and o.tin='"+params[:NIP]+"'"
+        sql = "SELECT to_char(o.tin) nip, to_char(o.regon_no) regon, o.full_name org_name, o.city city, o.street street, o.house_no home_no, o.flat_no flat_no, o.postal_code postal_code from organs o where o.dereg_date is null"
+          if params[:nip]!=''
+            sql=sql+" and o.tin='"+params[:nip]+"'"
           end
-          if params[:REGON]!=''
-            sql=sql+" and o.regon_no='"+params[:REGON]+"'"
+          if params[:regon]!=''
+            sql=sql+" and o.regon_no='"+params[:regon]+"'"
           end
           if params[:name]!=''
             sql=sql+" and o.full_name like '%"+params[:name].mb_chars.upcase+"%'"
@@ -177,6 +182,10 @@ class ChecksController < ApplicationController
 
     def check_params
       params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkdfull, :branch, :score ,:level, :userlogin, answers_attributes: [:id, :q_description, :q_strength, :q_answer])
+    end
+    
+    def check_search_params
+      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no)
     end
   
 end

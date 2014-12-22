@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false,judge: :ignore }
   has_secure_password
   validates :password, length: { minimum: 6 }, :if => :password
-  
+
   default_scope -> { order('login') }
   
   def User.new_remember_token

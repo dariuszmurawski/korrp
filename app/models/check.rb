@@ -20,7 +20,7 @@ class Check < ActiveRecord::Base
   validates :pesel, format: { with: /^[\d]{11}$/i,:multiline => true, message: "zły format pola - powinno być 11 cyfr" } ,if: :pesel?
   
   validates :regon, presence: {message: "wystepuje nazwa organizacji - regon nie może być pusty"}, if:  :org_name?
-  validates :regon, format: { with: /^[\d]{8}$/i ,:multiline => true, message: "zły format pola - powinno być 8 cyfr"}, if: :regon?
+  validates :regon, format: { with: /^[\d]{7,14}$/i ,:multiline => true, message: "zły format pola - powinno być od 7 do 14 cyfr"}, if: :regon?
   
   validates :nip, presence: {message: "wystepuje nazwa organizacji - nip nie może być pusty"}, if:  :org_name? 
   validates :nip,  format: { with: /^[\d]{10}$/i ,:multiline => true, message: "zły format pola - powinno być 10 cyfr"}, if: :nip?

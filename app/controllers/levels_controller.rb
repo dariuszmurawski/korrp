@@ -14,9 +14,9 @@ class LevelsController < ApplicationController
     @level = Level.find(params[:id])
     
     if @level.description == "WYSOKI"      
-        @level2=Level.find_by(description: "NISKI")
+        @level2=Level.find_by(description: "ŚREDNI")
         if @level2.value>params[:level][:value].to_i
-            @level.errors.add(:value, "error1")
+            @level.errors.add(:value, "WYSOKI musi być większa niż przedziału NISKI")
             render 'edit'
         else
             if @level.update_attributes(level_params)
@@ -29,7 +29,7 @@ class LevelsController < ApplicationController
     else
         @level2=Level.find_by(description: "WYSOKI")
         if @level2.value<params[:level][:value].to_i
-            @level.errors.add(:value, "error2")
+            @level.errors.add(:value, "NISKI musi być mniejsza niż przedziału WYSOKI")
             render 'edit' 
         else
           if @level.update_attributes(level_params)

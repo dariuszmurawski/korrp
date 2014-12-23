@@ -23,14 +23,10 @@
 en:	
   "Value error1": "Wartość przedziału WYSOKI musi być większa niż przedziału NISKI"
   "Value error2": "Wartość przedziału NISKI musi być mniejsza niż przedziału WYSOKI"
-
-
   "Branch is reserved": "Niepoprawnie wypełnione pole branża"
-
-
-
   "previous_label": "poprzednia"
   "next_label": "następna"
+  
 
   activerecord:
     attributes:
@@ -74,6 +70,7 @@ en:
         nip: "NIP"
         pkdfull: "Kod PKD"
         branch: "Branża"
+        city: "Miasto"
         
   errors:
     messages:

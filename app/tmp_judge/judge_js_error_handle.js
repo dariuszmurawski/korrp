@@ -44,6 +44,6 @@ var tab_poltaxconn = ["#poltaxconn_database",
 var tab = tab_question.concat(tab_user).concat(tab_parameter).concat(tab_level).concat(tab_check).concat(tab_poltaxconn);
 //console.log(tab.join(','));	
 	
- $(tab.join(',')).on('keyup focusin change', val_in(this));
- $(tab.join(',')).on('focusout', val_out(this));
+// $(tab.join(',')).on('keyup focusin change', val_in(this));
+//$(tab.join(',')).on('focusout', val_out(this));
 });

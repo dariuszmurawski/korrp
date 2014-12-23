@@ -1,6 +1,4 @@
 
-
-
 jQuery(function() {
 	
 //questions
@@ -45,6 +43,7 @@ var tab = tab_question.concat(tab_user).concat(tab_parameter).concat(tab_level).
 //console.log(tab.join(','));	
 	
  $(tab.join(',')).on('keyup focusin change', function(){
+// 	console.log(this.id);	
 	judge.validate(this, {
   		valid: function(element) {
   			 $(element).css({	 	

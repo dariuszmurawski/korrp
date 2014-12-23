@@ -1,4 +1,6 @@
 
+
+
 jQuery(function() {
 	
 //questions
@@ -26,13 +28,13 @@ var tab_parameter = ["#parameter_us_code",
 var tab_level = ["#level_value"];	
 //checks
 var tab_check = ["#check_home_no",
-					"#check_forename",
-					"#check_name",
-					"#check_org_name",
+//X					"#check_forename",
+//X					"#check_name",
+//X					"#check_org_name",
 					"#check_postal_code",
-					"#check_pesel",
-					"#check_regon",
-					"#check_nip",
+//					"#check_pesel",
+//					"#check_regon",
+//					"#check_nip",
 					"#check_city"];
 
 var tab_poltaxconn = ["#poltaxconn_database", 
@@ -40,58 +42,87 @@ var tab_poltaxconn = ["#poltaxconn_database",
 		   			"#poltaxconn_password"];
 
 var tab = tab_question.concat(tab_user).concat(tab_parameter).concat(tab_level).concat(tab_check).concat(tab_poltaxconn);
-//console.log(tab.join(','));	
 	
- $(tab.join(',')).on('keyup focusin change', function(){
-// 	console.log(this.id);	
-	judge.validate(this, {
-  		valid: function(element) {
-  			 $(element).css({	 	
-  			 'border' : '1px solid #b7d1e1',
- 			 'outline' : 'thin dotted \9',
-  			 '-moz-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
-  			 '-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
-  			 'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)'		 	 	
-   		     });
-   		     $(element).nextAll().remove();
- 		},
-  		invalid: function(element, messages) {
-  			 $(element).css({
-           	'border' : '1px solid  #953b39',
-           	'outline' : 'thin dotted \9',
-           	'-moz-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392',
-  			'-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392',
-  			'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392'		 
-   		     });
-   		     $(element).nextAll().remove();
-   			 $(element).after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
-  		}
-	});
-  });
-  
-  $(tab.join(',')).on('focusout', function(){
-  	judge.validate(this, {
-  		valid: function(element) {
-  			 $(element).css({	 	
-  			 'border' : '1px solid #b7d1e1',
- 			 'outline': 'none',
-  			 '-webkit-box-shadow': 'none',
-  			 '-moz-box-shadow': 'none',
-  			 'box-shadow': 'none'	
-  			 });
-  			 $(element).nextAll().remove();
- 		},
-  		invalid: function(element, messages) {
-  			 $(element).css({
-           	'border' : '1px solid  #953b39',
-           	'outline': 'none',
-           	'-webkit-box-shadow': 'none',
-           	'-moz-box-shadow': 'none',
-           	'box-shadow': 'none'	
-           	});
-    		$(element).nextAll().remove();
-   			$(element).after("<div class=\"error_judge\"><p>"+messages.join("</p><p>")+"</p></div>");
-  		}
-	});
- });
+//walidacja bez warunków
+$(tab.join(',')).on('keyup focusin change', function(){
+	val_in(this);
+});
+$(tab.join(',')).on('focusout', function(){
+	val_out(this);
+});
+
+
+//walidacja warunkowa
+$("#check_org_name").on('keyup focusin change', function(){	
+	if ($("#check_forename").val()=='' && $("#check_name").val()==''){	
+		val_in(this);
+	}
+	else{
+	val_ok_in(this);
+	}
+});
+$("#check_org_name").on('focusout', function(){
+	if ($("#check_forename").val()=='' && $("#check_name").val()==''){
+		val_out(this);
+	}
+	else{
+	val_ok_out(this);
+	}
+});
+
+
+$("#check_name, #check_forename").on('keyup focusin change', function(){	
+	if ($("#check_org_name").val()==''){	
+		val_in(this);
+	}
+	else{
+	val_ok_in(this);
+	}
+});
+$("#check_name, #check_forename").on('focusout', function(){
+	if ($("#check_org_name").val()==''){
+		val_out(this);
+	}
+	else{
+	val_ok_out(this);
+	}
+});
+
+$("#check_regon, #check_nip").on('keyup focusin change', function(){	
+	if ($("#check_org_name").val()!=''){	
+		val_in(this);
+	}
+	else{
+	val_ok_in(this);
+	}
+});
+$("#check_regon, #check_nip").on('focusout', function(){
+	if ($("#check_org_name").val()!=''){
+		val_out(this);
+	}
+	else{
+	val_ok_out(this);
+	}
+});
+
+$("#check_pesel").on('keyup focusin change', function(){	
+	if ($("#check_name").val()!='' && $("#check_forename").val()!=''){	
+		val_in(this);
+	}
+	else{
+	val_ok_in(this);
+	}
+});
+$("#check_pesel").on('focusout', function(){
+	if ($("#check_name").val()!='' && $("#check_forename").val()!=''){
+		val_out(this);
+	}
+	else{
+	val_ok_out(this);
+	}
+});
+
+
+
+
 });

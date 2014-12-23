@@ -1,6 +1,6 @@
 
-function val_in(obj){
-	judge.validate($(obj), {
+function val_in(obj){	
+	judge.validate(obj, {
   		valid: function(element) {
   			 $(element).css({	 	
   			 'border' : '1px solid #b7d1e1',
@@ -26,7 +26,7 @@ function val_in(obj){
   };
   
 function val_out(obj){
-  	judge.validate($(obj), {
+  	judge.validate(obj, {
   		valid: function(element) {
   			 $(element).css({	 	
   			 'border' : '1px solid #b7d1e1',
@@ -35,7 +35,7 @@ function val_out(obj){
   			 '-moz-box-shadow': 'none',
   			 'box-shadow': 'none'	
   			 });
-  			 $(element).nextAll().remove();
+ 			 $(element).nextAll().remove();
  		},
   		invalid: function(element, messages) {
   			 $(element).css({
@@ -50,3 +50,31 @@ function val_out(obj){
   		}
 	});
  };
+ 
+ 
+ 
+function val_ok_in(id){
+	$(id).css({	 	
+  			 'border' : '1px solid #b7d1e1',
+ 			 'outline' : 'thin dotted \9',
+  			 '-moz-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
+  			 '-webkit-box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)',
+  			 'box-shadow' : 'inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6)'		 	 	
+   	});
+   	$(id).nextAll().remove();
+	
+} 
+
+function val_ok_out(id){
+	$(id).css({	 	
+  			 'border' : '1px solid #b7d1e1',
+ 			 'outline': 'none',
+  			 '-webkit-box-shadow': 'none',
+  			 '-moz-box-shadow': 'none',
+  			 'box-shadow': 'none'	
+  	});
+ 	$(id).nextAll().remove();
+	
+} 
+
+

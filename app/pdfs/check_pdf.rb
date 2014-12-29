@@ -52,7 +52,7 @@ class CheckPdf < Prawn::Document
     move_down 5
     if (@check.flat_no!="" && @check.flat_no!=nil)
       data = [ [ {content: "Dane podatnika", colspan: 2 } ],
-            ["Imię i nazwisko:", @check.forename+" "+@check.name] , 
+            ["Imię i nazwisko:", @check.forename.to_s+" "+@check.name.to_s] , 
             ["Nazwa:", @check.org_name],
             ["Adres:", @check.postal_code+' '+@check.city+' '+@check.street+' '+@check.home_no+' m. '+@check.flat_no],
             ["NIP:",@check.nip],
@@ -63,7 +63,7 @@ class CheckPdf < Prawn::Document
           ]
     else
       data = [ [ {content: "Dane podatnika", colspan: 2 } ],
-            ["Imię i nazwisko:", @check.forename+" "+@check.name] , 
+            ["Imię i nazwisko:", @check.forename.to_s+" "+@check.name.to_s] , 
             ["Nazwa:", @check.org_name],
             ["Adres:", @check.postal_code+' '+@check.city+' '+@check.street+' '+@check.home_no],
             ["NIP:",@check.nip],

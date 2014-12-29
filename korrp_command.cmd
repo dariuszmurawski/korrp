@@ -1,5 +1,6 @@
 @echo on
 setlocal
+SET PATH=C:\Ruby200\oracle10;%PATH%
 SET PATH=C:\Ruby200\bin;%PATH%
 SET PATH=C:\Ruby200\ssl\bin;%PATH%
 SET CPATH=C:\Ruby200\ssl\include;%CPATH%

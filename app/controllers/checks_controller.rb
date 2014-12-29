@@ -18,10 +18,34 @@ class ChecksController < ApplicationController
  
   def persearch  
 #    session[:check] ||= params[:check]
+    @poltaxconn = Poltaxconn.first
+    sql = "SELECT * from dual"
+    result=Connbuffer.getdata(sql,@poltaxconn)
+    if result !=nil
+      if result[0]["dummy"]!="X"
+        flash[:error] = "Błąd połaczenia z bazą POLTAX"
+        redirect_to new_check_path
+      end
+    else
+      flash[:error] = "Błąd połaczenia z bazą POLTAX"
+      redirect_to new_check_path
+    end
   end
   
   def orgsearch
 #    session[:check] ||= params[:check]
+    @poltaxconn = Poltaxconn.first
+    sql = "SELECT * from dual"
+    result=Connbuffer.getdata(sql,@poltaxconn)
+    if result !=nil
+      if result[0]["dummy"]!="X"
+        flash[:error] = "Błąd połaczenia z bazą POLTAX"
+        redirect_to new_check_path
+      end
+    else
+      flash[:error] = "Błąd połaczenia z bazą POLTAX"
+      redirect_to new_check_path
+    end
   end
   
   def searchresult

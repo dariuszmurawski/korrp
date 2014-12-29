@@ -102,13 +102,17 @@ class ChecksController < ApplicationController
     @parameter = Parameter.first
     @check = Check.find(params[:id])
     @answers = @check.answers
+
+    
+    
     respond_to do |format|
       format.html
       format.pdf do
         pdf = CheckPdf.new(@check,@parameter)
-        send_data pdf.render, filename: "Analiza_#{@check.nip}.pdf",
-                                type: "application/pdf",
-                                disposition: "inline"
+        send_data pdf.render, filename: "Analiza_#{@check.nip}_#{@check.created_at.strftime('%F')}.pdf",
+                            #    disposition: "inline",
+                                type: "application/pdf"
+                            
       end
     end
  end

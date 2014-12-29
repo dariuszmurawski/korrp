@@ -112,19 +112,21 @@
   	</table>
    </div>  
 </div> 
-<div class="row">
+<!--><div class="row">
   <div class="span8">
-  		<p><%= link_to "Analiza do pobrania/wydruku w formacie PDF", check_path(@check, format: "pdf"), target: "_blank"%></p>
+  		<p><%#= link_to "Analiza do pobrania/wydruku w formacie PDF", check_path(@check, format: "pdf"), target: "_blank"%></p>
    </div>  
 </div>  
-
+</-->
 
 <div class="row">
- 	<div class="span8">
+ 	<div class="span12">
 		<% if current_user.admin? || current_user.kiera? %>
   			<%= link_to "Edycja analizy", edit_check_path(@check),class: "btn btn-large btn-primary" %>
 
 		<% end %>
+		
+		<%= link_to "Analiza do pobrania/wydruku w formacie PDF", check_path(@check, format: "pdf"),class: "btn btn-large btn-primary"%>
 		<%= link_to "Powrót do listy analiz", checks_path,class: "btn btn-large btn-primary" %>
    	</div>  
 </div>  	

@@ -133,9 +133,15 @@ class ChecksController < ApplicationController
       format.html
       format.pdf do
         pdf = CheckPdf.new(@check,@parameter)
-        send_data pdf.render, filename: "Analiza_#{@check.nip}_#{@check.created_at.strftime('%F')}.pdf",
+        if @check.nip!=nil
+        send_data pdf.render, filename: "Analiza_NIP:#{@check.nip}_DATA:#{@check.created_at.strftime('%F')}.pdf",
                             #    disposition: "inline",
                                 type: "application/pdf"
+        else
+        send_data pdf.render, filename: "Analiza_PESEL:#{@check.pesel}_DATA:#{@check.created_at.strftime('%F')}.pdf",
+                            #    disposition: "inline",
+                                type: "application/pdf"  
+        end
                             
       end
     end

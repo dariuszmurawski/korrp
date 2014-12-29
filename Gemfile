@@ -22,7 +22,7 @@ gem 'judge'
 gem "activerecord-oracle_enhanced-adapter", '1.5.5'
 gem "ruby-oci8", '2.1.7'
 #gem "ruby-oci8", '2.0.6'  #oracle 8 client
-
+gem "attr_encrypted", '1.3.3'
 
 
 

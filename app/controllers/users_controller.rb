@@ -117,6 +117,9 @@ class UsersController < ApplicationController
           redirect_to(root_url) 
         end
       end
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = "W trakcie twojej edycji rekord został usunięty przez innego użytkownika"
+      redirect_to users_path
     end
 
   

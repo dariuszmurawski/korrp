@@ -27,11 +27,13 @@ class User < ActiveRecord::Base
   
   def update_attributes_with_conflict(*args)
     update_attributes(*args)
-  rescue ActiveRecord::StaleObjectError
-    errors.add :base, "rekord został zmodyfikowany przez innego użytkownika podczas aktualnej edycji"
-    changes.each do |name, values|
-      errors.add name, "was #{values.first}"
-    end
+    
+    
+    rescue ActiveRecord::StaleObjectError
+      errors.add :base, "w trakcie edycji rekord został zmodyfikowany przez innego użytkownika"
+      changes.except("updated_at","lock_version").each do |name, values|
+        errors.add name, "aktualnie ma wartość: #{values.first}"
+      end
     false
   end
   

@@ -12,6 +12,8 @@
 			<%= f.label :value,"wartość przedziału punktowego ryzyka" %>
 			<%= f.text_field :value, :validate => true %>
 		</div> 
+	  <%= f.hidden_field :lock_version %>
+	  
       <%= f.submit "Akceptuj zmiany", class: "btn btn-large btn-primary" %>
       <%= link_to "Anuluj zmiany", levels_path, class: "btn btn-large btn-primary" %>
     <% end %>

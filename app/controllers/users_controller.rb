@@ -55,14 +55,14 @@ class UsersController < ApplicationController
     end
     
     if current_user.admin?
-        if @user.update_attributes(user_params_no_login_with_admin)
+        if @user.update_attributes_with_conflict(edit_user_params_no_login_with_admin)
           flash[:success] = "Zmiany zapisane"
           redirect_to users_path
         else
           render 'edit'
         end
     else
-        if @user.update_attributes(user_params_no_login)
+        if @user.update_attributes_with_conflict(edit_user_params_no_login)
           flash[:success] = "Zmiany zapisane"
           redirect_to @user
         else
@@ -84,14 +84,14 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
     
-    def user_params_no_login
+    def edit_user_params_no_login
       params.require(:user).permit(:forename, :name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :lock_version)
     end
     
-    def user_params_no_login_with_admin
+    def edit_user_params_no_login_with_admin
       params.require(:user).permit(:admin,:kiera,:forename, :name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :lock_version)
     end
    
 #    def admin_user 

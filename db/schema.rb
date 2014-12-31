@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229114847) do
+ActiveRecord::Schema.define(version: 20141230124240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20141229114847) do
     t.boolean  "q_answer",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version",  default: 0,     null: false
   end
 
   create_table "checks", force: true do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20141229114847) do
     t.string   "pkdfull"
     t.string   "userlogin"
     t.string   "userloginedit"
+    t.integer  "lock_version",  default: 0,     null: false
   end
 
   create_table "levels", force: true do |t|
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 20141229114847) do
     t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version", default: 0, null: false
   end
 
   create_table "parameters", force: true do |t|
@@ -70,6 +73,7 @@ ActiveRecord::Schema.define(version: 20141229114847) do
     t.datetime "updated_at"
     t.string   "us_postalcode"
     t.string   "us_email"
+    t.integer  "lock_version",  default: 0, null: false
   end
 
   create_table "pkds", force: true do |t|
@@ -88,14 +92,16 @@ ActiveRecord::Schema.define(version: 20141229114847) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password"
+    t.integer  "lock_version",       default: 0, null: false
   end
 
   create_table "questions", force: true do |t|
     t.text     "description"
     t.integer  "strength"
-    t.boolean  "cancelled",   default: false
+    t.boolean  "cancelled",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version", default: 0,     null: false
   end
 
   create_table "users", force: true do |t|
@@ -109,6 +115,7 @@ ActiveRecord::Schema.define(version: 20141229114847) do
     t.string   "forename"
     t.string   "login"
     t.boolean  "kiera",           default: false
+    t.integer  "lock_version",    default: 0,     null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

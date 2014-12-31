@@ -152,7 +152,9 @@
 
 <div class="row">
 	<div class="span8">
+      <%= f.hidden_field :lock_version %>
 	  <%= f.hidden_field :userlogin %>	
+	  
       <%= f.submit "Zatwierdź zmiany", class: "btn btn-large btn-primary" %>
       <%= link_to "Anuluj", check_path(@check), class: "btn btn-large btn-primary" %>
     </div>

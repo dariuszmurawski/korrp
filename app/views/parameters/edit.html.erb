@@ -67,6 +67,7 @@
 </div>
 <div class="row"> 
   <div class="span6"> 
+      <%= f.hidden_field :lock_version %>
       
       <%= f.submit "Zapisz zmiany", class: "btn btn-large btn-primary" %>
       <%= link_to "Anuluj zmiany", parameter_path(params[:id]), class: "btn btn-large btn-primary" %>

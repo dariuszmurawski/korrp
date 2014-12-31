@@ -25,6 +25,17 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
   
+  def update_attributes_with_conflict(*args)
+    update_attributes(*args)
+  rescue ActiveRecord::StaleObjectError
+    errors.add :base, "rekord został zmodyfikowany przez innego użytkownika podczas aktualnej edycji"
+    changes.each do |name, values|
+      errors.add name, "was #{values.first}"
+    end
+    false
+  end
+  
+  
   private
 
     def create_remember_token

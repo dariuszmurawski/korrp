@@ -29,6 +29,7 @@ gem "attr_encrypted", '1.3.3'
 group :development, :test do
 #  gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
+  gem 'byebug', '3.5.1'
 end
 
 group :test do

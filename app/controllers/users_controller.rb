@@ -19,10 +19,10 @@ class UsersController < ApplicationController
   end
  
 
-  def setpath 
-    redirect_to(session[:return_to])
-    session.delete(:return_to)
-  end
+#  def setpath 
+#    redirect_to(session[:return_to])
+#    session.delete(:return_to)
+#  end
   
   
   
@@ -57,14 +57,16 @@ class UsersController < ApplicationController
     if current_user.admin?
         if @user.update_attributes_with_conflict(edit_user_params_no_login_with_admin)
           flash[:success] = "Zmiany zapisane"
-          redirect_to users_path
+          redirect_back_or @user
+         # redirect_to users_path
         else
           render 'edit'
         end
     else
         if @user.update_attributes_with_conflict(edit_user_params_no_login)
           flash[:success] = "Zmiany zapisane"
-          redirect_to @user
+          redirect_back_or @user
+         # redirect_to @user
         else
           render 'edit'
         end

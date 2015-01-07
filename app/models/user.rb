@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
 
   default_scope -> { order('login') }
   
+  
+ 
+  
+  
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -28,21 +32,20 @@ class User < ActiveRecord::Base
   def update_attributes_with_conflict(*args)
     update_attributes(*args)
     
-    
     rescue ActiveRecord::StaleObjectError
       errors.add :base, "w trakcie edycji rekord został zmodyfikowany przez innego użytkownika"
       changes.except("updated_at","lock_version").each do |name, values|
-        errors.add name, "aktualnie ma wartość: #{values.first}"
+        errors.add name, "aktualnie ma wartość: #{values.first} próba modyfikacji na #{args.first[name]} "
       end
+ #   redirect_to edit_user_path(self.id) and return
     false
   end
   
+    private
   
-  private
-
-    def create_remember_token
+  def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
-    end
+  end
 
   
 end

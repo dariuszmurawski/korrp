@@ -19,10 +19,9 @@ class UsersController < ApplicationController
   end
  
 
-#  def setpath 
-#    redirect_to(session[:return_to])
-#    session.delete(:return_to)
-#  end
+  def setpath 
+    redirect_back_or @user
+  end
   
   
   
@@ -55,7 +54,7 @@ class UsersController < ApplicationController
     end
     
     if current_user.admin?
-        if @user.update_attributes_with_conflict(edit_user_params_no_login_with_admin)
+        if @user.update_attributes(edit_user_params_no_login_with_admin)
           flash[:success] = "Zmiany zapisane"
           redirect_back_or @user
          # redirect_to users_path
@@ -63,7 +62,7 @@ class UsersController < ApplicationController
           render 'edit'
         end
     else
-        if @user.update_attributes_with_conflict(edit_user_params_no_login)
+        if @user.update_attributes(edit_user_params_no_login)
           flash[:success] = "Zmiany zapisane"
           redirect_back_or @user
          # redirect_to @user
@@ -71,9 +70,16 @@ class UsersController < ApplicationController
           render 'edit'
         end
     end
+  rescue ActiveRecord::StaleObjectError
+      @user_tmp=User.find(params[:id])
+      @user.lock_version = @user.lock_version_was
+      @user.errors.add :base, "w trakcie edycji rekord został zmodyfikowany przez innego użytkownika"
+      @user.changes.except("updated_at","lock_version").each do |par_name, values|
+        @user.errors.add par_name, "aktualnie ma wartość: #{values.first} próba modyfikacji na #{@user[par_name]} "
+        @user[par_name]=@user_tmp[par_name] 
+      end
+      render 'edit'   
   end
-  
-  
   
   
   
@@ -96,20 +102,6 @@ class UsersController < ApplicationController
                                    :password_confirmation, :lock_version)
     end
    
-#    def admin_user 
-#      unless current_user.admin?
-#        flash.now[:notice] = "Brak uprawnień"
-#        redirect_to(root_url) 
-#      end
-#    end
-
-#    def signed_in_user
-#      unless signed_in?
-#        flash[:notice] = "Zaloguj się..."
-#        store_location
-#        redirect_to signin_url
-#      end
-#    end
   
     def correct_user
       @user = User.find(params[:id])

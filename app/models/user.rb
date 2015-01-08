@@ -29,17 +29,6 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
   
-  def update_attributes_with_conflict(*args)
-    update_attributes(*args)
-    
-    rescue ActiveRecord::StaleObjectError
-      errors.add :base, "w trakcie edycji rekord został zmodyfikowany przez innego użytkownika"
-      changes.except("updated_at","lock_version").each do |name, values|
-        errors.add name, "aktualnie ma wartość: #{values.first} próba modyfikacji na #{args.first[name]} "
-      end
- #   redirect_to edit_user_path(self.id) and return
-    false
-  end
   
     private
   

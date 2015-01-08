@@ -29,6 +29,15 @@ class QuestionsController < ApplicationController
      else
           render 'edit'
      end
+  rescue ActiveRecord::StaleObjectError
+      @question_tmp=Question.find(params[:id])
+      @question.lock_version = @question.lock_version_was
+      @question.errors.add :base, "w trakcie edycji rekord został zmodyfikowany przez innego użytkownika"
+      @question.changes.except("updated_at","lock_version").each do |par_name, values|
+        @question.errors.add par_name, "aktualnie ma wartość: #{values.first} próba modyfikacji na #{@question[par_name]} "
+        @question[par_name]=@question_tmp[par_name] 
+      end
+      render 'edit'   
   end
   
   
@@ -49,7 +58,7 @@ class QuestionsController < ApplicationController
    private
 
     def question_params
-      params.require(:question).permit( :description, :strength)
+      params.require(:question).permit( :description, :strength, :lock_version)
     end
   
 end

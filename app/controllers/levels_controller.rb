@@ -40,6 +40,15 @@ class LevelsController < ApplicationController
           end                    
         end      
     end
+  rescue ActiveRecord::StaleObjectError
+      @level_tmp=Level.find(params[:id])
+      @level.lock_version = @level.lock_version_was
+      @level.errors.add :base, "w trakcie edycji rekord został zmodyfikowany przez innego użytkownika"
+      @level.changes.except("updated_at","lock_version").each do |par_name, values|
+        @level.errors.add par_name, "aktualnie ma wartość: #{values.first} próba modyfikacji na #{@level[par_name]} "
+        @level[par_name]=@level_tmp[par_name] 
+      end
+      render 'edit' 
   end
 
       
@@ -54,7 +63,7 @@ class LevelsController < ApplicationController
    private
 
     def level_params
-      params.require(:level).permit(:value)
+      params.require(:level).permit(:value, :lock_version)
     end
   
   

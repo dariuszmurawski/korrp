@@ -26,8 +26,9 @@ en:
   "Branch is reserved": "Niepoprawnie wypełnione pole branża"
   "previous_label": "poprzednia"
   "next_label": "następna"
-  
-
+  "true": "TAK"
+  "false": "NIE"
+ 
   activerecord:
     attributes:
       user:
@@ -71,6 +72,12 @@ en:
         pkdfull: "Kod PKD"
         branch: "Branża"
         city: "Miasto"
+        flat_no: "Numer Mieszkania"
+        score: "Watrość punktowa ryzyka"
+        level: "Poziom ryzyka"
+        q_answer: "Kryterium"
+      answer:
+        q_answer: "Kryterium"
         
   errors:
     messages:

@@ -196,6 +196,24 @@ class ChecksController < ApplicationController
     else
       render action: 'edit'
     end
+    rescue ActiveRecord::StaleObjectError
+      @check_tmp=Check.find(params[:id])
+      @check.lock_version = @check.lock_version_was
+      @check.errors.add :base, "w trakcie edycji rekord został zmodyfikowany przez innego użytkownika"
+      @check.changes.except("updated_at","lock_version", "level", "score").each do |par_name, values|
+        @check.errors.add par_name, "aktualnie ma wartość: #{values.first} próba modyfikacji na #{@check[par_name]} "
+        @check[par_name]=@check_tmp[par_name] 
+      end
+      @check.answers.each do |answer|
+       answer.changes.except("updated_at","lock_version").each do |par_name, values|
+          answer.errors.add par_name, "bump"
+          @check.errors.add par_name, "#{answer.q_description} aktualnie ma wartość: #{t(values.first.to_s)} próba modyfikacji na #{t(answer.q_answer.to_s)}"
+       #   byebug
+          answer[par_name]=values.first
+       end
+      end 
+      
+      render 'edit' 
  end
   
   
@@ -215,7 +233,7 @@ class ChecksController < ApplicationController
    private
 
     def check_params
-      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkdfull, :branch, :score ,:level, :userlogin, answers_attributes: [:id, :q_description, :q_strength, :q_answer])
+      params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkdfull, :branch, :score ,:level, :userlogin, :lock_version, answers_attributes: [:id, :q_description, :q_strength, :q_answer])
     end
     
     def check_search_params

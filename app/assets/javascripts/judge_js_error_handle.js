@@ -87,23 +87,45 @@ $("#check_name, #check_forename").on('focusout', function(){
 	val_ok_out(this);
 	}
 });
-
-$("#check_regon, #check_nip").on('keyup focusin change', function(){	
-	if ($("#check_org_name").val()!=''){	
+////////////////////
+$("#check_regon").on('keyup focusin change', function(){	
+	if ($("#check_org_name").val()!=''  || $("#check_regon").val()!=''){	
 		val_in(this);
 	}
 	else{
 	val_ok_in(this);
 	}
 });
-$("#check_regon, #check_nip").on('focusout', function(){
-	if ($("#check_org_name").val()!=''){
+
+$("#check_regon").on('focusout', function(){
+	if ($("#check_org_name").val()!='' || $("#check_regon").val()!=''){
 		val_out(this);
 	}
 	else{
 	val_ok_out(this);
 	}
 });
+
+$("#check_nip").on('keyup focusin change', function(){	
+	if ($("#check_org_name").val()!=''  || $("#check_nip").val()!=''){	
+		val_in(this);
+	}
+	else{
+	val_ok_in(this);
+	}
+});
+
+$("#check_nip").on('focusout', function(){
+	if ( (($("#check_org_name").val()!='') || ($("#check_nip").val()!='')) ){
+		val_out(this);
+	}
+	else{
+	val_ok_out(this);
+	}
+});
+
+
+////////////////////
 
 $("#check_pesel").on('keyup focusin change', function(){	
 	if ($("#check_name").val()!='' && $("#check_forename").val()!=''){	

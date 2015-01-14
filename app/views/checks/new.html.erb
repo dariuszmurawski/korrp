@@ -5,30 +5,15 @@
       <%= render 'shared/error_messages', object: f.object %>
       
 <div class="row">
-	<div class="span8">
+	<div class="span12">
 		<p>
+		<%= f.submit "Szybkie wyszukiwanie poprzez NIP/PESEL",  class: "btn btn-primary" %>
 		<%= link_to "Wyszukaj OSOBĘ z POLTAX", persearch_path, class: "btn btn-primary" %>
-		<%= link_to "Wyszukaj ORGANIZACJĘ z POLTAX", orgsearch_path, class: "btn btn-primary" %>
+		<%= link_to "Wyszukaj ORGANIZACJĘ z POLTAX", orgsearch_path, class: "btn btn-primary" %>      
 		</p>
 	</div>	
 </div>
       
-<div class="row">
-  <div class="span4">
-	  <%= f.label :nip,"numer NIP" %>
-      <%= f.text_field :nip , :validate => true%>
-  </div>
-  
-  <div class="span4">
-	  <%= f.label :pesel,"numer PESEL" %>
-      <%= f.text_field :pesel , :validate => true%>
-  </div>
-  
-  <div class="span4">
-	  <%= f.label :regon,"numer REGON" %>
-      <%= f.text_field :regon , :validate => true%>
-  </div>
-</div>  
 
 <div class="row">
   <div class="span4">          
@@ -51,6 +36,23 @@
 
 <div class="row">
   <div class="span4">
+	  <%= f.label :nip,"numer NIP" %>
+      <%= f.text_field :nip , :validate => true%>
+  </div>
+  
+  <div class="span4">
+	  <%= f.label :pesel,"numer PESEL" %>
+      <%= f.text_field :pesel , :validate => true%>
+  </div>
+  
+  <div class="span4">
+	  <%= f.label :regon,"numer REGON" %>
+      <%= f.text_field :regon , :validate => true%>
+  </div>
+</div>  
+
+<div class="row">
+  <div class="span4">
 	  <%= f.label :city,"miasto" %>
       <%= f.text_field :city , :validate => true%>
   </div>    
@@ -59,6 +61,7 @@
       <%= f.label :postal_code,"kod pocztowy" %>
       <%= f.text_field :postal_code , :validate => true%>
   </div>    
+  
 </div>  
       
 <div class="row">
@@ -154,7 +157,7 @@
 <div class="row">
 	<div class="span8">
 	  <%= f.hidden_field :userlogin %>	
-      <%= f.submit "Zatwierdź analizę", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Zatwierdź analizę" , class: "btn btn-large btn-primary" %>
       <%= link_to "Anuluj", checks_path, class: "btn btn-large btn-primary" %>
     </div>
   </div>

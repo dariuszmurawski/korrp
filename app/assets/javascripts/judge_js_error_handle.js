@@ -128,7 +128,7 @@ $("#check_nip").on('focusout', function(){
 ////////////////////
 
 $("#check_pesel").on('keyup focusin change', function(){	
-	if ($("#check_name").val()!='' && $("#check_forename").val()!=''){	
+	if (($("#check_name").val()!='' && $("#check_forename").val()!='') ||  $("#check_pesel").val()!='')  {	
 		val_in(this);
 	}
 	else{
@@ -136,7 +136,7 @@ $("#check_pesel").on('keyup focusin change', function(){
 	}
 });
 $("#check_pesel").on('focusout', function(){
-	if ($("#check_name").val()!='' && $("#check_forename").val()!=''){
+	if (($("#check_name").val()!='' && $("#check_forename").val()!='')  ||  $("#check_pesel").val()!='') {
 		val_out(this);
 	}
 	else{

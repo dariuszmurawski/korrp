@@ -17,7 +17,6 @@ class ChecksController < ApplicationController
   end
  
   def persearch  
-#    session[:check] ||= params[:check]
     @poltaxconn = Poltaxconn.first
     sql = "SELECT * from dual"
     result=Connbuffer.getdata(sql,@poltaxconn)
@@ -33,7 +32,6 @@ class ChecksController < ApplicationController
   end
   
   def orgsearch
-#    session[:check] ||= params[:check]
     @poltaxconn = Poltaxconn.first
     sql = "SELECT * from dual"
     result=Connbuffer.getdata(sql,@poltaxconn)
@@ -69,12 +67,14 @@ class ChecksController < ApplicationController
           if params[:forename]!=''
             sql=sql+" and p.forename_1='"+params[:forename].mb_chars.upcase+"'"
           end
-        @sql=sql
         @results=Connbuffer.getdata(sql,@poltaxconn)
-        if @results!=nil
+        if @results==nil
+          flash[:error] = "Błąd połaczenia z bazą POLTAX"
+          redirect_to persearch_path
+        elsif @results.length>0
           @results = @results.paginate(page: params[:page],  :per_page => 15)
         else
-          flash[:error] = "Błąd połaczenia z bazą POLTAX"
+          flash[:error] = "Nie wyszukano rekordów spełniających kryteria"
           redirect_to persearch_path
         end  
       end 
@@ -96,12 +96,14 @@ class ChecksController < ApplicationController
           if params[:name]!=''
             sql=sql+" and o.full_name like '%"+params[:name].mb_chars.upcase+"%'"
           end
-        @sql=sql
         @results=Connbuffer.getdata(sql,@poltaxconn)
-        if @results!=nil
+        if @results==nil
+          flash[:error] = "Błąd połaczenia z bazą POLTAX"
+          redirect_to orgsearch_path
+        elsif @results.length>0
           @results = @results.paginate(page: params[:page],  :per_page => 15)
         else
-          flash[:error] = "Błąd połaczenia z bazą POLTAX"
+          flash[:error] = "Nie wyszukano rekordów spełniających kryteria"
           redirect_to orgsearch_path
         end  
       end 
@@ -109,6 +111,9 @@ class ChecksController < ApplicationController
     
   end
   
+ 
+
+ 
  
   def edit
     @check = Check.find(params[:id])     
@@ -127,8 +132,6 @@ class ChecksController < ApplicationController
     @check = Check.find(params[:id])
     @answers = @check.answers
 
-    
-    
     respond_to do |format|
       format.html
       format.pdf do
@@ -176,14 +179,69 @@ class ChecksController < ApplicationController
  
  
  def create
-  #TESTOWO
-    @check = Check.new(check_params)
-    if @check.save
-      flash[:success] = "Dodano nową analizę"
-      redirect_to checks_path
-    else
-      render action: 'new'
-    end
+   
+   if params[:commit]=="Zatwierdź analizę"
+      @check = Check.new(check_params)
+      if @check.save
+        flash[:success] = "Dodano nową analizę"
+        redirect_to checks_path
+      else
+        render action: 'new'
+      end
+   end
+   
+   
+   if params[:commit]=="Szybkie wyszukiwanie poprzez NIP/PESEL"
+
+      if (params[:check][:nip]=='' && params[:check][:pesel]=='' ) 
+        flash.now[:error] = "Do szybkiego wyszukiwania NIP lub PESEL musi być wypełniony"
+        @check = Check.new(check_params)
+        render 'new'
+      else
+        sql = "SELECT to_char(p.tin) nip, to_char(p.pesel_no) pesel, p.family_name name, p.forename_1 forename,null org_name, p.city city, p.street street, p.house_no home_no, p.flat_no flat_no, p.postal_code postal_code from persons p where p.dereg_date is null"
+        if params[:check][:nip]!=''
+            sql=sql+" and p.tin='"+params[:check][:nip]+"'"
+        end
+        if params[:check][:pesel]!=''
+            sql=sql+" and p.pesel_no='"+params[:check][:pesel]+"'"
+        end
+        sql=sql+" union "
+        sql = sql+"SELECT to_char(o.tin) nip, null pesel, null name, null forename, o.full_name org_name, o.city city, o.street street, o.house_no home_no, o.flat_no flat_no, o.postal_code postal_code from organs o where o.dereg_date is null"
+        if params[:check][:nip]!=''
+            sql=sql+" and o.tin='"+params[:check][:nip]+"'"
+        end
+        
+        @check = Check.new(check_params)  
+        @poltaxconn = Poltaxconn.first
+        results=Connbuffer.getdata(sql,@poltaxconn)
+       # byebug
+        if results==nil
+          flash.now[:error] = "Błąd połaczenia z bazą POLTAX"
+          render 'new'
+        elsif results.length!=0
+          result=results.first
+          @check.nip=result["nip"]
+          @check.pesel=result["pesel"]
+          @check.name=result["name"]
+          @check.forename=result["forename"]
+          @check.org_name=result["org_name"]
+          @check.city=result["city"]
+          @check.street=result["street"]
+          @check.home_no=result["home_no"]
+          @check.flat_no=result["flat_no"]
+          @check.postal_code=result["postal_code"]
+          flash.now[:success] = "Udało się wyszukać podatnika"
+          render 'new'
+        elsif results.length>1
+          flash.now[:error] = "Wyszukano więcej niż jeden rekord w bazie"
+          render 'new'
+        else
+          flash.now[:error] = "Nie wyszukano rekordów spełniających kryteria"
+          render 'new'
+        end  
+      end 
+  end    
+      
  end
   
   

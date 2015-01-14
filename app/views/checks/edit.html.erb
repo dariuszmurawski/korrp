@@ -4,22 +4,7 @@
 <%= form_for(@check, :builder => Judge::FormBuilder) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
-<div class="row">
-  <div class="span4">
-	  <%= f.label :nip,"numer NIP" %>
-      <%= f.text_field :nip , :validate => true%>
-  </div>
-  
-  <div class="span4">
-	  <%= f.label :pesel,"numer PESEL" %>
-      <%= f.text_field :pesel , :validate => true%>
-  </div>
-  
-  <div class="span4">
-	  <%= f.label :regon,"numer REGON" %>
-      <%= f.text_field :regon , :validate => true%>
-  </div>
-</div>  
+
 
 <div class="row">
   <div class="span4">          
@@ -39,7 +24,22 @@
       <%= f.text_field :org_name , :validate => true%>
   </div>
 </div>
-
+<div class="row">
+  <div class="span4">
+	  <%= f.label :nip,"numer NIP" %>
+      <%= f.text_field :nip , :validate => true%>
+  </div>
+  
+  <div class="span4">
+	  <%= f.label :pesel,"numer PESEL" %>
+      <%= f.text_field :pesel , :validate => true%>
+  </div>
+  
+  <div class="span4">
+	  <%= f.label :regon,"numer REGON" %>
+      <%= f.text_field :regon , :validate => true%>
+  </div>
+</div>  
 <div class="row">
   <div class="span4">
 	  <%= f.label :city,"miasto" %>

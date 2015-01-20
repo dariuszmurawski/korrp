@@ -180,7 +180,7 @@ class ChecksController < ApplicationController
  
  def create
    
-   if params[:commit]=="Zatwierdź analizę"
+   if params[:commit]==t("check submit")
       @check = Check.new(check_params)
       if @check.save
         flash[:success] = "Dodano nową analizę"
@@ -191,14 +191,14 @@ class ChecksController < ApplicationController
    end
    
    
-   if params[:commit]=="Szybkie wyszukiwanie poprzez NIP/PESEL"
+   if params[:commit]==t("fast search")
 
       if (params[:check][:nip]=='' && params[:check][:pesel]=='' ) 
         flash.now[:error] = "Do szybkiego wyszukiwania NIP lub PESEL musi być wypełniony"
         @check = Check.new(check_params)
         render 'new'
       else
-        sql = "SELECT to_char(p.tin) nip, to_char(p.pesel_no) pesel, p.family_name name, p.forename_1 forename,null org_name, p.city city, p.street street, p.house_no home_no, p.flat_no flat_no, p.postal_code postal_code from persons p where p.dereg_date is null"
+        sql = "SELECT to_char(p.tin) nip,to_char(p.regon_no) regon, to_char(p.pesel_no) pesel, p.family_name name, p.forename_1 forename,null org_name, p.city city, p.street street, p.house_no home_no, p.flat_no flat_no, p.postal_code postal_code from persons p where p.dereg_date is null"
         if params[:check][:nip]!=''
             sql=sql+" and p.tin='"+params[:check][:nip]+"'"
         end
@@ -206,7 +206,7 @@ class ChecksController < ApplicationController
             sql=sql+" and p.pesel_no='"+params[:check][:pesel]+"'"
         end
         sql=sql+" union "
-        sql = sql+"SELECT to_char(o.tin) nip, null pesel, null name, null forename, o.full_name org_name, o.city city, o.street street, o.house_no home_no, o.flat_no flat_no, o.postal_code postal_code from organs o where o.dereg_date is null"
+        sql = sql+"SELECT to_char(o.tin) nip,to_char(o.regon_no) regon, null pesel, null name, null forename, o.full_name org_name, o.city city, o.street street, o.house_no home_no, o.flat_no flat_no, o.postal_code postal_code from organs o where o.dereg_date is null"
         if params[:check][:nip]!=''
             sql=sql+" and o.tin='"+params[:check][:nip]+"'"
         end
@@ -222,6 +222,7 @@ class ChecksController < ApplicationController
           result=results.first
           @check.nip=result["nip"]
           @check.pesel=result["pesel"]
+          @check.regon=result["regon"]
           @check.name=result["name"]
           @check.forename=result["forename"]
           @check.org_name=result["org_name"]

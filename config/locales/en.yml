@@ -28,7 +28,9 @@ en:
   "next_label": "następna"
   "true": "TAK"
   "false": "NIE"
- 
+  "check submit": "Zatwierdź analizę"
+  "fast search": "Szybkie wyszukiwanie poprzez NIP/PESEL"
+  
   activerecord:
     attributes:
       user:

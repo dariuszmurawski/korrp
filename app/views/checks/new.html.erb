@@ -8,8 +8,13 @@
 	<div class="span12">
 		<p>
 		<%= f.submit t("fast search"),  class: "btn btn-primary" %>
-		<%= link_to "Wyszukaj OSOBĘ z POLTAX", persearch_path, class: "btn btn-primary" %>
-		<%= link_to "Wyszukaj ORGANIZACJĘ z POLTAX", orgsearch_path, class: "btn btn-primary" %>      
+		
+		<%= f.submit t("person search"),  class: "btn btn-primary" %>
+		<%= f.submit t("organ search"),  class: "btn btn-primary" %>
+		
+		
+		<%#= link_to "Wyszukaj OSOBĘ z POLTAX", persearch_path, class: "btn btn-primary" %>
+		<%#= link_to "Wyszukaj ORGANIZACJĘ z POLTAX", orgsearch_path, class: "btn btn-primary" %>      
 		</p>
 	</div>	
 </div>

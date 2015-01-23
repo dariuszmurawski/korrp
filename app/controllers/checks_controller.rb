@@ -10,10 +10,15 @@ class ChecksController < ApplicationController
     if params[:check]!=nil
       @check = Check.new(check_search_params)
       @check.userlogin=@current_user.name+' '+@current_user.forename
+      get_questions(@check)  
+    elsif session[:check]!=nil
+      @check = Check.new(session_params)
+      session.delete(:check)
+      @check.userlogin = @current_user.name+' '+@current_user.forename
     else
       @check = Check.new(userlogin: @current_user.name+' '+@current_user.forename)
+      get_questions(@check)  
     end
-    get_questions(@check)     
   end
  
   def persearch  
@@ -190,6 +195,15 @@ class ChecksController < ApplicationController
       end
    end
    
+   if params[:commit]==t("person search")
+      session[:check]=params[:check]
+      redirect_to persearch_path
+   end
+   
+   if params[:commit]==t("organ search")
+      session[:check]=params[:check]
+      redirect_to orgsearch_path
+   end
    
    if params[:commit]==t("fast search")
 
@@ -298,5 +312,10 @@ class ChecksController < ApplicationController
     def check_search_params
       params.require(:check).permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no)
     end
+    
+    def session_params
+      session[:check].permit( :nip, :pesel, :regon, :forename, :name, :org_name, :city, :postal_code, :street, :home_no, :flat_no, :pkdfull, :branch, :score ,:level, :userlogin, :lock_version, answers_attributes: [:id, :q_description, :q_strength, :q_answer])
+    end
+    
   
 end

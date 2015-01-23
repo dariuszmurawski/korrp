@@ -30,7 +30,11 @@ en:
   "false": "NIE"
   "check submit": "Zatwierdź analizę"
   "fast search": "Szybkie wyszukiwanie poprzez NIP/PESEL"
-  
+  "person search": "Wyszukaj OSOBĘ z POLTAX"  
+  "organ search": "Wyszukaj ORGANIZACJĘ z POLTAX"
+ 
+ 
+
   activerecord:
     attributes:
       user:

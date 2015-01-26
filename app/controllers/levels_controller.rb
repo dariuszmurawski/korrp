@@ -1,13 +1,16 @@
 class LevelsController < ApplicationController
     before_action :signed_in_user, only: [ :index, :edit, :update]
     before_action :admin_kiera_user,     only: [ :index, :edit, :update]
-  
+    require 'check'
+    
+    
   def index
     @levels=Level.all
   end
   
   def edit
     @level = Level.find(params[:id]) 
+    @levels=Level.all 
   end  
   
   def update
@@ -21,6 +24,19 @@ class LevelsController < ApplicationController
         else
             if @level.update_attributes(level_params)
                flash[:success] = "Zmiany zapisane"
+               @checks=Check.all
+               value1=Level.find_by(description: "ŚREDNI").value
+               value2=Level.find_by(description: "WYSOKI").value
+               @checks.each do |check|
+                  if check.score<value1
+                    check.level="NISKI"
+                  elsif check.score<value2
+                    check.level="ŚREDNI"
+                  else
+                    check.level="WYSOKI"
+                  end
+                  check.save
+               end
                redirect_to levels_path
             else
                render 'edit'
@@ -34,6 +50,18 @@ class LevelsController < ApplicationController
         else
           if @level.update_attributes(level_params)
                flash[:success] = "Zmiany zapisane"
+               @checks=Check.all
+               value1=Level.find_by(description: "ŚREDNI").value
+               value2=Level.find_by(description: "WYSOKI").value
+               @checks.each do |check|
+                  if check.score<value1
+                    check.level="NISKI"
+                  elsif check.score<value2
+                    check.level="ŚREDNI"
+                  else
+                    check.level="WYSOKI"
+                  end
+               end
                redirect_to levels_path
           else
                render 'edit'

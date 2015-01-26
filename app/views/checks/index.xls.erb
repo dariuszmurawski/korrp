@@ -1,4 +1,4 @@
-/app/views/products/index.xls.erb 
+/app/views/checks/index.xls.erb 
 
 
 <?xml version="1.0"?>
@@ -23,12 +23,12 @@
  			 </Row>
   		<% @checksall.each do |check| %>
      		<Row>
-      			<Cell><Data ss:Type="String"><%= check.name+" "+check.forename %></Data></Cell>
-      			<Cell><Data ss:Type="String"><%= check.org_name %></Data></Cell>
-      			<% if check.flat_no=="" %>
+      			<Cell><Data ss:Type="String"><%= check.name.to_s+" "+check.forename.to_s %></Data></Cell>
+      			<Cell><Data ss:Type="String"><%= check.org_name.to_s %></Data></Cell>
+      			<% if check.flat_no.to_s=="" || check.flat_no==nil %>
        				<Cell><Data ss:Type="String"><%= check.postal_code+" "+check.city+" "+check.street+" "+check.home_no %></Data></Cell>
       			<%else%>
-        			<Cell><Data ss:Type="String"><%= check.postal_code+" "+check.city+" "+check.street+" "+check.home_no+" m. "+check.flat_no %></Data></Cell>
+        			<Cell><Data ss:Type="String"><%= check.postal_code+" "+check.city+" "+check.street+" "+check.home_no+" m. "+check.flat_no.to_s %></Data></Cell>
       			<%end%>
       			<Cell><Data ss:Type="String"><%= check.pesel %></Data></Cell>
       			<Cell><Data ss:Type="String"><%= check.regon %></Data></Cell>

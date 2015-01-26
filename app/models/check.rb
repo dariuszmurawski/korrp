@@ -48,14 +48,14 @@ class Check < ActiveRecord::Base
   
   def self.to_csv(options ={})
     CSV.generate(options) do |csv|
-      @headers=["Imię i Nazwisko","Nazwa orgenizacji","Adres", "PESEL", "REGON", "NIP", "Kod PKD", "Branża",  "Ryzyko", "Pkt. ryzyka"]
+      @headers=["Imię i Nazwisko","Nazwa organizacji","Adres", "PESEL", "REGON", "NIP", "Kod PKD", "Branża",  "Ryzyko", "Pkt. ryzyka"]
       csv << @headers
       all.each do |check|
-        if check.flat_no !=  ""
-           @subject_data=[check.name+" "+check.forename, check.org_name, check.postal_code+" "+check.city+" "+check.street+" "+check.home_no+" m. "+check.flat_no, check.pesel, check.regon, check.nip, 
+        if check.flat_no.to_s !=  "" && check.flat_no!=nil
+           @subject_data=[check.name.to_s+" "+check.forename.to_s, check.org_name.to_s, check.postal_code+" "+check.city+" "+check.street+" "+check.home_no+" m. "+check.flat_no, check.pesel, check.regon, check.nip, 
               check.pkdfull, check.branch,check.level, check.score]
         else
-           @subject_data=[check.name+" "+check.forename, check.org_name, check.postal_code+" "+check.city+" "+check.street+" "+check.home_no, check.pesel, check.regon, check.nip, 
+           @subject_data=[check.name.to_s+" "+check.forename.to_s, check.org_name.to_s, check.postal_code+" "+check.city+" "+check.street+" "+check.home_no, check.pesel, check.regon, check.nip, 
               check.pkdfull, check.branch,check.level, check.score]
         end
         @answers_data=["Odpowiedzi:"]

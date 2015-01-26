@@ -19,3 +19,21 @@
     <% end %>
   </div>
 </div>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<center><b>Aktualnie obowiązaujące przedziały ryzyka:</b></center>
+ 	 <table class="table table-striped check">
+		<tr>
+			<th>opis przediału punktowego ryzyka</th>
+			<th>wartość przedziału punktowego ryzyka</th>
+		</tr>
+  		<% @levels.each do |level_tmp| %>
+  			<tr>
+  				<td><%= level_tmp.description %></td>
+  				<td><%= level_tmp.value %></td>
+  			</tr>	
+  		<% end %>
+	</table> 	
+  </div>
+</div>

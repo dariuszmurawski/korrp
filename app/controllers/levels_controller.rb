@@ -19,7 +19,7 @@ class LevelsController < ApplicationController
     if @level.description == "WYSOKI"      
         @level2=Level.find_by(description: "ŚREDNI")
         if @level2.value>params[:level][:value].to_i
-          byebug
+       
             @level.errors.add(:value, "WYSOKI musi być większa niż przedziału NISKI")
             @levels=Level.all
             render 'edit'
